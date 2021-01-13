@@ -49,6 +49,3 @@ public class Hotel_Simulation {
     }
     
 }
-
-    
-}

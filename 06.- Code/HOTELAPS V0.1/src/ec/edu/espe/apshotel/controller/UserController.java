@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package ec.edu.espe.apshotel.controller;
-import static com.sun.tools.javac.tree.TreeInfo.name;
 import ec.edu.espe.apshotel.model.Customer;
 import java.io.File;
 import java.nio.file.Files;
@@ -36,18 +35,23 @@ public class UserController {
     public Customer createUser(){
         
          Scanner scanner = new Scanner(System.in);
+         String name;
+         String email;
+         String id;
+         String timeStay;
+         int hosted;
+         
          System.out.println("Ingrese su nombre y apellido");
-         String name = scanner.nextLine();
+         name = scanner.nextLine();
          System.out.println("Ingrese su email");
-         String email = scanner.nextLine();
+         email = scanner.nextLine();
          System.out.println("Ingrese su id");
-         String id = scanner.nextLine();
-         scanner.nextLine();
+         id = scanner.nextLine();
          System.out.println("Ingrese fecha de hospedaje YY-MM-DD");
-         String timeStay = scanner.nextLine();
-         scanner.nextLine();
+         timeStay = scanner.nextLine();
          System.out.println("Ingrese numero de personas");
-         int hosted = scanner.nextInt();
+         hosted = scanner.nextInt();
+         /* scanner.nextLine();*/
          Customer user = new Customer(name, email, id, timeStay, hosted);
          return user;
     }

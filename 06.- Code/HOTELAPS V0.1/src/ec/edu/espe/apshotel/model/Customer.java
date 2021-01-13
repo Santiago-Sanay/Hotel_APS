@@ -15,10 +15,10 @@ public class Customer {
     String name;
     String email;
     String id;
-    Date timeStay;
+    String timeStay;
     int hosted;
 
-    public Customer(String name, String email, String id, Date timeStay, int hosted) {
+    public Customer(String name, String email, String id, String timeStay, int hosted) {
         this.name = name;
         this.email = email;
         this.id = id;
@@ -26,13 +26,9 @@ public class Customer {
         this.hosted = hosted;
     }
 
-    public Customer(String name, String email, String id, String timeStay, int hosted) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public String toString() {
-        return "Customer{" + "name=" + name + ", email=" + email + ", id=" + id + ", timeStay=" + timeStay + ", hosted=" + hosted + '}';
+        return "Datos del Clienter-->" + "   Nombre=" + name + ", Email=" + email + ", Id=" + id + ", Tiempo de Estadia=" + timeStay + ",Cantiadad de Uusuarios=" + hosted + '}';
     }
 
     public String getName() {
@@ -59,11 +55,11 @@ public class Customer {
         this.id = id;
     }
 
-    public Date getTimeStay() {
+    public String getTimeStay() {
         return timeStay;
     }
 
-    public void setTimeStay(Date timeStay) {
+    public void setTimeStay(String timeStay) {
         this.timeStay = timeStay;
     }
 
@@ -75,4 +71,4 @@ public class Customer {
         this.hosted = hosted;
     }
 
-    }
+}
