@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.antsimulator.model;
-
-import java.util.Date;
+package ec.edu.espe.apshotel.model;
 
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
  */
-public class Invoice {
+public class CleanService {
+ 
+    public boolean isClean(Room room){
+        boolean clean;
+        return false;
+    }
     
-    int numberAcount;
-    int iva;
-    Date date;
-    Customer customer;
-    Payment payment;
 }

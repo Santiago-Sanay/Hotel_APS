@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.antsimulator.model;
+package ec.edu.espe.apshotel.model;
 
 /**
  *
@@ -17,6 +17,17 @@ public class Service {
     public float getPrice() {
         return price;
     }
+
+    public Service(float price, String type) {
+        this.price = price;
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Service{" + "price=" + price + ", type=" + type + '}';
+    }
+    
 
     /**
      * @param price the price to set
