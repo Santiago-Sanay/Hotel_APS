@@ -54,8 +54,7 @@ public class Service {
     private String type;
     
     public int sell (int quaity){
-       
-        
+        return 2;
     }
     
     public void ring (Product product){
