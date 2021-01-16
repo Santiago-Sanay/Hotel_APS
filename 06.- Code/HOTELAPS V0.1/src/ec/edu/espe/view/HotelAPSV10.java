@@ -3,17 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.apshotel.model;
+package ec.edu.espe.view;
 
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
  */
-public class CleanService {
- 
-    public boolean isClean(Room room){
-        boolean clean;
-        return false;
+public class HotelAPSV10 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
     }
     
 }
