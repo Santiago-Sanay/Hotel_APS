@@ -14,20 +14,18 @@ public class Product {
     private int idProduct;
     private int stock;
     private float salePrice;
-    private String name;
-    private String description;
+    private String nameProduct;
 
     @Override
     public String toString() {
-        return "Product{" + "idProduct=" + idProduct + ", stock=" + stock + ", salePrice=" + salePrice + ", name=" + name + ", description=" + description + '}';
+        return "Product{" + "idProduct=" + getIdProduct() + ", stock=" + getStock() + ", salePrice=" + getSalePrice() + ", nameProduct=" + getNameProduct() + '}';
     }
 
-    public Product(int idProduct, int stock, float salePrice, String name, String description) {
+    public Product(int idProduct, int stock, float salePrice, String nameProduct) {
         this.idProduct = idProduct;
         this.stock = stock;
         this.salePrice = salePrice;
-        this.name = name;
-        this.description = description;
+        this.nameProduct = nameProduct;
     }
 
     /**
@@ -73,34 +71,17 @@ public class Product {
     }
 
     /**
-     * @return the name
+     * @return the nameProduct
      */
-    public String getName() {
-        return name;
+    public String getNameProduct() {
+        return nameProduct;
     }
 
     /**
-     * @param name the name to set
+     * @param nameProduct the nameProduct to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
     }
 
-    /**
-     * @return the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * @param description the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
-    public void addProduct(){
-        
-    }
 }

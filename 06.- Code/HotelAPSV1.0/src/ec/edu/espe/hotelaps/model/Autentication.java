@@ -22,15 +22,20 @@ public class Autentication {
         this.id = id;
     }
 
-    public void autenticationCustomer() {
-        FileManager.find("listCustomer.json", id);
-
+    public boolean autenticationCustomer() {
+        boolean verify = false;
+        String recover = FileManager.find("listCostumer.json", id);
+        if (!recover.equals("")) {
+            verify = true;
+        }else{
+            System.out.println("Nombre no registrado");
+        }
+        
+        return verify;
     }
 
     public boolean autenticationWorker(String user, String pass) {
         boolean check;
-        
-        
 
         if (user.equals("admin") && pass.equals("admin")) {
             check = true;

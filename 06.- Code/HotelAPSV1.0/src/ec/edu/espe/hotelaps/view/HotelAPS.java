@@ -7,7 +7,9 @@ package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.hotelaps.model.Autentication;
 import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.Product;
 import ec.edu.espe.hotelaps.model.Register;
+import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
 import java.util.Scanner;
 
@@ -113,12 +115,33 @@ public class HotelAPS {
                 switch (registered) {
                     case 1:
 
-                        System.out.println("Ingrese C.I: ");
-                        documentNumber = scanner.nextLine();
+                        boolean verify;
+                        do {
+                            scanner.nextLine();
+                            System.out.println("Ingrese el nombre que registro: ");
 
-                        Autentication autentic;
-                        autentic = new Autentication(documentNumber);
-                        autentic.autenticationCustomer();
+                            String nameSearch = scanner.nextLine();
+                            Autentication autentic;
+                            autentic = new Autentication(nameSearch);
+                            verify = autentic.autenticationCustomer();
+                        } while (verify == false);
+                        System.out.println("BIENVENIDO AL SERVICIO AL CUARTO");
+                        System.out.println("Selleccione su opcion");
+                        System.out.println("1.Comprar");
+                        System.out.println("2.Revisar consumo");
+                        System.out.println("3.Salir");
+                        int service;
+                        System.out.println("Digite su opcion: ");
+                        service = scanner.nextInt();
+                        switch (service) {
+                            case 1:
+
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
                         break;
                     case 2:
                         String user;
@@ -134,7 +157,40 @@ public class HotelAPS {
                             check = autenticAdmin.autenticationWorker(user, pass);
                             System.out.println("este es el check" + check);
                         } while (check == false);
-
+                        System.out.println("BIENVENIDO AL SISTEMA");
+                        System.out.println("Selleccione su opcion");
+                        System.out.println("1.Agregar productos a la tienda");
+                        System.out.println("2.Habitaciones");
+                        System.out.println("3.Salir");
+                        int adm;
+                        System.out.println("Digite su opcion");
+                        adm = scanner.nextInt();
+                        switch (adm) {
+                            case 1:
+                                int idProduct;
+                                int stock;
+                                float salePrice;
+                                String nameProduct;
+                                
+                                System.out.println("Usted esta agregando un producto");
+                                System.out.println("Ingrese el nombre del producto: ");
+                                nameProduct = scanner.nextLine();
+                                System.out.println("Ingrese el id del producto");
+                                idProduct =scanner.nextInt();
+                                System.out.println("Ingrese la cantidad que desea agregar");
+                                stock = scanner.nextInt();
+                                System.out.println("Ingrese el precio de venta");
+                                salePrice = scanner.nextFloat();
+                                
+                                Product product1 = new Product(idProduct,stock,salePrice,nameProduct);
+                                Shop apsShop=new Shop();
+                                apsShop.addProduct(product1);
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
                         break;
                 }
 
