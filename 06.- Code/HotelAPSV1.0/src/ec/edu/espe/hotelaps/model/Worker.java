@@ -11,9 +11,8 @@ package ec.edu.espe.hotelaps.model;
  */
 public class Worker {
 
-    private int idWorker;
-    private String firstName;
-    private String lastName;
+    private String idWorker;
+    private String name;
     private String documentNumber;
     private String address;
     private String telephone;
@@ -22,10 +21,14 @@ public class Worker {
     private String login;
     private String password;
 
-    public Worker(int idWorker, String firstName, String lastName, String documentNumber, String address, String telephone, String email, Boolean access, String login, String password) {
+    @Override
+    public String toString() {
+        return "Worker{" + "idWorker=" + idWorker + ", name=" + name + ", documentNumber=" + documentNumber + ", address=" + address + ", telephone=" + telephone + ", email=" + email + ", access=" + access + ", login=" + login + ", password=" + password + '}';
+    }
+
+    public Worker(String idWorker, String name, String documentNumber, String address, String telephone, String email, boolean access, String login, String password) {
         this.idWorker = idWorker;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.documentNumber = documentNumber;
         this.address = address;
         this.telephone = telephone;
@@ -35,63 +38,32 @@ public class Worker {
         this.password = password;
     }
 
-    public Worker() {
-        idWorker = 0;
-        firstName=null;
-        lastName=null;
-        documentNumber=null;
-        address=null;
-        telephone=null;
-        email=null;
-        access=true;
-        password=null;
-    }
-
-    @Override
-    public String toString() {
-        return "Trabajador{" + idWorker + ", " + firstName + ", " + lastName + ", " + documentNumber + ", " + address + ", " + telephone + ", " + email + ", " + isAccess() + ", " + login + ", " + password + '}';
-    }
-
     /**
      * @return the idWorker
      */
-    public int getIdWorker() {
+    public String getIdWorker() {
         return idWorker;
     }
 
     /**
      * @param idWorker the idWorker to set
      */
-    public void setIdWorker(int idWorker) {
+    public void setIdWorker(String idWorker) {
         this.idWorker = idWorker;
     }
 
     /**
-     * @return the firstName
+     * @return the name
      */
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param firstName the firstName to set
+     * @param name the name to set
      */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    /**
-     * @return the lastName
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * @param lastName the lastName to set
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
@@ -153,9 +125,10 @@ public class Worker {
     /**
      * @return the access
      */
-    public boolean getAccess() {
-        return isAccess();
+    public boolean isAccess() {
+        return access;
     }
+
     /**
      * @param access the access to set
      */
@@ -191,12 +164,5 @@ public class Worker {
         this.password = password;
     }
 
-    /**
-     * @return the access
-     */
-    public boolean isAccess() {
-        return access;
-    }
-
-
+    
 }

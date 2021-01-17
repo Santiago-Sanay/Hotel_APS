@@ -11,93 +11,53 @@ package ec.edu.espe.hotelaps.model;
  */
 public class Customer {
 
-    private int id;
-    private String firstName;
-    private String lastName;
+    private String id;
+    private String name;
     private String documentNumber;
     private String address;
     private String telephone;
     private String email;
 
-    public Customer() {
-        id = 0;
-        firstName = "name";
-        lastName = "lastName";
-        documentNumber = "1725634785";
-        email = "proof@espe.edu.ec";
-        address = "calle,numero de casa";
-        telephone = "0999999999";
-    }
-
     @Override
     public String toString() {
-        return "Customer{" + ", " + id + ", " + firstName + ", " + lastName + ", " + documentNumber + ", " + address + ", " + telephone + ", " + email + '}';
+        return "Customer{" + "id=" + getId() + ", name=" + getName() + ", documentNumber=" + getDocumentNumber() + ", address=" + getAddress() + ", telephone=" + getTelephone() + ", email=" + getEmail() + '}';
     }
 
-    public Customer(int id, String firstName, String lastName, String documentNumber, String address, String telephone, String email) {
+    public Customer(String id, String name, String documentNumber, String address, String telephone, String email) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.documentNumber = documentNumber;
         this.address = address;
         this.telephone = telephone;
         this.email = email;
     }
 
-    public Reservation doReservation() {
-
-        Reservation reservation = new Reservation();
-        return reservation;
-    }
-
-    public void seeConsumption() {
-
-    }
-
-    public boolean pay() {
-        return false;
-    }
-
     /**
      * @return the id
      */
-    public int getId() {
+    public String getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
     /**
-     * @return the firstName
+     * @return the name
      */
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param firstName the firstName to set
+     * @param name the name to set
      */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    /**
-     * @return the lastName
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * @param lastName the lastName to set
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**

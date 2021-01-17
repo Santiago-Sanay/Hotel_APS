@@ -125,4 +125,7 @@ public class Room {
         this.characteristic = characteristic;
     }
     
+    public void reservation(){
+        
+    }
 }
