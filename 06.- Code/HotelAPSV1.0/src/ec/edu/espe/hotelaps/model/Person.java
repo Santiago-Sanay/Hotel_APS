@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.model;
+package ec.edu.espe.hotelaps.model;
 
 /**
  *
@@ -132,4 +132,7 @@ public class Person {
         this.email = email;
     }
 
+    public void registerPerson(){
+        
+    }
 }

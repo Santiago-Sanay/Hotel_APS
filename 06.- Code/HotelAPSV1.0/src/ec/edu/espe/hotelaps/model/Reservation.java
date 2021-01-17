@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.model;
+package ec.edu.espe.hotelaps.model;
 
 import java.util.Date;
 
@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Gabriel Rosero ESPE-DCCO
  */
 public class Reservation {
-    
+
     private int idReservation;
     private float costAcommodation;
     private Room idRoom;
@@ -28,6 +28,10 @@ public class Reservation {
     public String toString() {
         return "Reservation{" + "idReservation=" + idReservation + ", costAcommodation=" + costAcommodation + ", idRoom=" + idRoom + ", idCustomer=" + idCustomer + ", idWorker=" + idWorker + ", reservationType=" + reservationType + ", status=" + status + ", dateReserved=" + dateReserved + ", dateEntry=" + dateEntry + ", dateExit=" + dateExit + '}';
     }
+//*
+    //Reservation() {
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    // }
 
     public Reservation(int idReservation, float costAcommodation, Room idRoom, Customer idCustomer, Worker idWorker, String reservationType, String status, Date dateReserved, Date dateEntry, Date dateExit) {
         this.idReservation = idReservation;
@@ -181,5 +185,10 @@ public class Reservation {
     public void setDateExit(Date dateExit) {
         this.dateExit = dateExit;
     }
-    
+
+    public float calculateTotal() {
+
+        float total = 0.0F;
+        return total;
+    }
 }

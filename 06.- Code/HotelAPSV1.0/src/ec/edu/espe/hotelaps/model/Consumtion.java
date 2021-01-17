@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.model;
+package ec.edu.espe.hotelaps.model;
 
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
  */
 public class Consumtion {
-    
+
     private int idConsumption;
     private int quantity;
     private float safePrice;
@@ -115,5 +115,14 @@ public class Consumtion {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
+    public float calculateConsumption() {
+
+        float consumption = 0.0F;
+        return consumption;
+    }
+
+    public void deleteProduct() {
+
+    }
 }
