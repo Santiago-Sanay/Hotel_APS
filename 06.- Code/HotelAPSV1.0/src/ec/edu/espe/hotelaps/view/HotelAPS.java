@@ -5,13 +5,19 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.filemanager.utils.FileManager;
 import ec.edu.espe.hotelaps.model.Autentication;
 import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Product;
 import ec.edu.espe.hotelaps.model.Register;
+import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *
@@ -64,6 +70,10 @@ public class HotelAPS {
                 Register registerCustomer = new Register();
                 registerCustomer.registerCustomer(customer1);
                 break;
+                switch(reservation){
+                    
+                }
+                }
 
             case 2:
                 String idWorker;
@@ -173,6 +183,7 @@ public class HotelAPS {
                                 String nameProduct;
                                 
                                 System.out.println("Usted esta agregando un producto");
+                                scanner.nextLine();
                                 System.out.println("Ingrese el nombre del producto: ");
                                 nameProduct = scanner.nextLine();
                                 System.out.println("Ingrese el id del producto");
@@ -187,6 +198,37 @@ public class HotelAPS {
                                 apsShop.addProduct(product1);
                                 break;
                             case 2:
+                                int roomOpt=0;
+                                System.out.println(" 1) Habilitar habitación");
+                                System.out.println(" 2) Disponibilidad de habitaciónes");
+                                System.out.println("Seleccione Opción");
+                                roomOpt=scanner.nextInt();
+                                
+                                switch (roomOpt){
+                                    case 1:
+                                        Room room = new Room(0,0f,true,0);
+                                        System.out.println("Ingrese el numero de habitacion");
+                                        room.setNumberRoom(scanner.nextInt());
+                                        System.out.println("Ingrese el precio de la habitacion");
+                                        room.setPrice(scanner.nextFloat());
+                                        room.setCapacityPerson(4);
+                                        Hotel hotel = new Hotel();
+                                        hotel.assigmentRoom(room);
+                                        break;
+                                    case 2:
+                                        Hotel hotelOpt = new Hotel();
+                                        ArrayList<Room> rooms= new ArrayList();
+                                        String[] roomsopt;
+                                        roomsopt =FileManager.findAll("Rooms.json");
+                                        Room eachRoom;
+                                        for(String line:roomsopt){
+                                            eachRoom = gson.fromJson(line,Room.class);
+                                            
+                                        }
+                                        
+                                        hotelOpt.showRoom();
+                                        break;
+                                }
                                 break;
                             case 3:
                                 break;

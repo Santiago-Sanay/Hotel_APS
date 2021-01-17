@@ -42,7 +42,7 @@ public class Shop {
     }
 
     public void addProduct(Product product) {
-        String jsonProduct = gson.toJson(products, Product.class);
+        String jsonProduct = gson.toJson(product, Product.class);
         FileManager.save("inventoryShop.json", jsonProduct);
     }
 
