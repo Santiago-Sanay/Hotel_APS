@@ -9,7 +9,7 @@ import java.util.Date;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Payment {
     

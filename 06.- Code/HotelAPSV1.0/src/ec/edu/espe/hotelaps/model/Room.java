@@ -7,23 +7,32 @@ package ec.edu.espe.hotelaps.model;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Room {
     
     private int idRoom;
     private float price;
     private boolean status;
-    private String number;
+    private int number;
     private String description;
     private String characteristic;
 
     @Override
     public String toString() {
-        return "Room{" + "idRoom=" + idRoom + ", price=" + price + ", status=" + status + ", number=" + number + ", description=" + description + ", characteristic=" + characteristic + '}';
+        return "Habitacion{"  + idRoom + ", " + price + ", " + status + ", " + number + ", " + description + ", " + characteristic + '}';
     }
 
-    public Room(int idRoom, float price, boolean status, String number, String description, String characteristic) {
+    public Room() {
+        idRoom=0;
+        price=0.00F;
+        status=true;
+        number=0;
+        description=null;
+        characteristic=null;
+    }
+
+    public Room(int idRoom, float price, boolean status, int number, String description, String characteristic) {
         this.idRoom = idRoom;
         this.price = price;
         this.status = status;
@@ -77,14 +86,14 @@ public class Room {
     /**
      * @return the number
      */
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
     /**
      * @param number the number to set
      */
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

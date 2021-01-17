@@ -5,134 +5,60 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Person {
-    
-    private int idPerson;
-    private String firstName;
-    private String lastName;
-    private String documentNumber;
-    private String address;
-    private String telephone;
-    private String email;
+    private ArrayList<Customer> customer;
+    private ArrayList<Worker> worker;
+
+    public Person(ArrayList<Customer> customer, ArrayList<Worker> worker) {
+        this.customer = customer;
+        this.worker = worker;
+    }
+
+    public Person() {
+        customer = null;
+        worker = null;        
+    }
 
     @Override
     public String toString() {
-        return "Person{" + "idPerson=" + idPerson + ", firstName=" + firstName + ", lastName=" + lastName + ", documentNumber=" + documentNumber + ", address=" + address + ", telephone=" + telephone + ", email=" + email + '}';
+        return "Person{"  + customer + ", " + worker + '}';
     }
-
-    public Person(int idPerson, String firstName, String lastName, String documentNumber, String address, String telephone, String email) {
-        this.idPerson = idPerson;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.documentNumber = documentNumber;
-        this.address = address;
-        this.telephone = telephone;
-        this.email = email;
-    }
-
-    /**
-     * @return the idPerson
-     */
-    public int getIdPerson() {
-        return idPerson;
-    }
-
-    /**
-     * @param idPerson the idPerson to set
-     */
-    public void setIdPerson(int idPerson) {
-        this.idPerson = idPerson;
-    }
-
-    /**
-     * @return the firstName
-     */
-    public String getFirstName() {
-        return firstName;
-    }
-
-    /**
-     * @param firstName the firstName to set
-     */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    /**
-     * @return the lastName
-     */
-    public String getLastName() {
-        return lastName;
-    }
-
-    /**
-     * @param lastName the lastName to set
-     */
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    /**
-     * @return the documentNumber
-     */
-    public String getDocumentNumber() {
-        return documentNumber;
-    }
-
-    /**
-     * @param documentNumber the documentNumber to set
-     */
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
-    }
-
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * @return the telephone
-     */
-    public String getTelephone() {
-        return telephone;
-    }
-
-    /**
-     * @param telephone the telephone to set
-     */
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+    
     public void registerPerson(){
         
+    }
+
+    /**
+     * @return the customer
+     */
+    public ArrayList<Customer> getCustomer() {
+        return customer;
+    }
+
+    /**
+     * @param customer the customer to set
+     */
+    public void setCustomer(ArrayList<Customer> customer) {
+        this.customer = customer;
+    }
+
+    /**
+     * @return the worker
+     */
+    public ArrayList<Worker> getWorker() {
+        return worker;
+    }
+
+    /**
+     * @param worker the worker to set
+     */
+    public void setWorker(ArrayList<Worker> worker) {
+        this.worker = worker;
     }
 }

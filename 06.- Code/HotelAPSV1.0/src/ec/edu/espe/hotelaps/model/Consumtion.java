@@ -7,7 +7,7 @@ package ec.edu.espe.hotelaps.model;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Consumtion {
 

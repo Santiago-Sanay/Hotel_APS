@@ -7,54 +7,159 @@ package ec.edu.espe.hotelaps.model;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Worker {
-    
-    private Person idPerson;
-    private String access;
+
+    private int idWorker;
+    private String firstName;
+    private String lastName;
+    private String documentNumber;
+    private String address;
+    private String telephone;
+    private String email;
+    private boolean access;
     private String login;
     private String password;
-    private String status;
 
-    @Override
-    public String toString() {
-        return "Worker{" + "idPerson=" + idPerson + ", access=" + access + ", login=" + login + ", password=" + password + ", status=" + status + '}';
-    }
-
-    public Worker(Person idPerson, String access, String login, String password, String status) {
-        this.idPerson = idPerson;
+    public Worker(int idWorker, String firstName, String lastName, String documentNumber, String address, String telephone, String email, Boolean access, String login, String password) {
+        this.idWorker = idWorker;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.documentNumber = documentNumber;
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
         this.access = access;
         this.login = login;
         this.password = password;
-        this.status = status;
+    }
+
+    public Worker() {
+        idWorker = 0;
+        firstName=null;
+        lastName=null;
+        documentNumber=null;
+        address=null;
+        telephone=null;
+        email=null;
+        access=true;
+        password=null;
+    }
+
+    @Override
+    public String toString() {
+        return "Trabajador{" + idWorker + ", " + firstName + ", " + lastName + ", " + documentNumber + ", " + address + ", " + telephone + ", " + email + ", " + isAccess() + ", " + login + ", " + password + '}';
     }
 
     /**
-     * @return the idPerson
+     * @return the idWorker
      */
-    public Person getIdPerson() {
-        return idPerson;
+    public int getIdWorker() {
+        return idWorker;
     }
 
     /**
-     * @param idPerson the idPerson to set
+     * @param idWorker the idWorker to set
      */
-    public void setIdPerson(Person idPerson) {
-        this.idPerson = idPerson;
+    public void setIdWorker(int idWorker) {
+        this.idWorker = idWorker;
+    }
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * @return the documentNumber
+     */
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
+
+    /**
+     * @param documentNumber the documentNumber to set
+     */
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @return the telephone
+     */
+    public String getTelephone() {
+        return telephone;
+    }
+
+    /**
+     * @param telephone the telephone to set
+     */
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
      * @return the access
      */
-    public String getAccess() {
-        return access;
+    public boolean getAccess() {
+        return isAccess();
     }
-
     /**
      * @param access the access to set
      */
-    public void setAccess(String access) {
+    public void setAccess(boolean access) {
         this.access = access;
     }
 
@@ -87,26 +192,11 @@ public class Worker {
     }
 
     /**
-     * @return the status
+     * @return the access
      */
-    public String getStatus() {
-        return status;
+    public boolean isAccess() {
+        return access;
     }
 
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    
-    public void checkIn(Reservation reservation){
-        
-    }
-    
-    public void checkOut(Reservation reservation){
-        
-    }
-    
-   
+
 }

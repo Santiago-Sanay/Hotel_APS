@@ -5,77 +5,155 @@
  */
 package ec.edu.espe.hotelaps.model;
 
-import java.util.Date;
-
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Customer {
 
-    private Person idPerson;
-    private String customerCode;
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String documentNumber;
+    private String address;
+    private String telephone;
+    private String email;
+
+    public Customer() {
+        id = 0;
+        firstName = "name";
+        lastName = "lastName";
+        documentNumber = "1725634785";
+        email = "proof@espe.edu.ec";
+        address = "calle,numero de casa";
+        telephone = "0999999999";
+    }
 
     @Override
     public String toString() {
-        return "Customer{" + "idPerson=" + idPerson + ", customerCode=" + customerCode + '}';
+        return "Customer{" + ", " + id + ", " + firstName + ", " + lastName + ", " + documentNumber + ", " + address + ", " + telephone + ", " + email + '}';
     }
 
-    public Customer(Person idPerson, String customerCode) {
-        this.idPerson = idPerson;
-        this.customerCode = customerCode;
+    public Customer(int id, String firstName, String lastName, String documentNumber, String address, String telephone, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.documentNumber = documentNumber;
+        this.address = address;
+        this.telephone = telephone;
+        this.email = email;
     }
 
-    /**
-     * @return the idPerson
-     */
-    public Person getIdPerson() {
-        return idPerson;
-    }
+    public Reservation doReservation() {
 
-    /**
-     * @param idPerson the idPerson to set
-     */
-    public void setIdPerson(Person idPerson) {
-        this.idPerson = idPerson;
-    }
-
-    /**
-     * @return the customerCode
-     */
-    public String getCustomerCode() {
-        return customerCode;
-    }
-
-    /**
-     * @param customerCode the customerCode to set
-     */
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
-    }
-
-    public  Reservation doReservation() {
-        
-        int idReservation = 0;
-        float costAcommodation = 0;
-        Room idRoom = null;
-        Customer idCustomer = null;
-        Worker idWorker = null;
-        String reservationType = null;
-        String status = null;
-        Date dateReserved = null;
-        Date dateEntry = null;
-        Date dateExit = null;
-
-        Reservation reservation = new Reservation(idReservation, costAcommodation, idRoom, idCustomer, idWorker, reservationType, status, dateReserved, dateEntry, dateExit);
+        Reservation reservation = new Reservation();
         return reservation;
     }
-    
-    public void seeConsumption(){
-        
+
+    public void seeConsumption() {
+
     }
-    
-    public boolean pay(){
+
+    public boolean pay() {
         return false;
     }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    /**
+     * @return the documentNumber
+     */
+    public String getDocumentNumber() {
+        return documentNumber;
+    }
+
+    /**
+     * @param documentNumber the documentNumber to set
+     */
+    public void setDocumentNumber(String documentNumber) {
+        this.documentNumber = documentNumber;
+    }
+
+    /**
+     * @return the address
+     */
+    public String getAddress() {
+        return address;
+    }
+
+    /**
+     * @param address the address to set
+     */
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    /**
+     * @return the telephone
+     */
+    public String getTelephone() {
+        return telephone;
+    }
+
+    /**
+     * @param telephone the telephone to set
+     */
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
 }

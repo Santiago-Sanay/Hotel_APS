@@ -9,41 +9,56 @@ import java.util.Date;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Yulliana Roman ESPE-DCCO
  */
 public class Reservation {
 
     private int idReservation;
     private float costAcommodation;
-    private Room idRoom;
-    private Customer idCustomer;
-    private Worker idWorker;
+    private Room room;
+    private Customer customer;
+    private Worker worker;
     private String reservationType;
     private String status;
     private Date dateReserved;
     private Date dateEntry;
     private Date dateExit;
 
+    Reservation() {
+        idReservation=0;
+        costAcommodation=0.00F;
+        room = null;
+        customer = null;
+        worker = null;
+        reservationType="";
+        status="";
+        dateReserved=null;       
+        dateEntry=null;
+        dateExit=null;
+    }
+
     @Override
     public String toString() {
-        return "Reservation{" + "idReservation=" + idReservation + ", costAcommodation=" + costAcommodation + ", idRoom=" + idRoom + ", idCustomer=" + idCustomer + ", idWorker=" + idWorker + ", reservationType=" + reservationType + ", status=" + status + ", dateReserved=" + dateReserved + ", dateEntry=" + dateEntry + ", dateExit=" + dateExit + '}';
+        return "Reservation{" + "idReservation=" + getIdReservation() + ", costAcommodation=" + getCostAcommodation() + ", idRoom=" + getRoom() + ", idCustomer=" + getCustomer() + ", worker=" + getWorker() + ", reservationType=" + getReservationType() + ", status=" + getStatus() + ", dateReserved=" + getDateReserved() + ", dateEntry=" + getDateEntry() + ", dateExit=" + getDateExit() + '}';
     }
-//*
-    //Reservation() {
-    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    // }
 
-    public Reservation(int idReservation, float costAcommodation, Room idRoom, Customer idCustomer, Worker idWorker, String reservationType, String status, Date dateReserved, Date dateEntry, Date dateExit) {
+    public Reservation(int idReservation, float costAcommodation, Room room, Customer customer, Worker worker, String reservationType, String status, Date dateReserved, Date dateEntry, Date dateExit) {
         this.idReservation = idReservation;
         this.costAcommodation = costAcommodation;
-        this.idRoom = idRoom;
-        this.idCustomer = idCustomer;
-        this.idWorker = idWorker;
+        this.room = room;
+        this.customer = customer;
+        this.worker = worker;
         this.reservationType = reservationType;
         this.status = status;
         this.dateReserved = dateReserved;
         this.dateEntry = dateEntry;
         this.dateExit = dateExit;
+    }
+
+    public float calculateTotal() {
+
+        float total = 0.0F;
+        return total;
     }
 
     /**
@@ -75,45 +90,45 @@ public class Reservation {
     }
 
     /**
-     * @return the idRoom
+     * @return the room
      */
-    public Room getIdRoom() {
-        return idRoom;
+    public Room getRoom() {
+        return room;
     }
 
     /**
-     * @param idRoom the idRoom to set
+     * @param room the room to set
      */
-    public void setIdRoom(Room idRoom) {
-        this.idRoom = idRoom;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
     /**
-     * @return the idCustomer
+     * @return the customer
      */
-    public Customer getIdCustomer() {
-        return idCustomer;
+    public Customer getCustomer() {
+        return customer;
     }
 
     /**
-     * @param idCustomer the idCustomer to set
+     * @param customer the customer to set
      */
-    public void setIdCustomer(Customer idCustomer) {
-        this.idCustomer = idCustomer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     /**
-     * @return the idWorker
+     * @return the worker
      */
-    public Worker getIdWorker() {
-        return idWorker;
+    public Worker getWorker() {
+        return worker;
     }
 
     /**
-     * @param idWorker the idWorker to set
+     * @param worker the worker to set
      */
-    public void setIdWorker(Worker idWorker) {
-        this.idWorker = idWorker;
+    public void setWorker(Worker worker) {
+        this.worker = worker;
     }
 
     /**
@@ -184,11 +199,5 @@ public class Reservation {
      */
     public void setDateExit(Date dateExit) {
         this.dateExit = dateExit;
-    }
-
-    public float calculateTotal() {
-
-        float total = 0.0F;
-        return total;
     }
 }
