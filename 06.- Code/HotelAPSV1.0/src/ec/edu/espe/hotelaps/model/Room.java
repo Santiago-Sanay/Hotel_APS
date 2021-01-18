@@ -59,5 +59,7 @@ public class Room {
     public void setCapacityPerson(int capacityPerson) {
         this.capacityPerson = capacityPerson;
     }
+    public void changeStatus(){        
+    }
 
 }

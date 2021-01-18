@@ -27,9 +27,22 @@ public class Hotel {
         FileManager.save("Room.json", jsonRoom);
     }
 
-    public void showRoom() {
-      //  String[] list = FileManager.findAll("Room.json");
-     
+    public void showAllRoom() {
+        String[] roomsFree = FileManager.findAll("Room.json");
+        for (int i = 0; i < roomsFree.length; i++) {
+            System.out.println(roomsFree[i] + "\n");
         }
     }
+    public void showRoomFree(){
+        String roomsFree = FileManager.find("Room.json","false");        
+        System.out.println(roomsFree);
+    }
+    public String findRoom(String numberRoom){
+        String roomsFree = FileManager.find("Room.json",numberRoom);        
+        return roomsFree;
+    }
+    public void deleteRoom(){
+        
+    }
 
+}

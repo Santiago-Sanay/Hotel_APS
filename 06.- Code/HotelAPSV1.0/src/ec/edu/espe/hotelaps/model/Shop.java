@@ -45,5 +45,15 @@ public class Shop {
         String jsonProduct = gson.toJson(product, Product.class);
         FileManager.save("inventoryShop.json", jsonProduct);
     }
+    public void showAllProducts(){
+        String [] roomsFree = FileManager.findAll("invetoryShop.json");
+        for (String roomsFree1 : roomsFree) {
+            System.out.println(roomsFree1 );
+        }
+    }
+    public String findProduct(String nameProduct){
+        String roomsFree = FileManager.find("invetoryShop.json",nameProduct);        
+        return roomsFree;
+    }
 
 }

@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import ec.edu.espe.filemanager.utils.FileManager;
 import java.util.Date;
 
 /**
@@ -13,44 +14,36 @@ import java.util.Date;
  */
 public class Reservation {
 
-    private int idReservation;
     private float costAcommodation;
     private Room room;
     private Customer customer;
-    private Worker worker;
     private String reservationType;
     private String status;
-    private Date dateReserved;
     private Date dateEntry;
     private Date dateExit;
 
-    Reservation() {
-        idReservation=0;
-        costAcommodation=0.00F;
+    public Reservation() {
+        costAcommodation = 0.00F;
         room = null;
         customer = null;
-        worker = null;
-        reservationType="";
-        status="";
-        dateReserved=null;       
-        dateEntry=null;
-        dateExit=null;
+        reservationType = "";
+        status = "";
+        dateEntry = null;
+        dateExit = null;
     }
 
     @Override
     public String toString() {
-        return "Reservation{" + "idReservation=" + getIdReservation() + ", costAcommodation=" + getCostAcommodation() + ", idRoom=" + getRoom() + ", idCustomer=" + getCustomer() + ", worker=" + getWorker() + ", reservationType=" + getReservationType() + ", status=" + getStatus() + ", dateReserved=" + getDateReserved() + ", dateEntry=" + getDateEntry() + ", dateExit=" + getDateExit() + '}';
+        return '{' + "Costo=" + getCostAcommodation() + ", Habitación=" + getRoom() + ", Cliente=" + getCustomer() + ", Tipo de reservación=" + getReservationType() + ", Estado=" + getStatus() + ", Fecha de entradad=" + getDateEntry() + ", Fecha de Salida=" + getDateExit() + '}';
     }
 
-    public Reservation(int idReservation, float costAcommodation, Room room, Customer customer, Worker worker, String reservationType, String status, Date dateReserved, Date dateEntry, Date dateExit) {
-        this.idReservation = idReservation;
+    public Reservation(int idReservation, float costAcommodation, Room room, Customer customer, Worker worker, String reservationType, String status, Date dateEntry, Date dateExit) {
+
         this.costAcommodation = costAcommodation;
         this.room = room;
         this.customer = customer;
-        this.worker = worker;
         this.reservationType = reservationType;
         this.status = status;
-        this.dateReserved = dateReserved;
         this.dateEntry = dateEntry;
         this.dateExit = dateExit;
     }
@@ -59,20 +52,6 @@ public class Reservation {
 
         float total = 0.0F;
         return total;
-    }
-
-    /**
-     * @return the idReservation
-     */
-    public int getIdReservation() {
-        return idReservation;
-    }
-
-    /**
-     * @param idReservation the idReservation to set
-     */
-    public void setIdReservation(int idReservation) {
-        this.idReservation = idReservation;
     }
 
     /**
@@ -118,20 +97,6 @@ public class Reservation {
     }
 
     /**
-     * @return the worker
-     */
-    public Worker getWorker() {
-        return worker;
-    }
-
-    /**
-     * @param worker the worker to set
-     */
-    public void setWorker(Worker worker) {
-        this.worker = worker;
-    }
-
-    /**
      * @return the reservationType
      */
     public String getReservationType() {
@@ -157,20 +122,6 @@ public class Reservation {
      */
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    /**
-     * @return the dateReserved
-     */
-    public Date getDateReserved() {
-        return dateReserved;
-    }
-
-    /**
-     * @param dateReserved the dateReserved to set
-     */
-    public void setDateReserved(Date dateReserved) {
-        this.dateReserved = dateReserved;
     }
 
     /**
@@ -200,4 +151,5 @@ public class Reservation {
     public void setDateExit(Date dateExit) {
         this.dateExit = dateExit;
     }
+
 }

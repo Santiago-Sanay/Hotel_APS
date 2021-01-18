@@ -18,7 +18,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "idProduct=" + getIdProduct() + ", stock=" + getStock() + ", salePrice=" + getSalePrice() + ", nameProduct=" + getNameProduct() + '}';
+        return '{'+"ID del prodcuto=" + getIdProduct() + ", Stock=" + getStock() + ",Precio=" + getSalePrice() + ", Nombre del producto =" + getNameProduct() + '}';
     }
 
     public Product(int idProduct, int stock, float salePrice, String nameProduct) {
