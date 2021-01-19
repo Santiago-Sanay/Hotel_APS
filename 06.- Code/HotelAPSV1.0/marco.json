@@ -1,2 +1,4 @@
 {"id":"1718390717Custom","name":"marco","documentNumber":"1718390717","address":"quito","telephone":"2563","email":"hpss"}
 {"numberRoom":1456,"price":20.0,"status":true,"capacityPerson":4}
+{"numberRoom":1456,"price":20.0,"status":true,"capacityPerson":4}
+{"idProduct":4,"stock":7,"salePrice":1.2,"nameProduct":"oreo"}

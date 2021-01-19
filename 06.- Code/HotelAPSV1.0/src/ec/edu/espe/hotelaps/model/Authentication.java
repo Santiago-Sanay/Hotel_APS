@@ -11,18 +11,18 @@ import ec.edu.espe.filemanager.utils.FileManager;
  *
  * @author Gabriel Rosero ESPE-DCCO
  */
-public class Autentication {
+public class Authentication {
 
     String id;
 
-    public Autentication() {
+    public Authentication() {
     }
 
-    public Autentication(String id) {
+    public Authentication(String id) {
         this.id = id;
     }
 
-    public boolean autenticationCustomer() {
+    public boolean authenticateCustomer() {
         boolean verify = false;
         String recover = FileManager.find("listCostumer.json", id);
         if (!recover.equals("")) {

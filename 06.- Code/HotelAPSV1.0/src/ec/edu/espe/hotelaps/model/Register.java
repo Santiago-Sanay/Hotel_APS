@@ -24,7 +24,6 @@ public class Register {
     }
     public void registerCustomer(Customer customer, String nameFile){
        String GsonCustomer=gson.toJson(customer,Customer.class);
-       FileManager.save("listCostumer.json", GsonCustomer);
        FileManager.save(nameFile, GsonCustomer);
     }
     public void registerWork(Worker worker){

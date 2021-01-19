@@ -33,16 +33,14 @@ public class Hotel {
             System.out.println(roomsFree[i] + "\n");
         }
     }
+    
     public void showRoomFree(){
-        String roomsFree = FileManager.find("Room.json","false");        
+        String roomsFree = FileManager.find("Room.json","true");        
         System.out.println(roomsFree);
     }
+    
     public String findRoom(String numberRoom){
         String roomsFree = FileManager.find("Room.json",numberRoom);        
         return roomsFree;
     }
-    public void deleteRoom(){
-        
-    }
-
 }
