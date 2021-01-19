@@ -22,9 +22,10 @@ public class Register {
         listCustomer = new ArrayList();
         listWorker = new ArrayList();
     }
-    public void registerCustomer(Customer customer){
+    public void registerCustomer(Customer customer, String nameFile){
        String GsonCustomer=gson.toJson(customer,Customer.class);
        FileManager.save("listCostumer.json", GsonCustomer);
+       FileManager.save(nameFile, GsonCustomer);
     }
     public void registerWork(Worker worker){
        String GsonWorker=gson.toJson(worker,Worker.class);

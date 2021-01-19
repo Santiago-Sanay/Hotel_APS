@@ -46,14 +46,14 @@ public class Shop {
         FileManager.save("inventoryShop.json", jsonProduct);
     }
     public void showAllProducts(){
-        String [] roomsFree = FileManager.findAll("invetoryShop.json");
+        String [] roomsFree = FileManager.findAll("inventoryShop.json");
         for (String roomsFree1 : roomsFree) {
             System.out.println(roomsFree1 );
         }
     }
     public String findProduct(String nameProduct){
-        String roomsFree = FileManager.find("invetoryShop.json",nameProduct);        
+        String roomsFree = FileManager.find("inventoryShop.json",nameProduct);        
         return roomsFree;
     }
-
+ 
 }

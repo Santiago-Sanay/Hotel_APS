@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import ec.edu.espe.filemanager.utils.FileManager;
+
 /**
  *
  * @author Yulliana Roman ESPE-DCCO
@@ -124,5 +126,13 @@ public class Consumtion {
 
     public void deleteProduct() {
 
+    }
+
+    public void showAllComsumtion(String name) {
+        String[] roomsFree = FileManager.findAll(name+".json");
+        for (String roomsFree1 : roomsFree) {
+            System.out.println(roomsFree1);
+       }
+        
     }
 }
