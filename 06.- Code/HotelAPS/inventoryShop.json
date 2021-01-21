@@ -1,1 +1,5 @@
-{"idProduct":123456,"stock":9,"salePrice":5.0,"nameProduct":"vino"}
+{"idProduct":123456,"stock":10,"salePrice":5.0,"nameProduct":"Vino"}
+{"idProduct":123457,"stock":15,"salePrice":0.5,"nameProduct":"Galleta Oreo"}
+{"idProduct":123458,"stock":10,"salePrice":0.5,"nameProduct":"Papas Rufles"}
+{"idProduct":123459,"stock":15,"salePrice":0.6,"nameProduct":"Doritos"}
+{"idProduct":123459,"stock":20,"salePrice":0.45,"nameProduct":"Chicle trident"}
