@@ -5,45 +5,61 @@
  */
 package ec.edu.espe.hotelaps.model;
 
-import com.google.gson.Gson;
-import ec.edu.espe.filemanager.utils.FileManager;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
- * @author Yulliana Roman ESPE-DCCO
+ * @author User
  */
 public class Consumption {
 
-    Gson gson = new Gson();
+    private String nameCustomer;
+    private String nameProduct;
+    private Float salePrice;
 
-    public Consumption() {
+    @Override
+    public String toString() {
+        return nameProduct + "\t" + salePrice;
     }
 
-    public void showAllComsumtion(String name) {
-        String[] roomsFree = FileManager.findAll(name + ".json");
-        for (String roomsFree1 : roomsFree) {
-            System.out.println(roomsFree1);
-        }
-
+    /**
+     * @return the nameCustomer
+     */
+    public String getNameCustomer() {
+        return nameCustomer;
     }
 
-    public void printAllProduct(String name) {
-        String[] dataFile;
-
-        dataFile = FileManager.findAll(name + ".json");
-        ArrayList<Customer> customers = new ArrayList();
-        ArrayList<Room> rooms = new ArrayList();
-        ArrayList<Product> products = new ArrayList();
-        for (int i = 0; i < dataFile.length; i++) {
-            customers.add(gson.fromJson(dataFile[0], Customer.class));
-            System.out.println(customers.get(0));
-
-            rooms.add(gson.fromJson(dataFile[1], Room.class));
-            System.out.println(rooms.get(1));
-
-        }
-
+    /**
+     * @param nameCustomer the nameCustomer to set
+     */
+    public void setNameCustomer(String nameCustomer) {
+        this.nameCustomer = nameCustomer;
     }
+
+    /**
+     * @return the nameProduct
+     */
+    public String getNameProduct() {
+        return nameProduct;
+    }
+
+    /**
+     * @param nameProduct the nameProduct to set
+     */
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
+
+    /**
+     * @return the salePrice
+     */
+    public Float getSalePrice() {
+        return salePrice;
+    }
+
+    /**
+     * @param salePrice the salePrice to set
+     */
+    public void setSalePrice(Float salePrice) {
+        this.salePrice = salePrice;
+    }
+
 }

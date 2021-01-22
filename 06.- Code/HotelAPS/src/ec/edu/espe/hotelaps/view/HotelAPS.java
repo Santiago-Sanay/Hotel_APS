@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import ec.edu.espe.filemanager.utils.FileManager;
 import ec.edu.espe.hotelaps.model.Authentication;
 import ec.edu.espe.hotelaps.model.Consumption;
+import ec.edu.espe.hotelaps.model.Consumption2;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Product;
@@ -30,7 +31,8 @@ public class HotelAPS {
         Hotel hotel = new Hotel();
         Gson gson = new Gson();
         Shop shop = new Shop();
-
+        Consumption2 consumption2 = new Consumption2();
+        Consumption consumption = new Consumption();
         int opc;
 
         do {
@@ -179,15 +181,21 @@ public class HotelAPS {
                                     findRoom = hotel.findRoom(numberRoom);
 
                                     Room room = new Room(0, 0f, true, 0);
+
                                     room = gson.fromJson(findRoom, Room.class);
                                     room.setStatus(false);
-
+                                   
+                                    Consumption consumptionRoom = new Consumption();
+                                    consumptionRoom.setNameCustomer(nameSearch);
+                                    consumptionRoom.setNameProduct("Reservación de habitación");
+                                    consumptionRoom.setSalePrice(room.getPrice());
+                                    consumption2.addConsumption(consumptionRoom);
+                                    
                                     FileManager.delete("Room.json", numberRoom);
                                     stringJson = gson.toJson(room);
 
                                     FileManager.save("Room.json", stringJson);
 
-                                    FileManager.save(nameSearch + ".json", stringJson);
                                     break;
                                 }
                                 case 2: {
@@ -212,19 +220,24 @@ public class HotelAPS {
                                     stock -= 1;
                                     product.setStock(stock);
 
+                                    consumption.setNameCustomer(nameSearch);
+                                    consumption.setNameProduct(nameProduct);
+                                    consumption.setSalePrice(product.getSalePrice());
+
+                                    consumption2.addConsumption(consumption);
+
                                     FileManager.delete("inventoryShop.json", nameProduct);
                                     stringJson = gson.toJson(product);
 
                                     FileManager.save("inventoryShop.json", stringJson);
-                                    FileManager.save(nameSearch + ".json", stringJson);
 
                                     break;
                                 }
                                 case 3: {
 
-                                    Consumption consumtion = new Consumption();
-                                    System.out.println("El consumo es ");
-                                    consumtion.showAllComsumtion(nameSearch);
+                                    consumption2.showEachConsumption(nameSearch);
+                                    System.out.print("Total: ");
+                                    consumption2.calculateTotal(nameSearch);
 
                                     break;
                                 }
