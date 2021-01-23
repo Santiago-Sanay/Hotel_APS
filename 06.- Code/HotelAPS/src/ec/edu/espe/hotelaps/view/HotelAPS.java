@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Jimmy Simbaña
+ * @author SANTIAGO SSS
  */
 public class HotelAPS {
 
@@ -201,45 +201,61 @@ public class HotelAPS {
 
                                 }
                                 case 2: {
-
+                                    int option;
+                                    Product product = new Product(0, 0, 0f, "", true);
                                     int stock = 0;
                                     String nameProduct;
                                     String findProduct;
+                                    do {
+                                        System.out.println("Estos son los productos disponibles:");
 
-                                    System.out.println("Estos son los productos disponibles:");
-                                    shop.printAllProduct();
+                                        shop.showAvailableProduct("true");
 
-                                    System.out.println("Seleccione el nombre producto: ");
-                                    scanner.nextLine();
+                                        System.out.println("Seleccione el nombre producto: ");
+                                        scanner.nextLine();
 
-                                    nameProduct = scanner.nextLine();
-                                    findProduct = shop.findProduct(nameProduct);
+                                        nameProduct = scanner.nextLine();
+                                        findProduct = shop.findProduct(nameProduct);
 
-                                    Product product = new Product(0, 0, 0f, "");
-                                    product = gson.fromJson(findProduct, Product.class);
-                                    stock = product.getStock();
-                                    stock -= 1;
-                                    product.setStock(stock);
+                                        product = gson.fromJson(findProduct, Product.class);
+                                        stock = product.getStock();
+                                        stock -= 1;
 
-                                    consumption.setNameCustomer(nameSearch);
-                                    consumption.setNameProduct(nameProduct);
-                                    consumption.setSalePrice(product.getSalePrice());
-                                    consumption.setStatus(false);
+                                        if (stock <= 0) {
 
-                                    customerConsumption.addConsumption(consumption);
+                                            product.setIsAvailable(false);
 
-                                    shop.updateStock(nameProduct, product);
+                                        }
+                                        consumption.setNameCustomer(nameSearch);
+                                        consumption.setNameProduct(nameProduct);
+                                        consumption.setSalePrice(product.getSalePrice());
+                                        consumption.setStatus(true);
 
+                                        customerConsumption.addConsumption(consumption);
+
+                                        shop.updateStock(nameProduct, product);
+                                        System.out.println("Desea comprar nuevamente");
+                                        System.out.println("1. Si");
+                                        System.out.println("2. No");
+                                        option = scanner.nextInt();
+                                    } while (option != 2);
                                     break;
                                 }
                                 case 3: {
-
-                                    customerConsumption.showEachConsumption(nameSearch);
+                                    int option;
                                     customer.showEachConsumption(nameSearch);
 
-                                    System.out.println("Desea cancelar el servicio Si - No");
-                                    
+                                    System.out.println("Desea cancelar el servicio ");
+                                    System.out.println("1. Si");
+                                    System.out.println("2. No");
+                                    option = scanner.nextInt();
 
+                                    if (option == 1) {
+                                        System.out.println("Cancele este valor en caja");
+                                        System.out.println(customer.calculateTotal(nameSearch));
+                                    } else {
+                                        System.out.println("Gracias por preferirnos");
+                                    }
 
                                     break;
                                 }
@@ -284,29 +300,35 @@ public class HotelAPS {
                             adm = scanner.nextInt();
                             switch (adm) {
                                 case 1: {
+                                    int option;
                                     int idProduct;
                                     int stock;
                                     float salePrice;
                                     String nameProduct;
+                                    do {
+                                        System.out.println("Usted está agregando un producto... ");
+                                        scanner.nextLine();
 
-                                    System.out.println("Usted está agregando un producto... ");
-                                    scanner.nextLine();
+                                        System.out.println("Ingrese el nombre del producto: ");
+                                        nameProduct = scanner.nextLine();
 
-                                    System.out.println("Ingrese el nombre del producto: ");
-                                    nameProduct = scanner.nextLine();
+                                        System.out.println("Ingrese el id del producto: ");
+                                        idProduct = scanner.nextInt();
 
-                                    System.out.println("Ingrese el id del producto: ");
-                                    idProduct = scanner.nextInt();
+                                        System.out.println("Ingrese la cantidad que desea agregar: ");
+                                        stock = scanner.nextInt();
 
-                                    System.out.println("Ingrese la cantidad que desea agregar: ");
-                                    stock = scanner.nextInt();
+                                        System.out.println("Ingrese el precio de venta: ");
+                                        salePrice = scanner.nextFloat();
 
-                                    System.out.println("Ingrese el precio de venta: ");
-                                    salePrice = scanner.nextFloat();
-
-                                    Product product1 = new Product(idProduct, stock, salePrice, nameProduct);
-                                    Shop apsShop = new Shop();
-                                    apsShop.addProduct(product1);
+                                        Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
+                                        Shop apsShop = new Shop();
+                                        apsShop.addProduct(productNew);
+                                        System.out.println("Desea ingresar otro producto");
+                                        System.out.println("1. Si");
+                                        System.out.println("2. No");
+                                        option = scanner.nextInt();
+                                    } while (option != 2);
                                     break;
                                 }
                                 case 2: {
@@ -351,11 +373,14 @@ public class HotelAPS {
                                 case 3: {
 
                                     shop.printAllProduct();
-                                    break;
-                                }
-                                case 4:
 
                                     break;
+                                }
+                                case 4: {
+
+                                }
+
+                                break;
                                 default:
                                     System.out.println("Opción Inválida");
                                     break;

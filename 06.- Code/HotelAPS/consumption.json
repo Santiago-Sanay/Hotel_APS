@@ -8,3 +8,11 @@
 {"nameCustomer":"Adrian","nameProduct":"vino","salePrice":5.0}
 {"nameCustomer":"Adrian","nameProduct":"Jugos Natura","salePrice":0.75,"status":false}
 {"nameCustomer":"Adrian","nameProduct":"vino","salePrice":5.0,"status":false}
+{"nameCustomer":"Adrian","nameProduct":"Manicho","salePrice":0.75,"status":false}
+{"nameCustomer":"Carlos","nameProduct":"Manicho","salePrice":0.75,"status":false}
+{"nameCustomer":"Carlos","nameProduct":"Manicho","salePrice":0.75,"status":false}
+{"nameCustomer":"Carlos","nameProduct":"Manicho","salePrice":0.75,"status":false}
+{"nameCustomer":"Carlos","nameProduct":"Manicho","salePrice":0.75,"status":true}
+{"nameCustomer":"Carlos","nameProduct":"Manicho","salePrice":0.75,"status":true}
+{"nameCustomer":"Carlos","nameProduct":"Manicho","salePrice":0.75,"status":true}
+{"nameCustomer":"Gabriel","nameProduct":"Manicho","salePrice":0.75,"status":true}
