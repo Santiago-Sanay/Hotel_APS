@@ -21,7 +21,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Yulliana Roman ESPE-DCCO
+ * @author Jimmy Simbaña
  */
 public class HotelAPS {
 
@@ -158,7 +158,8 @@ public class HotelAPS {
                             System.out.println("1.Reservar habitación");
                             System.out.println("2.Comprar");
                             System.out.println("3.Revisar consumo");
-                            System.out.println("4.Salir");
+                            System.out.println("4.Pagar servicio");
+
                             System.out.println("Seleccione su opción:");
                             service = scanner.nextInt();
 
@@ -218,12 +219,14 @@ public class HotelAPS {
                                     consumption.setNameCustomer(nameSearch);
                                     consumption.setNameProduct(nameProduct);
                                     consumption.setSalePrice(product.getSalePrice());
+                                    consumption.setStatus(false);
 
                                     break;
                                 }
                                 case 3: {
 
                                     customer.showEachConsumption(nameSearch);
+                                    System.out.println("Desea cancelar el servicio Si - No");
                                     
 
                                     break;

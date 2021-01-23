@@ -14,6 +14,9 @@ public class Consumption {
     private String nameCustomer;
     private String nameProduct;
     private Float salePrice;
+    private boolean status;
+    
+  
 
     @Override
     public String toString() {
@@ -60,6 +63,20 @@ public class Consumption {
      */
     public void setSalePrice(Float salePrice) {
         this.salePrice = salePrice;
+    }
+
+    /**
+     * @return the status
+     */
+    public boolean isStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
 }
