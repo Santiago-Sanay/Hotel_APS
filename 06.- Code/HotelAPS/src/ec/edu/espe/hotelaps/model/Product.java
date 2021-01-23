@@ -2,6 +2,9 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
+
+
+
  */
 package ec.edu.espe.hotelaps.model;
 
@@ -10,22 +13,24 @@ package ec.edu.espe.hotelaps.model;
  * @author Yulliana Roman ESPE-DCCO
  */
 public class Product {
-    
+
     private int idProduct;
     private int stock;
     private float salePrice;
     private String nameProduct;
+    private boolean isAvailable;
 
-    @Override
-    public String toString() {
-        return salePrice+"\t"+nameProduct;
-    }
-
-    public Product(int idProduct, int stock, float salePrice, String nameProduct) {
+    public Product(int idProduct, int stock, float salePrice, String nameProduct, boolean isAvailable) {
         this.idProduct = idProduct;
         this.stock = stock;
         this.salePrice = salePrice;
         this.nameProduct = nameProduct;
+        this.isAvailable = isAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return salePrice + "\t" + nameProduct;
     }
 
     /**
@@ -84,4 +89,17 @@ public class Product {
         this.nameProduct = nameProduct;
     }
 
+    /**
+     * @return the isAvailable
+     */
+    public boolean isIsAvailable() {
+        return isAvailable;
+    }
+
+    /**
+     * @param isAvailable the isAvailable to set
+     */
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
+    }
 }
