@@ -66,8 +66,8 @@ public class Shop {
     }
 
     public String findProduct(String nameProduct) {
-        String roomsFree = FileManager.find("inventoryShop.json", nameProduct);
-        return roomsFree;
+        String product = FileManager.find("inventoryShop.json", nameProduct);
+        return product;
     }
 
     public void updateStock(String nameProduct, Product product) {

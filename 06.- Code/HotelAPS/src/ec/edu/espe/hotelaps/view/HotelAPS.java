@@ -369,7 +369,6 @@ public class HotelAPS {
                 case 4: {
 
                     System.out.println("Gracias por usar nuestro servicio electrónico.");
-
                     break;
                 }
                 default: {
@@ -380,6 +379,7 @@ public class HotelAPS {
             }
 
         } while (opc != 4);
+        //testing
     }
 
 }
