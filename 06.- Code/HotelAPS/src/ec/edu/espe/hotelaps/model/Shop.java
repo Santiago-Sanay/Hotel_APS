@@ -65,9 +65,23 @@ public class Shop {
         }
     }
 
-    public String findProduct(String nameProduct) {
-        String roomsFree = FileManager.find("inventoryShop.json", nameProduct);
-        return roomsFree;
+        public void showAvailableProduct(String dataToFind) {
+        String dataOfFile;
+        String[] dataFile;
+        try {
+
+            dataOfFile = FileManager.find("inventoryShop.json", dataToFind);
+            dataFile = dataOfFile.split("\n");
+            ArrayList<Product> availableProduct = new ArrayList();
+
+            for (int i = 0; i < dataFile.length; i++) {
+                availableProduct.add(gson.fromJson(dataFile[i], Product.class));
+                System.out.println(availableProduct.get(i));
+            }
+        } catch (Exception ex) {
+            System.out.println("No hay Producto disponible");
+        }
+
     }
 
     public void updateStock(String nameProduct, Product product) {
