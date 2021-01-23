@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import ec.edu.espe.filemanager.utils.FileManager;
 import ec.edu.espe.hotelaps.model.Authentication;
 import ec.edu.espe.hotelaps.model.Consumption;
-import ec.edu.espe.hotelaps.model.Consumption2;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Product;
@@ -31,7 +30,7 @@ public class HotelAPS {
         Hotel hotel = new Hotel();
         Gson gson = new Gson();
         Shop shop = new Shop();
-        Consumption2 consumption2 = new Consumption2();
+        Customer customer = new Customer();
         Consumption consumption = new Consumption();
         int opc;
 
@@ -189,14 +188,10 @@ public class HotelAPS {
                                     consumptionRoom.setNameCustomer(nameSearch);
                                     consumptionRoom.setNameProduct("Reservación de habitación");
                                     consumptionRoom.setSalePrice(room.getPrice());
-                                    consumption2.addConsumption(consumptionRoom);
+                                    customer.addConsumption(consumptionRoom);
                                     
-                                    FileManager.delete("Room.json", numberRoom);
-                                    stringJson = gson.toJson(room);
-
-                                    FileManager.save("Room.json", stringJson);
-
                                     break;
+                                  
                                 }
                                 case 2: {
 
@@ -224,26 +219,18 @@ public class HotelAPS {
                                     consumption.setNameProduct(nameProduct);
                                     consumption.setSalePrice(product.getSalePrice());
 
-                                    consumption2.addConsumption(consumption);
-
-                                    FileManager.delete("inventoryShop.json", nameProduct);
-                                    stringJson = gson.toJson(product);
-
-                                    FileManager.save("inventoryShop.json", stringJson);
-
                                     break;
                                 }
                                 case 3: {
 
-                                    consumption2.showEachConsumption(nameSearch);
-                                    System.out.print("Total: ");
-                                    consumption2.calculateTotal(nameSearch);
+                                    customer.showEachConsumption(nameSearch);
+                                    
 
                                     break;
                                 }
                                 default:
                                     System.out.println("Opción Inválida");
-
+                                    break;
                             }
                             break;
 
@@ -339,6 +326,8 @@ public class HotelAPS {
                                         default:
 
                                             System.out.println("Opción Inválida");
+                                        
+                                        break;
                                     }
                                     break;
                                 }
@@ -360,14 +349,16 @@ public class HotelAPS {
 
                         default:
                             System.out.println("Opción Inválida");
-
+                         
+                          break;
                     }
 
                 }
                 case 4: {
 
                     System.out.println("Gracias por usar nuestro servicio electrónico.");
-                    System.exit(0);
+                    
+                    break;
                 }
                 default: {
 
