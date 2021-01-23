@@ -132,7 +132,6 @@ public class HotelAPS {
                     System.out.println("QUE DESEA HACER");
                     System.out.println("1. Servicio al cliente");
                     System.out.println("2. Ingresar como admin");
-                    System.out.println("3. Salir");
                     System.out.println("Seleccione una opción: ");
                     int registered;
                     registered = scanner.nextInt();
@@ -160,7 +159,6 @@ public class HotelAPS {
                             System.out.println("1.Reservar habitación");
                             System.out.println("2.Comprar");
                             System.out.println("3.Revisar consumo");
-                            System.out.println("4.Pagar servicio");
 
                             System.out.println("Seleccione su opción:");
                             service = scanner.nextInt();
@@ -171,32 +169,38 @@ public class HotelAPS {
                                     boolean status;
                                     String numberRoom;
                                     String findRoom;
+                                    int option;
+                                    do {
 
-                                    System.out.println("Estos son los cuartos disponibles:");
-                                    hotel.showRoomFree("true");
+                                        System.out.println("Estos son los cuartos disponibles:");
+                                        hotel.showRoomFree("true");
 
-                                    System.out.println("Seleccionar el número de habitación que desea reservar:");
-                                    scanner.nextLine();
+                                        System.out.println("Seleccionar el número de habitación que desea reservar:");
+                                        scanner.nextLine();
 
-                                    numberRoom = scanner.nextLine();
-                                    findRoom = hotel.findRoom(numberRoom);
+                                        numberRoom = scanner.nextLine();
+                                        findRoom = hotel.findRoom(numberRoom);
 
-                                    Room room = new Room(0, 0f, true, 0);
+                                        Room room = new Room(0, 0f, true, 0);
 
-                                    room = gson.fromJson(findRoom, Room.class);
-                                    room.setStatus(false);
+                                        room = gson.fromJson(findRoom, Room.class);
+                                        room.setStatus(false);
 
-                                    Consumption consumptionRoom = new Consumption();
-                                    consumptionRoom.setNameCustomer(nameSearch);
-                                    consumptionRoom.setNameProduct("Reservación de habitación");
-                                    consumptionRoom.setSalePrice(room.getPrice());
+                                        Consumption consumptionRoom = new Consumption();
+                                        consumptionRoom.setNameCustomer(nameSearch);
+                                        consumptionRoom.setNameProduct("Reservación de habitación");
+                                        consumptionRoom.setSalePrice(room.getPrice());
 
-                                    customerConsumption.addConsumption(consumptionRoom);
+                                        customerConsumption.addConsumption(consumptionRoom);
 
-                                    hotel.updateRooms(numberRoom, room);
+                                        hotel.updateRooms(numberRoom, room);
 
-                                    customer.addConsumption(consumptionRoom);
-
+                                        customer.addConsumption(consumptionRoom);
+                                        System.out.println("Desea reservar otra habitacion?");
+                                        System.out.println("1. SI");
+                                        System.out.println("2. NO");
+                                        option = scanner.nextInt();
+                                    } while (option != 2);
                                     break;
 
                                 }
@@ -206,10 +210,17 @@ public class HotelAPS {
                                     int stock = 0;
                                     String nameProduct;
                                     String findProduct;
+<<<<<<< HEAD
+                                    int option;
+                                    do {
+                                        System.out.println("Estos son los productos disponibles:");
+                                        shop.printAllProduct();
+=======
                                     do {
                                         System.out.println("Estos son los productos disponibles:");
 
                                         shop.showAvailableProduct("true");
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
 
                                         System.out.println("Seleccione el nombre producto: ");
                                         scanner.nextLine();
@@ -217,6 +228,18 @@ public class HotelAPS {
                                         nameProduct = scanner.nextLine();
                                         findProduct = shop.findProduct(nameProduct);
 
+<<<<<<< HEAD
+                                        Product product = new Product(0, 0, 0f, "");
+                                        product = gson.fromJson(findProduct, Product.class);
+                                        stock = product.getStock();
+                                        stock -= 1;
+                                        product.setStock(stock);
+
+                                        consumption.setNameCustomer(nameSearch);
+                                        consumption.setNameProduct(nameProduct);
+                                        consumption.setSalePrice(product.getSalePrice());
+                                        consumption.setStatus(false);
+=======
                                         product = gson.fromJson(findProduct, Product.class);
                                         stock = product.getStock();
                                         stock -= 1;
@@ -230,13 +253,20 @@ public class HotelAPS {
                                         consumption.setNameProduct(nameProduct);
                                         consumption.setSalePrice(product.getSalePrice());
                                         consumption.setStatus(true);
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
 
                                         customerConsumption.addConsumption(consumption);
 
                                         shop.updateStock(nameProduct, product);
+<<<<<<< HEAD
+                                        System.out.println("Desea comprar otro producto?");
+                                        System.out.println("1. SI");
+                                        System.out.println("2. NO");
+=======
                                         System.out.println("Desea comprar nuevamente");
                                         System.out.println("1. Si");
                                         System.out.println("2. No");
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
                                         option = scanner.nextInt();
                                     } while (option != 2);
                                     break;
@@ -245,6 +275,9 @@ public class HotelAPS {
                                     int option;
                                     customer.showEachConsumption(nameSearch);
 
+<<<<<<< HEAD
+                                    System.out.println("Desea cancelar el servicio Si - No");
+=======
                                     System.out.println("Desea cancelar el servicio ");
                                     System.out.println("1. Si");
                                     System.out.println("2. No");
@@ -256,6 +289,7 @@ public class HotelAPS {
                                     } else {
                                         System.out.println("Gracias por preferirnos");
                                     }
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
 
                                     break;
                                 }
@@ -293,7 +327,6 @@ public class HotelAPS {
                             System.out.println("1.Agregar productos a la tienda");
                             System.out.println("2.Habitaciones");
                             System.out.println("3.Ver productos de la tienda");
-                            System.out.println("4.Salir");
                             int adm;
 
                             System.out.println("Digite su opción: ");
@@ -305,6 +338,10 @@ public class HotelAPS {
                                     int stock;
                                     float salePrice;
                                     String nameProduct;
+<<<<<<< HEAD
+                                    int option;
+=======
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
                                     do {
                                         System.out.println("Usted está agregando un producto... ");
                                         scanner.nextLine();
@@ -321,12 +358,21 @@ public class HotelAPS {
                                         System.out.println("Ingrese el precio de venta: ");
                                         salePrice = scanner.nextFloat();
 
+<<<<<<< HEAD
+                                        Product product1 = new Product(idProduct, stock, salePrice, nameProduct);
+                                        Shop apsShop = new Shop();
+                                        apsShop.addProduct(product1);
+                                        System.out.println("Desea ingresar otro producto?");
+                                        System.out.println("1. SI");
+                                        System.out.println("2. NO");
+=======
                                         Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
                                         Shop apsShop = new Shop();
                                         apsShop.addProduct(productNew);
                                         System.out.println("Desea ingresar otro producto");
                                         System.out.println("1. Si");
                                         System.out.println("2. No");
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
                                         option = scanner.nextInt();
                                     } while (option != 2);
                                     break;
