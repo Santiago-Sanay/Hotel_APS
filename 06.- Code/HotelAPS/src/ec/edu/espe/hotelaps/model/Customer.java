@@ -39,7 +39,7 @@ public class Customer {
         this.telephone = telephone;
         this.email = email;
     }
-
+    
     /**
      * @return the id
      */

@@ -2,6 +2,6 @@
 {"numberRoom":2,"price":50.0,"status":true,"capacityPerson":5}
 {"numberRoom":3,"price":30.0,"status":true,"capacityPerson":2}
 {"numberRoom":4,"price":35.0,"status":true,"capacityPerson":3}
-{"numberRoom":8,"price":20.0,"status":true,"capacityPerson":1}
 {"numberRoom":6,"price":70.0,"status":false,"capacityPerson":2}
 {"numberRoom":7,"price":100.0,"status":false,"capacityPerson":5}
+{"numberRoom":8,"price":20.0,"status":false,"capacityPerson":1}
