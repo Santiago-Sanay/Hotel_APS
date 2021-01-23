@@ -22,6 +22,10 @@ public class Customer {
     private String telephone;
     private String email;
 
+    public Customer() {
+    }
+    
+    
     @Override
     public String toString() {
         return "Customer{" + "id=" + getId() + ", name=" + getName() + ", documentNumber=" + getDocumentNumber() + ", address=" + getAddress() + ", telephone=" + getTelephone() + ", email=" + getEmail() + '}';
@@ -35,10 +39,6 @@ public class Customer {
         this.telephone = telephone;
         this.email = email;
     }
-
-    public Customer() {
-    }
-
     
     /**
      * @return the id
@@ -123,7 +123,7 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
     public void addConsumption(Consumption consumption) {
         Gson gson = new Gson();
         String jsonConsumption = gson.toJson(consumption, Consumption.class);
@@ -139,7 +139,7 @@ public class Customer {
 
             dataOfFile = FileManager.find("consumption.json", dataToFind);
             System.out.println("Detalle");
-            System.out.println("*********************");
+            System.out.println("*******");
             System.out.println("Servicio \t Precio ");
 
             dataFile = dataOfFile.split("\n");
@@ -151,7 +151,7 @@ public class Customer {
                 System.out.println(consumptionPrices.toString());
                 total += consumptionPrices.getSalePrice();
             }
-            System.out.println("********************************");
+            System.out.println("************");
             System.out.println("Total: ");
             System.out.println(total);
         } catch (Exception ex) {

@@ -29,7 +29,10 @@ public class HotelAPS {
         Hotel hotel = new Hotel();
         Gson gson = new Gson();
         Shop shop = new Shop();
+
         Customer customerConsumption = new Customer();
+        Customer customer = new Customer();
+
         Consumption consumption = new Consumption();
         int opc;
 
@@ -53,7 +56,7 @@ public class HotelAPS {
                     String name = "";
                     String documentNumber = "";
                     String address = "";
-                    String telephone = "";                    
+                    String telephone = "";
                     String email = "";
 
                     System.out.println("Bienvenido al registro del cliente");
@@ -167,7 +170,7 @@ public class HotelAPS {
                                     boolean status;
                                     String numberRoom;
                                     String findRoom;
-                                    
+
                                     System.out.println("Estos son los cuartos disponibles:");
                                     hotel.showRoomFree("true");
 
@@ -181,22 +184,26 @@ public class HotelAPS {
 
                                     room = gson.fromJson(findRoom, Room.class);
                                     room.setStatus(false);
-                                   
+
                                     Consumption consumptionRoom = new Consumption();
                                     consumptionRoom.setNameCustomer(nameSearch);
                                     consumptionRoom.setNameProduct("Reservación de habitación");
                                     consumptionRoom.setSalePrice(room.getPrice());
+
                                     customerConsumption.addConsumption(consumptionRoom);
-                                    
+
                                     hotel.updateRooms(numberRoom, room);
 
+                                    customer.addConsumption(consumptionRoom);
+
                                     break;
+
                                 }
                                 case 2: {
 
                                     int stock = 0;
                                     String nameProduct;
-                                    String findProduct;                                    
+                                    String findProduct;
 
                                     System.out.println("Estos son los productos disponibles:");
                                     shop.printAllProduct();
@@ -225,18 +232,22 @@ public class HotelAPS {
                                 }
                                 case 3: {
 
-                                    customerConsumption.showEachConsumption(nameSearch);                                    
+                                    customerConsumption.showEachConsumption(nameSearch);
                                     //testing 
+
+                                    customer.showEachConsumption(nameSearch);
+
                                     break;
                                 }
-                                default:{
+                                default: {
                                     System.out.println("Opción Inválida");
                                     break;
+
                                 }
                             }
                             break;
                         }
-                        
+
                         case 2: {
                             String user;
                             String pass;
@@ -328,6 +339,8 @@ public class HotelAPS {
                                         default:
 
                                             System.out.println("Opción Inválida");
+
+                                            break;
                                     }
                                     break;
                                 }
@@ -349,6 +362,7 @@ public class HotelAPS {
 
                         default:
                             System.out.println("Opción Inválida");
+
                             break;
 
                     }
@@ -357,6 +371,7 @@ public class HotelAPS {
                 case 4: {
 
                     System.out.println("Gracias por usar nuestro servicio electrónico.");
+
                     break;
                 }
                 default: {
