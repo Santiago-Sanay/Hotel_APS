@@ -24,8 +24,7 @@ public class Customer {
 
     public Customer() {
     }
-    
-    
+
     @Override
     public String toString() {
         return "Customer{" + "id=" + getId() + ", name=" + getName() + ", documentNumber=" + getDocumentNumber() + ", address=" + getAddress() + ", telephone=" + getTelephone() + ", email=" + getEmail() + '}';
@@ -39,7 +38,7 @@ public class Customer {
         this.telephone = telephone;
         this.email = email;
     }
-    
+
     /**
      * @return the id
      */
@@ -123,17 +122,44 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     public void addConsumption(Consumption consumption) {
         Gson gson = new Gson();
         String jsonConsumption = gson.toJson(consumption, Consumption.class);
         FileManager.save("consumption.json", jsonConsumption);
     }
 
-    public void showEachConsumption(String dataToFind) {
+    public float calculateTotal(String dataToFind) {
         String dataOfFile;
         String[] dataFile;
         Float total = 0f;
+        try {
+            Gson gson = new Gson();
+
+            dataOfFile = FileManager.find("consumption.json", dataToFind);
+
+            dataFile = dataOfFile.split("\n");
+            ArrayList<Consumption> consumptions = new ArrayList();
+            Consumption consumptionPrices = new Consumption();
+            for (int i = 0; i < dataFile.length; i++) {
+                consumptions.add(gson.fromJson(dataFile[i], Consumption.class));
+                consumptionPrices = gson.fromJson(dataFile[i], Consumption.class);
+
+                total += consumptionPrices.getSalePrice();
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Error");
+            
+        }
+        return total;
+    }
+    
+
+    public void showEachConsumption(String dataToFind) {
+        String dataOfFile;
+        String[] dataFile;
+        
         try {
             Gson gson = new Gson();
 
@@ -149,14 +175,13 @@ public class Customer {
                 consumptions.add(gson.fromJson(dataFile[i], Consumption.class));
                 consumptionPrices = gson.fromJson(dataFile[i], Consumption.class);
                 System.out.println(consumptionPrices.toString());
-                total += consumptionPrices.getSalePrice();
+           
             }
-            System.out.println("************");
-            System.out.println("Total: ");
-            System.out.println(total);
+         
         } catch (Exception ex) {
             System.out.println("No hay habitaciones disponibles");
         }
+
     }
 
 }

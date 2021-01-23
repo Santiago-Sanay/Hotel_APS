@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Jimmy Simbaña
+ * @author SANTIAGO SSS
  */
 public class HotelAPS {
 
@@ -205,14 +205,22 @@ public class HotelAPS {
 
                                 }
                                 case 2: {
-
+                                    int option;
+                                    Product product = new Product(0, 0, 0f, "", true);
                                     int stock = 0;
                                     String nameProduct;
                                     String findProduct;
+<<<<<<< HEAD
                                     int option;
                                     do {
                                         System.out.println("Estos son los productos disponibles:");
                                         shop.printAllProduct();
+=======
+                                    do {
+                                        System.out.println("Estos son los productos disponibles:");
+
+                                        shop.showAvailableProduct("true");
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
 
                                         System.out.println("Seleccione el nombre producto: ");
                                         scanner.nextLine();
@@ -220,6 +228,7 @@ public class HotelAPS {
                                         nameProduct = scanner.nextLine();
                                         findProduct = shop.findProduct(nameProduct);
 
+<<<<<<< HEAD
                                         Product product = new Product(0, 0, 0f, "");
                                         product = gson.fromJson(findProduct, Product.class);
                                         stock = product.getStock();
@@ -230,23 +239,57 @@ public class HotelAPS {
                                         consumption.setNameProduct(nameProduct);
                                         consumption.setSalePrice(product.getSalePrice());
                                         consumption.setStatus(false);
+=======
+                                        product = gson.fromJson(findProduct, Product.class);
+                                        stock = product.getStock();
+                                        stock -= 1;
+
+                                        if (stock <= 0) {
+
+                                            product.setIsAvailable(false);
+
+                                        }
+                                        consumption.setNameCustomer(nameSearch);
+                                        consumption.setNameProduct(nameProduct);
+                                        consumption.setSalePrice(product.getSalePrice());
+                                        consumption.setStatus(true);
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
 
                                         customerConsumption.addConsumption(consumption);
 
                                         shop.updateStock(nameProduct, product);
+<<<<<<< HEAD
                                         System.out.println("Desea comprar otro producto?");
                                         System.out.println("1. SI");
                                         System.out.println("2. NO");
+=======
+                                        System.out.println("Desea comprar nuevamente");
+                                        System.out.println("1. Si");
+                                        System.out.println("2. No");
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
                                         option = scanner.nextInt();
                                     } while (option != 2);
                                     break;
                                 }
                                 case 3: {
-
-                                    customerConsumption.showEachConsumption(nameSearch);
+                                    int option;
                                     customer.showEachConsumption(nameSearch);
 
+<<<<<<< HEAD
                                     System.out.println("Desea cancelar el servicio Si - No");
+=======
+                                    System.out.println("Desea cancelar el servicio ");
+                                    System.out.println("1. Si");
+                                    System.out.println("2. No");
+                                    option = scanner.nextInt();
+
+                                    if (option == 1) {
+                                        System.out.println("Cancele este valor en caja");
+                                        System.out.println(customer.calculateTotal(nameSearch));
+                                    } else {
+                                        System.out.println("Gracias por preferirnos");
+                                    }
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
 
                                     break;
                                 }
@@ -290,11 +333,15 @@ public class HotelAPS {
                             adm = scanner.nextInt();
                             switch (adm) {
                                 case 1: {
+                                    int option;
                                     int idProduct;
                                     int stock;
                                     float salePrice;
                                     String nameProduct;
+<<<<<<< HEAD
                                     int option;
+=======
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
                                     do {
                                         System.out.println("Usted está agregando un producto... ");
                                         scanner.nextLine();
@@ -311,12 +358,21 @@ public class HotelAPS {
                                         System.out.println("Ingrese el precio de venta: ");
                                         salePrice = scanner.nextFloat();
 
+<<<<<<< HEAD
                                         Product product1 = new Product(idProduct, stock, salePrice, nameProduct);
                                         Shop apsShop = new Shop();
                                         apsShop.addProduct(product1);
                                         System.out.println("Desea ingresar otro producto?");
                                         System.out.println("1. SI");
                                         System.out.println("2. NO");
+=======
+                                        Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
+                                        Shop apsShop = new Shop();
+                                        apsShop.addProduct(productNew);
+                                        System.out.println("Desea ingresar otro producto");
+                                        System.out.println("1. Si");
+                                        System.out.println("2. No");
+>>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
                                         option = scanner.nextInt();
                                     } while (option != 2);
                                     break;
@@ -363,11 +419,14 @@ public class HotelAPS {
                                 case 3: {
 
                                     shop.printAllProduct();
-                                    break;
-                                }
-                                case 4:
 
                                     break;
+                                }
+                                case 4: {
+
+                                }
+
+                                break;
                                 default:
                                     System.out.println("Opción Inválida");
                                     break;

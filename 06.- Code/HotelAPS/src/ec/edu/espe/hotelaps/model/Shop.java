@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author SANTIAGO SSS
  */
 public class Shop {
 
@@ -70,7 +70,7 @@ public class Shop {
         return product;
     }
 
-    public void showAvailableProduct(String dataToFind) {
+   public void showAvailableProduct(String dataToFind) {
         String dataOfFile;
         String[] dataFile;
         try {
@@ -84,8 +84,9 @@ public class Shop {
                 System.out.println(availableProduct.get(i));
             }
         } catch (Exception ex) {
-            System.out.println("No hay Producto disponible");
+            System.out.println("No hay productos disponibles");
         }
+
     }
 
     public void updateStock(String nameProduct, Product product) {
