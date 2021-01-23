@@ -54,7 +54,7 @@ public class Hotel {
             dataOfFile = FileManager.find("Room.json", dataToFind);
             dataFile = dataOfFile.split("\n");
             ArrayList<Room> roomsFree = new ArrayList();
-            
+
             for (int i = 0; i < dataFile.length; i++) {
                 roomsFree.add(gson.fromJson(dataFile[i], Room.class));
                 System.out.println(roomsFree.get(i));
@@ -68,5 +68,13 @@ public class Hotel {
     public String findRoom(String numberRoom) {
         String roomsFree = FileManager.find("Room.json", numberRoom);
         return roomsFree;
+    }
+
+    public void updateRooms(String numberRoom, Room room) {
+        String stringJson;
+        FileManager.delete("Room.json", numberRoom);
+        stringJson = gson.toJson(room);
+
+        FileManager.save("Room.json", stringJson);
     }
 }

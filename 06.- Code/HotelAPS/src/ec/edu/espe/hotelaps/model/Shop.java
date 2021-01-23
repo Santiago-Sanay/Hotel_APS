@@ -47,7 +47,7 @@ public class Shop {
         FileManager.save("inventoryShop.json", jsonProduct);
     }
 
-    public void printAllProduct(){
+    public void printAllProduct() {
         FileManager.findAll("inventoryShop.json");
         List<Product> products1;
         products1 = new ArrayList();
@@ -57,16 +57,24 @@ public class Shop {
         for (String line : product) {
             eachProduct = gson.fromJson(line, Product.class);
             products1.add(eachProduct);
-        }        
+        }
         System.out.println("Precio Nombre del producto");
         for (Product product1 : products1) {
             System.out.println(product1.toString());
             product1.toString();
         }
     }
-    public String findProduct(String nameProduct){
-        String roomsFree = FileManager.find("inventoryShop.json",nameProduct);        
+
+    public String findProduct(String nameProduct) {
+        String roomsFree = FileManager.find("inventoryShop.json", nameProduct);
         return roomsFree;
     }
- 
+
+    public void updateStock(String nameProduct, Product product) {
+        String stringJson;
+        FileManager.delete("inventoryShop.json", nameProduct);
+        stringJson = gson.toJson(product);
+
+        FileManager.save("inventoryShop.json", stringJson);
+    }
 }

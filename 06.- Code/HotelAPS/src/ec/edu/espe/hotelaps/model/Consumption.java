@@ -14,6 +14,7 @@ public class Consumption {
     private String nameCustomer;
     private String nameProduct;
     private Float salePrice;
+    
 
     @Override
     public String toString() {

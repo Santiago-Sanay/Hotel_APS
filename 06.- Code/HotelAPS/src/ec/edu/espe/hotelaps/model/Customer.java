@@ -5,6 +5,10 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import com.google.gson.Gson;
+import ec.edu.espe.filemanager.utils.FileManager;
+import java.util.ArrayList;
+
 /**
  *
  * @author Yulliana Roman ESPE-DCCO
@@ -32,6 +36,10 @@ public class Customer {
         this.email = email;
     }
 
+    public Customer() {
+    }
+
+    
     /**
      * @return the id
      */
@@ -114,6 +122,41 @@ public class Customer {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void addConsumption(Consumption consumption) {
+        Gson gson = new Gson();
+        String jsonConsumption = gson.toJson(consumption, Consumption.class);
+        FileManager.save("consumption.json", jsonConsumption);
+    }
+
+    public void showEachConsumption(String dataToFind) {
+        String dataOfFile;
+        String[] dataFile;
+        Float total = 0f;
+        try {
+            Gson gson = new Gson();
+
+            dataOfFile = FileManager.find("consumption.json", dataToFind);
+            System.out.println("Detalle");
+            System.out.println("*********************");
+            System.out.println("Servicio \t Precio ");
+
+            dataFile = dataOfFile.split("\n");
+            ArrayList<Consumption> consumptions = new ArrayList();
+            Consumption consumptionPrices = new Consumption();
+            for (int i = 0; i < dataFile.length; i++) {
+                consumptions.add(gson.fromJson(dataFile[i], Consumption.class));
+                consumptionPrices = gson.fromJson(dataFile[i], Consumption.class);
+                System.out.println(consumptionPrices.toString());
+                total += consumptionPrices.getSalePrice();
+            }
+            System.out.println("********************************");
+            System.out.println("Total: ");
+            System.out.println(total);
+        } catch (Exception ex) {
+            System.out.println("No hay habitaciones disponibles");
+        }
     }
 
 }
