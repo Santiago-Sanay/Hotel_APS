@@ -233,8 +233,6 @@ public class HotelAPS {
                                 case 3: {
 
                                     customerConsumption.showEachConsumption(nameSearch);
-                                    //testing 
-
                                     customer.showEachConsumption(nameSearch);
 
                                     break;
