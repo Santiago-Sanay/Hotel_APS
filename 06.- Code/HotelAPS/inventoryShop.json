@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-{"idProduct":123457,"stock":7,"salePrice":0.6,"nameProduct":"Galletas Oreo"}
-{"idProduct":123458,"stock":16,"salePrice":0.75,"nameProduct":"Jugos Natura"}
-{"idProduct":123456,"stock":1,"salePrice":5.0,"nameProduct":"vino"}
-{"idProduct":2,"stock":2,"salePrice":10.0,"nameProduct":"Vino blanco"}
-=======
 {"idProduct":2,"stock":3,"salePrice":1.5,"nameProduct":"CocaCola","isAvailable":true}
 {"idProduct":3,"stock":5,"salePrice":0.9,"nameProduct":"Doritos","isAvailable":true}
 {"idProduct":4,"stock":5,"salePrice":1.5,"nameProduct":"Corneto","isAvailable":true}
 {"idProduct":5,"stock":3,"salePrice":2.00,"nameProduct":"Cerveza","isAvailable":true}
 {"idProduct":6,"stock":5,"salePrice":2.50,"nameProduct":"Redbull","isAvailable":true}
-{"idProduct":1,"stock":1,"salePrice":0.75,"nameProduct":"Manicho","isAvailable":false}
->>>>>>> 947a0e1084eab911f8246b273aed56eb4b5deb12
+{"idProduct":1,"stock":1,"salePrice":0.75,"nameProduct":"Manicho","isAvailable":true}
 {"idProduct":7,"stock":5,"salePrice":1.5,"nameProduct":"Biddu","isAvailable":true}

@@ -11,7 +11,7 @@ import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Product;
-import ec.edu.espe.hotelaps.model.Register;
+import ec.edu.espe.hotelaps.model.Registration;
 import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
@@ -29,7 +29,7 @@ public class HotelAPS {
         Hotel hotel = new Hotel();
         Gson gson = new Gson();
         Shop shop = new Shop();
-
+        String nameSearch;
         Customer customerConsumption = new Customer();
         Customer customer = new Customer();
 
@@ -37,16 +37,8 @@ public class HotelAPS {
         int opc;
 
         do {
-            System.out.println("\f");
-            System.out.println("BIENVENIDO A HOTEL APS");
-            System.out.println("1. Cliente");
-            System.out.println("2. Trabajador");
-            System.out.println("3. Usuario Registrado");
-            System.out.println("4. Salir");
-            System.out.println("Seleccione una opción:");
-            opc = scanner.nextInt();
-            scanner.nextLine();
-            String nameSearch;
+            HotelAPS hotelaps = new HotelAPS();
+            opc=hotelaps.mainMenu();
 
             switch (opc) {
 
@@ -79,10 +71,10 @@ public class HotelAPS {
 
                     Customer customerNew = new Customer(idCustomer, name, documentNumber, address, telephone, email);
 
-                    Register registerCustomer = new Register();
+                    Registration registerCustomer = new Registration();
 
                     registerCustomer.registerCustomer(customerNew, "listCostumer.json");
-                    registerCustomer.registerCustomer(customerNew, name + ".json");
+                    
                     break;
                 }
                 case 2: {
@@ -122,17 +114,18 @@ public class HotelAPS {
 
                     idWorker = documentNumberWorker + "Worker";
                     Worker workerNew = new Worker(idWorker, nameWorker, documentNumberWorker, addressWorker, telephoneWorker, emailWorker, access, login, password);
-                    Register registerWorker = new Register();
+                    Registration registerWorker = new Registration();
                     registerWorker.registerWork(workerNew);
 
                     break;
                 }
                 case 3: {
 
-                    System.out.println("QUE DESEA HACER");
+                    System.out.println("SERVICIO ELECTRÓNICO");
                     System.out.println("1. Servicio al cliente");
                     System.out.println("2. Ingresar como admin");
                     System.out.println("Seleccione una opción: ");
+                    
                     int registered;
                     registered = scanner.nextInt();
 
@@ -215,13 +208,11 @@ public class HotelAPS {
 
                                         shop.showAvailableProduct("true");
 
-
                                         System.out.println("Seleccione el nombre producto: ");
                                         scanner.nextLine();
 
                                         nameProduct = scanner.nextLine();
                                         findProduct = shop.findProduct(nameProduct);
-
 
                                         product = gson.fromJson(findProduct, Product.class);
                                         stock = product.getStock();
@@ -236,7 +227,6 @@ public class HotelAPS {
                                         consumption.setNameProduct(nameProduct);
                                         consumption.setSalePrice(product.getSalePrice());
                                         consumption.setStatus(true);
-
 
                                         customerConsumption.addConsumption(consumption);
 
@@ -254,7 +244,6 @@ public class HotelAPS {
                                     int option;
                                     customer.showEachConsumption(nameSearch);
 
-
                                     System.out.println("Desea cancelar el servicio ");
                                     System.out.println("1. Si");
                                     System.out.println("2. No");
@@ -266,7 +255,6 @@ public class HotelAPS {
                                     } else {
                                         System.out.println("Gracias por preferirnos");
                                     }
-
 
                                     break;
                                 }
@@ -293,7 +281,7 @@ public class HotelAPS {
                                 pass = scanner.nextLine();
 
                                 Authentication authenticationAdmin = new Authentication();
-                                check = authenticationAdmin.autenticationWorker(user, pass);
+                                check = authenticationAdmin.authenticateWorker(user, pass);
 
                                 System.out.println("Este es el check" + check);
 
@@ -316,7 +304,6 @@ public class HotelAPS {
                                     float salePrice;
                                     String nameProduct;
 
-
                                     do {
                                         System.out.println("Usted está agregando un producto... ");
                                         scanner.nextLine();
@@ -332,7 +319,6 @@ public class HotelAPS {
 
                                         System.out.println("Ingrese el precio de venta: ");
                                         salePrice = scanner.nextFloat();
-
 
                                         Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
                                         Shop apsShop = new Shop();
@@ -423,6 +409,20 @@ public class HotelAPS {
             }
 
         } while (opc != 4);
-//21:32 testing
+
+    }
+
+    public int mainMenu() {
+        Scanner scanner = new Scanner(System.in);
+        int opc;
+        System.out.println("BIENVENIDO A HOTEL APS");
+        System.out.println("1. Registrar Cliente");
+        System.out.println("2. Registrar Trabajador");
+        System.out.println("3. Usuario Registrado");
+        System.out.println("4. Salir");
+        System.out.println("Seleccione una opción:");
+        opc = scanner.nextInt();
+        scanner.nextLine();
+        return opc;
     }
 }

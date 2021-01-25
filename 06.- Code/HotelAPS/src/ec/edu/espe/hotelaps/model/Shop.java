@@ -8,6 +8,7 @@ package ec.edu.espe.hotelaps.model;
 import com.google.gson.Gson;
 import ec.edu.espe.filemanager.utils.FileManager;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,20 +49,17 @@ public class Shop {
     }
 
     public void printAllProduct() {
+
         FileManager.findAll("inventoryShop.json");
-        List<Product> products1;
-        products1 = new ArrayList();
-        String[] product;
-        product = FileManager.findAll("inventoryShop.json");
-        Product eachProduct;
-        for (String line : product) {
-            eachProduct = gson.fromJson(line, Product.class);
-            products1.add(eachProduct);
-        }
-        System.out.println("Precio Nombre del producto");
-        for (Product product1 : products1) {
-            System.out.println(product1.toString());
-            product1.toString();
+        ArrayList<Product> products1 = new ArrayList();
+        String[] productsString;
+        productsString = FileManager.findAll("inventoryShop.json");
+        
+        System.out.println("Cantidad  3Precio  Nombre del producto ");
+        System.out.println("**************************************");
+        for (int i = 0; i < productsString.length; i++) {
+            products1.add(gson.fromJson(productsString[i], Product.class));
+            System.out.println(products1.get(i));
         }
     }
 
@@ -70,7 +68,7 @@ public class Shop {
         return product;
     }
 
-   public void showAvailableProduct(String dataToFind) {
+    public void showAvailableProduct(String dataToFind) {
         String dataOfFile;
         String[] dataFile;
         try {

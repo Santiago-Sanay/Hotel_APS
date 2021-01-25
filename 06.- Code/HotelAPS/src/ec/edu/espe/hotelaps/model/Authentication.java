@@ -34,7 +34,7 @@ public class Authentication {
         return verify;
     }
 
-    public boolean autenticationWorker(String user, String pass) {
+    public boolean authenticateWorker(String user, String pass) {
         boolean check;
 
         if (user.equals("admin") && pass.equals("admin")) {

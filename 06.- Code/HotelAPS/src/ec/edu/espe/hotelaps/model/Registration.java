@@ -13,12 +13,12 @@ import java.util.ArrayList;
  *
  * @author Gabriel Rosero ESPE-DCCO
  */
-public class Register {
+public class Registration {
     ArrayList<Customer> listCustomer; 
     ArrayList<Worker> listWorker;
     Gson gson = new Gson();
 
-    public Register() {
+    public Registration() {
         listCustomer = new ArrayList();
         listWorker = new ArrayList();
     }
