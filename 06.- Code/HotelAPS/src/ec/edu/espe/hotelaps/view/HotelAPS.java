@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author SANTIAGO SSS
+ * @author Gabriel Rosero ESPE-DCCO
  */
 public class HotelAPS {
 
@@ -79,30 +79,26 @@ public class HotelAPS {
                 }
                 case 2: {
 
-                    String idWorker;
-                    String nameWorker = "";
-                    String documentNumberWorker = "";
-                    String addressWorker = "";
-                    String telephoneWorker = "";
-                    String emailWorker = "";
+                    String id;
+                    String name ;
+                    String documentNumber;
+                    String telephone;
+                    String email;
                     boolean access = true;
                     String login = "admin";
                     String password = "admin";
 
                     System.out.println("Ingrese nombre: ");
-                    nameWorker = scanner.nextLine();
+                    name = scanner.nextLine();
 
                     System.out.println("Ingrese C.I: ");
-                    documentNumberWorker = scanner.nextLine();
-
-                    System.out.println("Ingrese dirección: ");
-                    addressWorker = scanner.nextLine();
+                    documentNumber = scanner.nextLine();
 
                     System.out.println("Ingrese número de teléfono: ");
-                    telephoneWorker = scanner.nextLine();
+                    telephone = scanner.nextLine();
 
                     System.out.println("Ingrese email: ");
-                    emailWorker = scanner.nextLine();
+                    email = scanner.nextLine();
 
                     System.out.println("1.Administrativo");
                     System.out.println("2.Limpieza");
@@ -111,9 +107,9 @@ public class HotelAPS {
                     if (employment == 2) {
                         access = false;
                     }
-
-                    idWorker = documentNumberWorker + "Worker";
-                    Worker workerNew = new Worker(idWorker, nameWorker, documentNumberWorker, addressWorker, telephoneWorker, emailWorker, access, login, password);
+                    id = documentNumber + "Worker";
+                    //Metodo pedir datos en variables de abajo
+                    Worker workerNew = new Worker(login,password,access,id,name,documentNumber,telephone,email);
                     Registration registerWorker = new Registration();
                     registerWorker.registerWork(workerNew);
 
