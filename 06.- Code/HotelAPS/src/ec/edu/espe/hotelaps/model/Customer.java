@@ -13,116 +13,13 @@ import java.util.ArrayList;
  *
  * @author Yulliana Roman ESPE-DCCO
  */
-public class Customer {
 
-    private String id;
-    private String name;
-    private String documentNumber;
-    private String address;
-    private String telephone;
-    private String email;
+    public class Customer extends Person {
 
-    public Customer() {
+    public Customer(String name, String id, String documentNumber, String telephone, String email) {
+        super(name, id, documentNumber, telephone, email);
     }
-
-    @Override
-    public String toString() {
-        return "Customer{" + "id=" + getId() + ", name=" + getName() + ", documentNumber=" + getDocumentNumber() + ", address=" + getAddress() + ", telephone=" + getTelephone() + ", email=" + getEmail() + '}';
-    }
-
-    public Customer(String id, String name, String documentNumber, String address, String telephone, String email) {
-        this.id = id;
-        this.name = name;
-        this.documentNumber = documentNumber;
-        this.address = address;
-        this.telephone = telephone;
-        this.email = email;
-    }
-
-    /**
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return the documentNumber
-     */
-    public String getDocumentNumber() {
-        return documentNumber;
-    }
-
-    /**
-     * @param documentNumber the documentNumber to set
-     */
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
-    }
-
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    /**
-     * @return the telephone
-     */
-    public String getTelephone() {
-        return telephone;
-    }
-
-    /**
-     * @param telephone the telephone to set
-     */
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
+        
     public void addConsumption(Consumption consumption) {
         Gson gson = new Gson();
         String jsonConsumption = gson.toJson(consumption, Consumption.class);
@@ -184,4 +81,4 @@ public class Customer {
 
     }
 
-}
+    }
