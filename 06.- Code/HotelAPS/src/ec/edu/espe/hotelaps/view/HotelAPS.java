@@ -30,8 +30,8 @@ public class HotelAPS {
         Gson gson = new Gson();
         Shop shop = new Shop();
         String nameSearch;
-        Customer customerConsumption = new Customer();
-        Customer customer = new Customer();
+        Customer customerConsumption; 
+        //Customer customer = new Customer();
 
         Consumption consumption = new Consumption();
         int opc;
@@ -169,8 +169,11 @@ public class HotelAPS {
                                         Room room = new Room(0, 0f, true, 0);
 
                                         room = gson.fromJson(findRoom, Room.class);
+                                        /*System.out.println("inicio");
+                                        System.out.println(findRoom);
+                                        System.out.println("fin");*/
                                         room.setStatus(false);
-
+                                        customerConsumption = new Customer("","","","","");
                                         Consumption consumptionRoom = new Consumption();
                                         consumptionRoom.setNameCustomer(nameSearch);
                                         consumptionRoom.setNameProduct("Reservación de habitación");
@@ -180,7 +183,7 @@ public class HotelAPS {
 
                                         hotel.updateRooms(numberRoom, room);
 
-                                        customer.addConsumption(consumptionRoom);
+                                        customerConsumption.addConsumption(consumptionRoom);
                                         System.out.println("Desea reservar otra habitacion?");
                                         System.out.println("1. SI");
                                         System.out.println("2. NO");
@@ -219,9 +222,8 @@ public class HotelAPS {
                                         consumption.setNameProduct(nameProduct);
                                         consumption.setSalePrice(product.getSalePrice());
                                         consumption.setStatus(true);
-
+                                        customerConsumption=new Customer("","","","","");
                                         customerConsumption.addConsumption(consumption);
-
                                         shop.updateStock(nameProduct, product);
 
                                         System.out.println("Desea comprar nuevamente");
@@ -234,7 +236,8 @@ public class HotelAPS {
                                 }
                                 case 3: {
                                     int option;
-                                    customer.showEachConsumption(nameSearch);
+                                    customerConsumption=new Customer("","","","","");
+                                    customerConsumption.showEachConsumption(nameSearch);
 
                                     System.out.println("Desea cancelar el servicio ");
                                     System.out.println("1. Si");
@@ -243,7 +246,7 @@ public class HotelAPS {
 
                                     if (option == 1) {
                                         System.out.println("Cancele este valor en caja");
-                                        System.out.println(customer.calculateTotal(nameSearch));
+                                        System.out.println(customerConsumption.calculateTotal(nameSearch));
                                     } else {
                                         System.out.println("Gracias por preferirnos");
                                     }

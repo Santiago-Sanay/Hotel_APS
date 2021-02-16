@@ -15,10 +15,9 @@ public class Consumption {
     private String nameProduct;
     private Float salePrice;
     private boolean status;
+
     
-  
-
-
+    
     @Override
     public String toString() {
         return nameProduct + "\t" + salePrice;

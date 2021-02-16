@@ -15,11 +15,11 @@ import java.util.ArrayList;
  */
 
     public class Customer extends Person {
-
+   
     public Customer(String name, String id, String documentNumber, String telephone, String email) {
         super(name, id, documentNumber, telephone, email);
     }
-        
+   
     public void addConsumption(Consumption consumption) {
         Gson gson = new Gson();
         String jsonConsumption = gson.toJson(consumption, Consumption.class);
