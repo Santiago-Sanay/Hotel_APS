@@ -16,6 +16,10 @@ public class Room {
     private boolean status;
     private int capacityPerson;
 
+    public Room() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     @Override
     public String toString() {
         return "\t"+numberRoom+"\t\t"+price+"\t"+capacityPerson;

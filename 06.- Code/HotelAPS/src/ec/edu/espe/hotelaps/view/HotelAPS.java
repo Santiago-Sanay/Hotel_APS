@@ -6,6 +6,7 @@
 package ec.edu.espe.hotelaps.view;
 
 import com.google.gson.Gson;
+import ec.edu.espe.hotelaps.controller.MenuController;
 import ec.edu.espe.hotelaps.model.Authentication;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
@@ -15,6 +16,8 @@ import ec.edu.espe.hotelaps.model.Registration;
 import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
+import ec.edu.espe.hotelaps.utils.DataVerification;
+import ec.edu.espe.hotelaps.utils.MainMenu;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -29,214 +32,54 @@ public class HotelAPS {
         Hotel hotel = new Hotel();
         Gson gson = new Gson();
         Shop shop = new Shop();
-        String nameSearch;
-        Customer customerConsumption; 
-        //Customer customer = new Customer();
+        String nameSearch ;
+
+        Customer customerConsumption;
 
         Consumption consumption = new Consumption();
         int opc;
 
         do {
-            HotelAPS hotelaps = new HotelAPS();
-            opc=hotelaps.mainMenu();
-
+            MainMenu.mainMenu();
+            opc = scanner.nextInt();
             switch (opc) {
 
                 case 1: {
-
-                    String id;
-                    String name ;
-                    String documentNumber;
-                    String telephone;
-                    String email;
-
-                    System.out.println("Bienvenido al registro del cliente");
-                    System.out.println("Ingrese nombre: ");
-                    name = scanner.nextLine();
-
-                    System.out.println("Ingrese C.I: ");
-                    documentNumber = scanner.nextLine();
-
-                    System.out.println("Ingrese número de teléfono: ");
-                    telephone = scanner.nextLine();
-
-                    System.out.println("Ingrese email: ");
-                    email = scanner.nextLine();
-
-                    id = documentNumber + "Custom";
-
-                    Customer customerNew = new Customer(name,id, documentNumber,telephone,email);
-
-                    Registration registerCustomer = new Registration();
-
-                    registerCustomer.registerCustomer(customerNew, "listCostumer.json");
-                    
+                    MenuController.registerCustumer();
                     break;
                 }
                 case 2: {
-
-                    String id;
-                    String name ;
-                    String documentNumber;
-                    String telephone;
-                    String email;
-                    boolean access = true;
-                    String login = "admin";
-                    String password = "admin";
-
-                    System.out.println("Ingrese nombre: ");
-                    name = scanner.nextLine();
-
-                    System.out.println("Ingrese C.I: ");
-                    documentNumber = scanner.nextLine();
-
-                    System.out.println("Ingrese número de teléfono: ");
-                    telephone = scanner.nextLine();
-
-                    System.out.println("Ingrese email: ");
-                    email = scanner.nextLine();
-
-                    System.out.println("1.Administrativo");
-                    System.out.println("2.Limpieza");
-                    System.out.println("Seleccione su cargo: ");
-                    int employment = scanner.nextInt();
-                    if (employment == 2) {
-                        access = false;
-                    }
-                    id = documentNumber + "Worker";
-                    //Metodo pedir datos en variables de abajo
-                    Worker workerNew = new Worker(login,password,access,id,name,documentNumber,telephone,email);
-                    Registration registerWorker = new Registration();
-                    registerWorker.registerWork(workerNew);
-
+                    MenuController.registerWorker();
                     break;
                 }
                 case 3: {
-
-                    System.out.println("SERVICIO ELECTRÓNICO");
-                    System.out.println("1. Servicio al cliente");
-                    System.out.println("2. Ingresar como admin");
-                    System.out.println("Seleccione una opción: ");
-                    
+                    MainMenu.menuLogin();
                     int registered;
                     registered = scanner.nextInt();
-
                     switch (registered) {
 
                         case 1: {
-
+                            nameSearch = DataVerification.custumer();
                             boolean verify;
-
-                            do {
-                                scanner.nextLine();
-                                System.out.println("Ingrese el nombre que registro: ");
-                                nameSearch = scanner.nextLine();
-
-                                Authentication authentication;
-                                authentication = new Authentication(nameSearch);
-                                verify = authentication.authenticateCustomer();
-
-                            } while (verify == false);
-
+                            //DataVerification.custumer();
+                            System.out.println(""+nameSearch);
                             int service;
-
-                            System.out.println("BIENVENIDO A SERVICIO AL CLIENTE");
-                            System.out.println("1.Reservar habitación");
-                            System.out.println("2.Comprar");
-                            System.out.println("3.Revisar consumo");
-
-                            System.out.println("Seleccione su opción:");
                             service = scanner.nextInt();
 
                             switch (service) {
                                 case 1: {
-
-                                    boolean status;
-                                    String numberRoom;
-                                    String findRoom;
-                                    int option;
-                                    do {
-
-                                        System.out.println("Estos son los cuartos disponibles:");
-                                        hotel.showRoomFree("true");
-
-                                        System.out.println("Seleccionar el número de habitación que desea reservar:");
-                                        scanner.nextLine();
-
-                                        numberRoom = scanner.nextLine();
-                                        findRoom = hotel.findRoom(numberRoom);
-
-                                        Room room = new Room(0, 0f, true, 0);
-
-                                        room = gson.fromJson(findRoom, Room.class);
-                                        /*System.out.println("inicio");
-                                        System.out.println(findRoom);
-                                        System.out.println("fin");*/
-                                        room.setStatus(false);
-                                        customerConsumption = new Customer("","","","","");
-                                        Consumption consumptionRoom = new Consumption();
-                                        consumptionRoom.setNameCustomer(nameSearch);
-                                        consumptionRoom.setNameProduct("Reservación de habitación");
-                                        consumptionRoom.setSalePrice(room.getPrice());
-
-                                        customerConsumption.addConsumption(consumptionRoom);
-
-                                        hotel.updateRooms(numberRoom, room);
-
-                                        customerConsumption.addConsumption(consumptionRoom);
-                                        System.out.println("Desea reservar otra habitacion?");
-                                        System.out.println("1. SI");
-                                        System.out.println("2. NO");
-                                        option = scanner.nextInt();
-                                    } while (option != 2);
+                                    MenuController.pickRoomClient();
                                     break;
 
                                 }
                                 case 2: {
-                                    int option;
-                                    Product product = new Product(0, 0, 0f, "", true);
-                                    int stock = 0;
-                                    String nameProduct;
-                                    String findProduct;
-                                    do {
-                                        System.out.println("Estos son los productos disponibles:");
-
-                                        shop.showAvailableProduct("true");
-
-                                        System.out.println("Seleccione el nombre producto: ");
-                                        scanner.nextLine();
-
-                                        nameProduct = scanner.nextLine();
-                                        findProduct = shop.findProduct(nameProduct);
-
-                                        product = gson.fromJson(findProduct, Product.class);
-                                        stock = product.getStock();
-                                        stock -= 1;
-
-                                        if (stock <= 0) {
-
-                                            product.setIsAvailable(false);
-
-                                        }
-                                        consumption.setNameCustomer(nameSearch);
-                                        consumption.setNameProduct(nameProduct);
-                                        consumption.setSalePrice(product.getSalePrice());
-                                        consumption.setStatus(true);
-                                        customerConsumption=new Customer("","","","","");
-                                        customerConsumption.addConsumption(consumption);
-                                        shop.updateStock(nameProduct, product);
-
-                                        System.out.println("Desea comprar nuevamente");
-                                        System.out.println("1. Si");
-                                        System.out.println("2. No");
-
-                                        option = scanner.nextInt();
-                                    } while (option != 2);
+                                    MenuController.doRoomService(nameSearch);
                                     break;
                                 }
                                 case 3: {
                                     int option;
-                                    customerConsumption=new Customer("","","","","");
+
+                                    customerConsumption = new Customer("", "", "", "", "");
                                     customerConsumption.showEachConsumption(nameSearch);
 
                                     System.out.println("Desea cancelar el servicio ");
@@ -407,17 +250,4 @@ public class HotelAPS {
 
     }
 
-    public int mainMenu() {
-        Scanner scanner = new Scanner(System.in);
-        int opc;
-        System.out.println("BIENVENIDO A HOTEL APS");
-        System.out.println("1. Registrar Cliente");
-        System.out.println("2. Registrar Trabajador");
-        System.out.println("3. Usuario Registrado");
-        System.out.println("4. Salir");
-        System.out.println("Seleccione una opción:");
-        opc = scanner.nextInt();
-        scanner.nextLine();
-        return opc;
-    }
 }

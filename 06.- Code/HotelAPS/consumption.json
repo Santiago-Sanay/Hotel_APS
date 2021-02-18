@@ -34,3 +34,6 @@
 {"nameCustomer":"Manuel","nameProduct":"Reservación de habitación","salePrice":60.0,"status":false}
 {"nameCustomer":"Manuel","nameProduct":"Reservación de habitación","salePrice":30.0,"status":false}
 {"nameCustomer":"Manuel","nameProduct":"Reservación de habitación","salePrice":30.0,"status":false}
+{"nameProduct":"Corneto","salePrice":1.5,"status":true}
+{"nameProduct":"Doritos","salePrice":0.9,"status":true}
+{"nameCustomer":"Jully","nameProduct":"Manicho","salePrice":0.75,"status":true}
