@@ -10,7 +10,7 @@ package ec.edu.espe.hotelaps.model;
  * @author Yulliana Roman ESPE-DCCO
  */
 public class Room {
-    
+
     private int numberRoom;
     private float price;
     private boolean status;
@@ -22,7 +22,7 @@ public class Room {
 
     @Override
     public String toString() {
-        return "\t"+numberRoom+"\t\t"+price+"\t"+capacityPerson;
+        return "\t" + numberRoom + "\t\t" + price + "\t" + capacityPerson;
     }
 
     public Room(int numberRoom, float price, boolean status, int capacityPerson) {

@@ -37,3 +37,4 @@
 {"nameProduct":"Corneto","salePrice":1.5,"status":true}
 {"nameProduct":"Doritos","salePrice":0.9,"status":true}
 {"nameCustomer":"Jully","nameProduct":"Manicho","salePrice":0.75,"status":true}
+{"nameCustomer":"","nameProduct":"Redbull","salePrice":2.5,"status":true}

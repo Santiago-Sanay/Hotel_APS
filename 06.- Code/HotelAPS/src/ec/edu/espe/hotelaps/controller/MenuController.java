@@ -6,6 +6,7 @@
 package ec.edu.espe.hotelaps.controller;
 
 import com.google.gson.Gson;
+import ec.edu.espe.hotelaps.model.Authentication;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Hotel;
@@ -17,8 +18,8 @@ import ec.edu.espe.hotelaps.model.Worker;
 import java.util.Scanner;
 
 /**
- *
- * @author SSS SANTIAGO
+ * @author Samuel Sañay ESPE-DCCO
+ * @author Gabriel Rosero ESPE-DCCO
  */
 public class MenuController {
 
@@ -129,7 +130,7 @@ public class MenuController {
         } while (option != 2);
     }
 
-    public static void doRoomService( String nameSearch) {
+    public static void doRoomService(String nameSearch) {
         int option;
         Shop shop = new Shop();
         Scanner scanner = new Scanner(System.in);
@@ -141,7 +142,6 @@ public class MenuController {
         int stock = 0;
         String nameProduct;
         String findProduct;
-
 
         do {
             System.out.println("Estos son los productos disponibles:");
@@ -175,6 +175,114 @@ public class MenuController {
 
             option = scanner.nextInt();
         } while (option != 2);
+    }
+
+    public static void payService() {
+        int option;
+        Customer customerConsumption;
+        Scanner scanner = new Scanner(System.in);
+        customerConsumption = new Customer("", "", "", "", "");
+        String nameSearch = "";
+        customerConsumption.showEachConsumption(nameSearch);
+
+        System.out.println("Desea cancelar el servicio ");
+        System.out.println("1. Si");
+        System.out.println("2. No");
+        option = scanner.nextInt();
+
+        if (option == 1) {
+            System.out.println("Cancele este valor en caja");
+            System.out.println(customerConsumption.calculateTotal(nameSearch));
+        } else {
+            System.out.println("Gracias por preferirnos");
+        }
+        customerConsumption = new Customer("", "", "", "", "");
+        customerConsumption.showEachConsumption(nameSearch);
+
+        System.out.println("Desea cancelar el servicio ");
+        System.out.println("1. Si");
+        System.out.println("2. No");
+        option = scanner.nextInt();
+
+        if (option == 1) {
+            System.out.println("Cancele este valor en caja");
+            System.out.println(customerConsumption.calculateTotal(nameSearch));
+        } else {
+            System.out.println("Gracias por preferirnos");
+        }
+    }
+
+    public static void enterSistem() {
+        String user;
+        Scanner scanner = new Scanner(System.in);
+        String pass;
+        boolean check;
+        do {
+            scanner.nextLine();
+
+            System.out.println("Ingrese el usuario: ");
+            user = scanner.nextLine();
+
+            System.out.println("Ingrese la contraseña: ");
+            pass = scanner.nextLine();
+
+            Authentication authenticationAdmin = new Authentication();
+            check = authenticationAdmin.authenticateWorker(user, pass);
+
+            System.out.println("Este es el check" + check);
+
+        } while (check == false);
+    }
+
+    public static void addProduct() {
+        int option;
+        int idProduct;
+        int stock;
+        float salePrice;
+        String nameProduct;
+        Scanner scanner = new Scanner(System.in);
+
+        do {
+            System.out.println("Usted está agregando un producto... ");
+            scanner.nextLine();
+
+            System.out.println("Ingrese el nombre del producto: ");
+            nameProduct = scanner.nextLine();
+
+            System.out.println("Ingrese el id del producto: ");
+            idProduct = scanner.nextInt();
+
+            System.out.println("Ingrese la cantidad que desea agregar: ");
+            stock = scanner.nextInt();
+
+            System.out.println("Ingrese el precio de venta: ");
+            salePrice = scanner.nextFloat();
+
+            Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
+            Shop apsShop = new Shop();
+            apsShop.addProduct(productNew);
+            System.out.println("Desea ingresar otro producto");
+            System.out.println("1. Si");
+            System.out.println("2. No");
+            option = scanner.nextInt();
+        } while (option != 2);
+    }
+
+    public static void avilityRoom() {
+        Room room = new Room(0, 0f, true, 0);
+        Scanner scanner = new Scanner(System.in);
+        Hotel hotel;
+
+        System.out.println("Ingrese el número de habitación:");
+        room.setNumberRoom(scanner.nextInt());
+
+        System.out.println("Ingrese el precio de la habitación:");
+        room.setPrice(scanner.nextFloat());
+
+        System.out.println("Ingrese capacidad de la habitación");
+        room.setCapacityPerson(scanner.nextInt());
+        hotel = new Hotel();//verify line274-284
+        hotel.assigmentRoom(room);
     }
 
 }

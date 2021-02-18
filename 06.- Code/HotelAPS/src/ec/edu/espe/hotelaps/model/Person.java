@@ -10,6 +10,7 @@ package ec.edu.espe.hotelaps.model;
  * @author Gabriel Rosero ESPE-DCCO
  */
 public class Person {
+
     private String name;
     private String id;
     private String documentNumber;
@@ -18,7 +19,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" + getName() + getId() + getDocumentNumber() + getTelephone() + getEmail()+'}';
+        return "Person{" + getName() + getId() + getDocumentNumber() + getTelephone() + getEmail() + '}';
     }
 
     public Person(String name, String id, String documentNumber, String telephone, String email) {
