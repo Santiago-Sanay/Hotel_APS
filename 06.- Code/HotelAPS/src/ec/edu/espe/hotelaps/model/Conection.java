@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.hotelaps.utils;
+package ec.edu.espe.hotelaps.model;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
@@ -14,12 +14,15 @@ import com.mongodb.client.MongoDatabase;
  *
  * @author Jimmy Simbaña <your.name at your.org>
  */
+
 public class Conection {
     String cluster;
     MongoClientURI uri;
     MongoClient client;
     MongoDatabase db;
     MongoCollection collection;
+    
+    //Coneccion a la Base de datos MongoDb
 
     public Conection(String Dbname, String Collectionname) {
         cluster =  "mongodb+srv://jasimbana14:1715141188ipa@cluster0.uk6pr.mongodb.net/Database?retryWrites=true&w=majority";
@@ -69,7 +72,6 @@ public class Conection {
         this.collection = collection;
     }
     
-    
-    
+   
     
 }
