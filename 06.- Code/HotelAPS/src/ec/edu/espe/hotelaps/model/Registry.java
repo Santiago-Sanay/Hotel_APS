@@ -15,27 +15,41 @@ import java.util.List;
  *
  * @author Jimmy Simbaña <your.name at your.org>
  */
-public class RegistrationPerson {
+public class Registry {
 
     Conection conection;
     BasicDBObject document;
+    String selecteCollection;
     ArrayList<Person> listPerson;
-    
 
-    public RegistrationPerson() {
-        conection = new Conection();
+    public Registry(String selecteCollection) {
+        this.selecteCollection = selecteCollection;
+        conection = new Conection("Persons", selecteCollection);
         document = new BasicDBObject();
         listPerson = new ArrayList();
 
     }
 
-    public void createPerson(Person person) {
+    public void createWorker(Worker worker) {
 
-        document.append("name", person.getName())
-                .append("id", person.getId())
-                .append("documentNumber", person.getDocumentNumber())
-                .append("telephone", person.getTelephone())
-                .append("email", person.getEmail());
+        document.append("name", worker.getName())
+                .append("id", worker.getId())
+                .append("login", worker.getLogin())
+                .append("password", worker.getPassword())
+                .append("access", worker.isAcces())
+                .append("documentNumber", worker.getDocumentNumber())
+                .append("telephone", worker.getTelephone())
+                .append("email", worker.getEmail());
+        conection.getCollection().insert(document);
+    }
+
+    public void createCustomer(Customer customer) {
+
+        document.append("name", customer.getName())
+                .append("id", customer.getId())
+                .append("documentNumber", customer.getDocumentNumber())
+                .append("telephone", customer.getTelephone())
+                .append("email", customer.getEmail());
         conection.getCollection().insert(document);
     }
 
@@ -51,7 +65,7 @@ public class RegistrationPerson {
 
     public void updatePerson(Person person, String atribute) {
         document.put("id", atribute);
-        DBCursor cursor =  (DBCursor) conection.getCollection().find(document);
+        DBCursor cursor = (DBCursor) conection.getCollection().find(document);
         while (cursor.hasNext()) {
             DBObject object = cursor.next();
             object.put("name", person.getName());

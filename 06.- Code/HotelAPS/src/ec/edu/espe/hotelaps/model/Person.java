@@ -5,9 +5,12 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import com.mongodb.BasicDBObject;
+
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
+ * @author Jimmy Simbaña
  */
 public class Person {
 
@@ -17,10 +20,6 @@ public class Person {
     private String telephone;
     private String email;
 
-    @Override
-    public String toString() {
-        return "Person{" + getName() + getId() + getDocumentNumber() + getTelephone() + getEmail() + '}';
-    }
 
     public Person(String name, String id, String documentNumber, String telephone, String email) {
         this.name = name;
@@ -29,6 +28,17 @@ public class Person {
         this.telephone = telephone;
         this.email = email;
     }
+
+    public Person(BasicDBObject object) {
+        
+        name = object.getString("name");
+        id = object.getString("id");
+        documentNumber = object.getString("documentNumber");
+        telephone= object.getString("telephone");
+        email = object.getString("email");
+    }
+    
+    
 
     public String getName() {
         return name;
@@ -96,4 +106,10 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+     @Override
+    public String toString() {
+        return "Person{" + getName() + getId() + getDocumentNumber() + getTelephone() + getEmail() + '}';
+    }
+
 }

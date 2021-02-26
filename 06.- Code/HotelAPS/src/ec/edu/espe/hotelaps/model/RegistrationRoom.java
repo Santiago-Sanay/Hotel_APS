@@ -23,7 +23,7 @@ public class RegistrationRoom {
     
 
     public RegistrationRoom() {
-        conection = new Conection();
+        conection = new Conection("Rooms","Room");
         document = new BasicDBObject();
         listRoom= new ArrayList();
 
@@ -33,12 +33,12 @@ public class RegistrationRoom {
 
         document.append("numberRoom", room.getNumberRoom())
                 .append("price", room.getPrice())
-                .append("status", room.getStatus())
+                .append("status", room.isStatus())
                 .append("capacityPerson", room.getCapacityPerson());
         conection.getCollection().insert(document);
     }
 
-    public List<Person> readRoom() {
+    public List<Room> readRoom() {
         DBCursor cursor = (DBCursor) conection.getCollection().find();
         while (cursor.hasNext()) {
             Room room = new Room((BasicDBObject) cursor.next());
@@ -55,7 +55,7 @@ public class RegistrationRoom {
             DBObject object = cursor.next();
             object.put("numberRoom", room.getNumberRoom());
             object.put("price", room.getPrice());
-            object.put("status", room.getStatus());
+            object.put("status", room.isStatus());
             object.put("capacityPerson", room.getCapacityPerson());;
             conection.getCollection().save(object);
         }

@@ -15,15 +15,15 @@ import java.util.List;
  *
  * @author Jimmy Simbaña <your.name at your.org>
  */
-public class RegistrationProduct {
+public class Inventory {
     
     Conection conection;
     BasicDBObject document;
     ArrayList<Product> listProduct;
     
 
-    public RegistrationProduct() {
-        conection = new Conection();
+    public Inventory() {
+        conection = new Conection("Products","Product");
         document = new BasicDBObject();
         listProduct = new ArrayList();
 
@@ -35,7 +35,7 @@ public class RegistrationProduct {
                 .append("stock", product.getStock())
                 .append("salePrice", product.getSalePrice())
                 .append("nameProduct", product.getNameProduct())
-                .append("isAvailable", product.getIsAvailable());
+                .append("isAvailable", product.isIsAvailable());
         conection.getCollection().insert(document);
     }
 
@@ -58,7 +58,7 @@ public class RegistrationProduct {
             object.put("stock", product.getStock());
             object.put("salePrice", product.getSalePrice());
             object.put("nameProduct", product.getNameProduct());
-            object.put("isAvailable", product.getIsAvailable());
+            object.put("isAvailable", product.isIsAvailable());
             conection.getCollection().save(object);
         }
     }

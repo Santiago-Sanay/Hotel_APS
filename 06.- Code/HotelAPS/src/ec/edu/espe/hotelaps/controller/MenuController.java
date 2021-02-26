@@ -10,8 +10,10 @@ import ec.edu.espe.hotelaps.model.Authentication;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Hotel;
+import ec.edu.espe.hotelaps.model.Inventory;
 import ec.edu.espe.hotelaps.model.Product;
 import ec.edu.espe.hotelaps.model.Registration;
+import ec.edu.espe.hotelaps.model.Registry;
 import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
@@ -20,6 +22,7 @@ import java.util.Scanner;
 /**
  * @author Samuel Sañay ESPE-DCCO
  * @author Gabriel Rosero ESPE-DCCO
+ * @author Jimmy Simbaña
  */
 public class MenuController {
 
@@ -48,10 +51,9 @@ public class MenuController {
         id = documentNumber + "Custom";
 
         Customer customerNew = new Customer(name, id, documentNumber, telephone, email);
-
-        Registration registerCustomer = new Registration();
-
-        registerCustomer.registerCustomer(customerNew, "listCostumer.json");
+        
+        Registry registry = new Registry("Customer");
+        registry.createCustomer(customerNew);
 
     }
 
@@ -88,8 +90,9 @@ public class MenuController {
         id = documentNumber + "Worker";
 
         Worker workerNew = new Worker(login, password, access, id, name, documentNumber, telephone, email);
-        Registration registerWorker = new Registration();
-        registerWorker.registerWork(workerNew);
+        Registry registry = new Registry("Workers");
+        registry.createWorker(workerNew);
+        
 
     }
 
@@ -259,8 +262,10 @@ public class MenuController {
             salePrice = scanner.nextFloat();
 
             Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
-            Shop apsShop = new Shop();
-            apsShop.addProduct(productNew);
+            Inventory inventory = new Inventory();
+            inventory.createProduct(productNew);
+  
+            
             System.out.println("Desea ingresar otro producto");
             System.out.println("1. Si");
             System.out.println("2. No");

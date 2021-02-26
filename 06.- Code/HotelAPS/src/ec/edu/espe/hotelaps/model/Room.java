@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import com.mongodb.BasicDBObject;
+
 /**
  *
  * @author Yulliana Roman ESPE-DCCO
@@ -30,6 +32,12 @@ public class Room {
         this.price = price;
         this.status = status;
         this.capacityPerson = capacityPerson;
+    }
+        public Room(BasicDBObject object) {
+        numberRoom = object.getInt("numberRoom");
+        price = object.getInt("price");
+        status = object.getBoolean("status");
+        capacityPerson = object.getInt("capacityPerson");
     }
 
     public int getNumberRoom() {
