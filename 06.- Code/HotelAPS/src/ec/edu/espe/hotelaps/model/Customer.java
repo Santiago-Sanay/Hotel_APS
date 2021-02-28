@@ -13,12 +13,13 @@ import java.util.ArrayList;
  *
  * @author Yulliana Roman ESPE-DCCO
  */
-public class Customer extends Person {
 
+    public class Customer extends Person {
+   
     public Customer(String name, String id, String documentNumber, String telephone, String email) {
         super(name, id, documentNumber, telephone, email);
     }
-
+   
     public void addConsumption(Consumption consumption) {
         Gson gson = new Gson();
         String jsonConsumption = gson.toJson(consumption, Consumption.class);
@@ -46,15 +47,16 @@ public class Customer extends Person {
 
         } catch (Exception ex) {
             System.out.println("Error");
-
+            
         }
         return total;
     }
+    
 
     public void showEachConsumption(String dataToFind) {
         String dataOfFile;
         String[] dataFile;
-
+        
         try {
             Gson gson = new Gson();
 
@@ -70,13 +72,13 @@ public class Customer extends Person {
                 consumptions.add(gson.fromJson(dataFile[i], Consumption.class));
                 consumptionPrices = gson.fromJson(dataFile[i], Consumption.class);
                 System.out.println(consumptionPrices.toString());
-
+           
             }
-
+         
         } catch (Exception ex) {
             System.out.println("No hay habitaciones disponibles");
         }
 
     }
 
-}
+    }

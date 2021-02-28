@@ -9,8 +9,7 @@ package ec.edu.espe.hotelaps.model;
  *
  * @author Gabriel Rosero ESPE-DCCO
  */
-public class Worker extends Person {
-
+public class Worker extends Person{
     private String login;
     private String password;
     private boolean acces;

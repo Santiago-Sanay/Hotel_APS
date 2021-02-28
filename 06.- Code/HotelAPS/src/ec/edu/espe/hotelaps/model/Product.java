@@ -8,12 +8,9 @@
  */
 package ec.edu.espe.hotelaps.model;
 
-import com.mongodb.BasicDBObject;
-
 /**
  *
  * @author Yulliana Roman ESPE-DCCO
- * @author Jimmy Simbaña
  */
 public class Product {
 
@@ -29,13 +26,6 @@ public class Product {
         this.salePrice = salePrice;
         this.nameProduct = nameProduct;
         this.isAvailable = isAvailable;
-    }
-        public Product(BasicDBObject object) {
-        idProduct = object.getInt("idProduct");
-        stock = object.getInt("stock");
-        salePrice = object.getInt("salePrice");
-        nameProduct = object.getString("nameProduct");
-        isAvailable = object.getBoolean("isAvailable");
     }
 
     @Override

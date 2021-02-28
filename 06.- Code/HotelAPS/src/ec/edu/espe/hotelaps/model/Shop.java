@@ -54,7 +54,7 @@ public class Shop {
         ArrayList<Product> products1 = new ArrayList();
         String[] productsString;
         productsString = FileManager.findAll("inventoryShop.json");
-
+        
         System.out.println("Cantidad  3Precio  Nombre del producto ");
         System.out.println("**************************************");
         for (int i = 0; i < productsString.length; i++) {

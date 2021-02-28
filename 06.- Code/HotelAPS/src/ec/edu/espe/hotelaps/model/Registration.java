@@ -14,8 +14,7 @@ import java.util.ArrayList;
  * @author Gabriel Rosero ESPE-DCCO
  */
 public class Registration {
-
-    ArrayList<Customer> listCustomer;
+    ArrayList<Customer> listCustomer; 
     ArrayList<Worker> listWorker;
     Gson gson = new Gson();
 
@@ -23,15 +22,13 @@ public class Registration {
         listCustomer = new ArrayList();
         listWorker = new ArrayList();
     }
-
-    public void registerCustomer(Customer customer, String nameFile) {
-        String GsonCustomer = gson.toJson(customer, Customer.class);
-        FileManager.save(nameFile, GsonCustomer);
+    public void registerCustomer(Customer customer, String nameFile){
+       String GsonCustomer=gson.toJson(customer,Customer.class);
+       FileManager.save(nameFile, GsonCustomer);
     }
-
-    public void registerWork(Worker worker) {
-        String GsonWorker = gson.toJson(worker, Worker.class);
-        FileManager.save("listWorker.json", GsonWorker);
+    public void registerWork(Worker worker){
+       String GsonWorker=gson.toJson(worker,Worker.class);
+       FileManager.save("listWorker.json", GsonWorker);
     }
-
+    
 }

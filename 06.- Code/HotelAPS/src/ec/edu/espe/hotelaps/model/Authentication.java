@@ -27,10 +27,10 @@ public class Authentication {
         String recover = FileManager.find("listCostumer.json", id);
         if (!recover.equals("")) {
             verify = true;
-        } else {
+        }else{
             System.out.println("Nombre no registrado");
         }
-
+        
         return verify;
     }
 

@@ -5,26 +5,20 @@
  */
 package ec.edu.espe.hotelaps.model;
 
-import com.mongodb.BasicDBObject;
-
 /**
  *
  * @author Yulliana Roman ESPE-DCCO
  */
 public class Room {
-
+    
     private int numberRoom;
     private float price;
     private boolean status;
     private int capacityPerson;
 
-    public Room() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public String toString() {
-        return "\t" + numberRoom + "\t\t" + price + "\t" + capacityPerson;
+        return "\t"+numberRoom+"\t\t"+price+"\t"+capacityPerson;
     }
 
     public Room(int numberRoom, float price, boolean status, int capacityPerson) {
@@ -32,12 +26,6 @@ public class Room {
         this.price = price;
         this.status = status;
         this.capacityPerson = capacityPerson;
-    }
-        public Room(BasicDBObject object) {
-        numberRoom = object.getInt("numberRoom");
-        price = object.getInt("price");
-        status = object.getBoolean("status");
-        capacityPerson = object.getInt("capacityPerson");
     }
 
     public int getNumberRoom() {
