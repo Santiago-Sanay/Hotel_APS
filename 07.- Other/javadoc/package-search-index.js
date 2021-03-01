@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ec.edu.espe.hotelaps.model"},{"l":"ec.edu.espe.hotelaps.view"}];updateSearchResults();
