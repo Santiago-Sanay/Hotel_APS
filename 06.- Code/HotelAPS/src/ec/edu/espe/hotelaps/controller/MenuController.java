@@ -6,9 +6,15 @@
 package ec.edu.espe.hotelaps.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+import ec.edu.espe.dbmanager.MongoDB;
 import ec.edu.espe.hotelaps.model.Authentication;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
 import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Inventory;
 import ec.edu.espe.hotelaps.model.Product;
@@ -17,18 +23,25 @@ import ec.edu.espe.hotelaps.model.Registry;
 import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
+import java.util.ArrayList;
 import java.util.Scanner;
+import org.bson.Document;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  * @author Samuel Sañay ESPE-DCCO
  * @author Gabriel Rosero ESPE-DCCO
  * @author Jimmy Simbaña
+ * @author Alvaro Vera
  */
 public class MenuController {
 
     public static void registerCustumer() {
         Scanner scanner = new Scanner(System.in);
-
+        Document document = new Document();
         String id;
         String name;
         String documentNumber;
@@ -36,24 +49,31 @@ public class MenuController {
         String email;
 
         System.out.println("Bienvenido al registro del cliente");
+
         System.out.println("Ingrese nombre: ");
         name = scanner.nextLine();
+        document.put("name", name);
 
         System.out.println("Ingrese C.I: ");
         documentNumber = scanner.nextLine();
+        document.put("documentNumber", documentNumber);
 
         System.out.println("Ingrese número de teléfono: ");
         telephone = scanner.nextLine();
+        document.put("telephone", telephone);
 
         System.out.println("Ingrese email: ");
         email = scanner.nextLine();
+        document.put("email", email);
 
         id = documentNumber + "Custom";
+        document.put("id", id);
 
         Customer customerNew = new Customer(name, id, documentNumber, telephone, email);
-        
+        /*
         Registry registry = new Registry("Customer");
-        registry.createCustomer(customerNew);
+        registry.createCustomer(customerNew);*/
+        MongoDB.save(document, "Customer", FrmDatabaseSetup.database);
 
     }
 
@@ -92,39 +112,58 @@ public class MenuController {
         Worker workerNew = new Worker(login, password, access, id, name, documentNumber, telephone, email);
         Registry registry = new Registry("Workers");
         registry.createWorker(workerNew);
-        
 
     }
 
-    public static void pickRoomClient() {
+    public static void pickRoomClient() throws ParseException {
         Hotel hotel = new Hotel();
+        Document document = new Document();
         Customer customerConsumption = null;
         Scanner scanner = new Scanner(System.in);
         boolean status;
         String numberRoom;
         String findRoom;
         String nameSearch = null;
+        
+        /*ArrayList<Customer> customers = new ArrayList<>();
+        Gson gson = new Gson();
+        String json = MongoDB.findCollection("Customers", FrmDatabaseSetup.database);
 
+        java.lang.reflect.Type customerType = new TypeToken<ArrayList<Customer>>() {
+        }.getType();
+        customers = gson.fromJson(json, customerType);
+        for (Customer customer : customers) {
+        }*/
+        //Sacar de la base de datos a lista de objtetos
+        
         int option;
         do {
 
-            System.out.println("Estos son los cuartos disponibles:");
+            System.out.println("Habitaciones:");
 
-            hotel.showRoomFree("true");
-
+            //hotel.showRoomFree("true");
+            System.out.println(MongoDB.findCollection("Room" , FrmDatabaseSetup.database));
+            
             System.out.println("Seleccionar el número de habitación que desea reservar:");
             scanner.nextLine();
-
+            
             numberRoom = scanner.nextLine();
-
+            
+            
+            MongoDB.findToString("Room", "numberRoom", numberRoom, FrmDatabaseSetup.database);
+                    
             Room room = new Room();
-
-            hotel.updateRooms(numberRoom, room);
+            
+            //hotel.updateRooms(numberRoom, room);
+            
             Consumption consumptionRoom = new Consumption();
-
-            consumptionRoom.setNameCustomer(nameSearch);
-            consumptionRoom.setNameProduct("Reservación de habitación");
+            
+            //consumptionRoom.setNameCustomer(nameSearch);
+            document.put("nameCustomer", nameSearch);
+            //consumptionRoom.setNameProduct();
+            document.put("nameProduct", "Reservación de habitación");
             consumptionRoom.setSalePrice(room.getPrice());
+            document.put("nameProduct", "Reservación de habitación");
             customerConsumption.addConsumption(consumptionRoom);
             System.out.println("Desea reservar otra habitacion?");
             System.out.println("1. SI");
@@ -264,8 +303,7 @@ public class MenuController {
             Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
             Inventory inventory = new Inventory();
             inventory.createProduct(productNew);
-  
-            
+
             System.out.println("Desea ingresar otro producto");
             System.out.println("1. Si");
             System.out.println("2. No");
@@ -290,4 +328,28 @@ public class MenuController {
         hotel.assigmentRoom(room);
     }
 
+    public static void searchPerson(String name) {
+        Registry registry = new Registry("Customers");
+        String nameSearch = "";
+        Scanner scanner = new Scanner(System.in);
+        boolean verify = false;
+
+        registry.searchPerson(nameSearch);
+        while (verify == false);
+
+    }
+
+    public static String findCollection(String col, MongoDatabase database) throws ParseException {
+        String json = "";
+        JSONArray jsonArray = new JSONArray();
+        MongoCollection<Document> collection = database.getCollection(col);
+        MongoCursor<Document> resultDocument = collection.find().iterator();
+        while (resultDocument.hasNext()) {
+            JSONObject jsonObject = (JSONObject) new JSONParser().parse(resultDocument.next().toJson());
+            jsonObject.remove("_id");
+            jsonArray.add(jsonObject);
+            json = jsonArray.toJSONString();
+        }
+        return json;
+    }
 }
