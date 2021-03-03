@@ -35,7 +35,6 @@ import org.json.simple.parser.ParseException;
  * @author Samuel Sañay ESPE-DCCO
  * @author Gabriel Rosero ESPE-DCCO
  * @author Jimmy Simbaña
- * @author Alvaro Vera
  */
 public class MenuController {
 

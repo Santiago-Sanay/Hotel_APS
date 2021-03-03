@@ -6,14 +6,19 @@
 package ec.edu.espe.hotelaps.view;
 
 import com.google.gson.Gson;
+import com.mongodb.client.MongoCollection;
+import ec.edu.espe.dbmanager.MongoDB;
 import ec.edu.espe.hotelaps.controller.MenuController;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
 import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.utils.DataVerification;
 import ec.edu.espe.hotelaps.utils.MainMenu;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Scanner;
 
 /**
@@ -22,11 +27,13 @@ import java.util.Scanner;
  */
 public class HotelAPS {
 
-    public static void main(String[] args) throws IOException {
+    @SuppressWarnings("empty-statement")
+    public static void main(String[] args) throws ParseException, org.json.simple.parser.ParseException {
         Scanner scanner = new Scanner(System.in);
         Hotel hotel = new Hotel();
         Gson gson = new Gson();
         Shop shop = new Shop();
+        //Conection conection = new Conection();
         String nameSearch;
 
         Customer customerConsumption;
@@ -44,43 +51,57 @@ public class HotelAPS {
                     break;
                 }
                 case 2: {
-                    MenuController.registerWorker();
-                    break;
+                    System.out.println(MenuController.findCollection("Customer", FrmDatabaseSetup.database));
                 }
                 case 3: {
                     MainMenu.menuLogin();
+
                     int registered;
+                    boolean e = false;
                     registered = scanner.nextInt();
                     switch (registered) {
                         case 1: {
+                            scanner.nextLine();
+                            System.out.println("Ingrese el nombre que registro: ");
+                            nameSearch = scanner.nextLine();
+                            e = MongoDB.find("Customer", "name", nameSearch, FrmDatabaseSetup.database);
+                            if (e == false) {
+                                System.out.println("No se encontro en el registro");
+                            } else {
+                                System.out.println("Esta en el registro");
+                                int service;
+                                MainMenu.menuCustomer();
+                                service = scanner.nextInt();
+                                switch (service) {
+                                    case 1: {
+                                        MenuController.pickRoomClient();
+                                        break;
+
+                                    }
+                                    case 2: {
+                                        MenuController.doRoomService(nameSearch);
+                                        break;
+                                    }
+                                    case 3: {
+
+                                        MenuController.payService();
+
+                                        break;
+                                    }
+                                    default: {
+                                        MainMenu.choseOption();
+                                        break;
+
+                                    }
+                                }
+                                break;
+                            }
+
+                            //MenuController.searchPerson(nameSearch);
+                            /*
                             nameSearch = DataVerification.custumer();
                             boolean verify;
-                            System.out.println("" + nameSearch);
-                            int service;
-                            service = scanner.nextInt();
-                            switch (service) {
-                                case 1: {
-                                    MenuController.pickRoomClient();
-                                    break;
-
-                                }
-                                case 2: {
-                                    MenuController.doRoomService(nameSearch);
-                                    break;
-                                }
-                                case 3: {
-
-                                    MenuController.payService();
-
-                                    break;
-                                }
-                                default: {
-                                    MainMenu.choseOption();
-                                    break;
-
-                                }
-                            }
-                            break;
+                            System.out.println("" + nameSearch);*/
                         }
 
                         case 2: {
@@ -145,6 +166,7 @@ public class HotelAPS {
                     break;
                 }
             }
+
         } while (opc != 4);
     }
 }

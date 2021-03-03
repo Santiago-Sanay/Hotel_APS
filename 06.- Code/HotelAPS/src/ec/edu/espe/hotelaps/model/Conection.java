@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 package ec.edu.espe.hotelaps.model;
+import com.mongodb.Block;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import java.util.Iterator;
 import org.bson.Document;
 
 /**
@@ -24,12 +28,12 @@ public class Conection {
     private DB database;
     private DBCollection collection;
 
-    public Conection(String Dbname, String Collectionname) {
-        cluster =  "mongodb+srv://jasimbana14:1715141188ipa@cluster0.uk6pr.mongodb.net/Database?retryWrites=true&w=majority";
+    public Conection(String dBname, String collectionName) {
+        cluster =  "mongodb+srv://rrssDevelopers:hotelAPS@cluster0.oqpo1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
         uri = new MongoClientURI(cluster);
         mongoClient = new MongoClient(uri);
-        database = mongoClient.getDB(Dbname);
-        collection = database.getCollection(Collectionname);
+        database = mongoClient.getDB(dBname);
+        collection = database.getCollection(collectionName);
     }
 
     public String getCluster() {

@@ -86,5 +86,31 @@ public class Registry {
         }
 
     }
-
+    
+    public String searchPerson(String name) {
+        document.put("name", name);
+        String neim = "";
+        DBCursor cursor = (DBCursor) conection.getCollection().find(document);
+        if (cursor.hasNext()) {
+            DBObject object = cursor.next();
+            neim = object.toString();
+        }else{
+            System.out.println("A");
+        }
+        return neim;
+    }
+    
+    public void updateAdmins(String nameData, String newData, String oldData) {
+       /* int ageOld;
+        int ageNew;
+        try {
+            ageOld = Integer.parseInt(oldData);
+            ageNew = Integer.parseInt(newData);
+            Document findDocument = new Document(nameData, ageOld);
+            Document updateDocument = new Document("$set", new Document(nameData, ageNew));
+            adminDoc.findOneAndUpdate(findDocument, updateDocument);
+        } catch (Exception e) {
+            D
+        }*/
+    }
 }
