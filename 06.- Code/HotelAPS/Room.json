@@ -3,3 +3,4 @@
 {"numberRoom":4,"price":60.0,"status":false,"capacityPerson":2}
 {"numberRoom":1,"price":30.0,"status":false,"capacityPerson":3}
 {"numberRoom":2,"price":20.0,"status":true,"capacityPerson":4}
+{"numberRoom":10,"price":20.0,"status":true,"capacityPerson":3}

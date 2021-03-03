@@ -16,12 +16,14 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import org.bson.BSONObject;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 
 /**
  *
@@ -72,7 +74,7 @@ public class MongoDB {
         MongoCollection<Document> collectionDocument = database.getCollection(collection);
         collectionDocument.insertOne(document);
     }
-
+    
     public static boolean find(String col, String key, Object value, MongoDatabase database) {
         String find = "";
         boolean ocurrency = false;

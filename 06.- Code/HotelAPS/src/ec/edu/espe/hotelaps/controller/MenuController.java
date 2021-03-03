@@ -6,7 +6,6 @@
 package ec.edu.espe.hotelaps.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
@@ -18,13 +17,12 @@ import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
 import ec.edu.espe.hotelaps.model.Hotel;
 import ec.edu.espe.hotelaps.model.Inventory;
 import ec.edu.espe.hotelaps.model.Product;
-import ec.edu.espe.hotelaps.model.Registration;
 import ec.edu.espe.hotelaps.model.Registry;
 import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
-import java.util.ArrayList;
 import java.util.Scanner;
+import org.bson.BSONObject;
 import org.bson.Document;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -75,7 +73,7 @@ public class MenuController {
         MongoDB.save(document, "Customer", FrmDatabaseSetup.database);
 
     }
-
+    
     public static void registerWorker() {
         Scanner scanner = new Scanner(System.in);
         String id;
