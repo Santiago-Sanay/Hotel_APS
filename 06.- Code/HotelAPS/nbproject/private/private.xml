@@ -3,13 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmBuyProduct.java</file>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmShowProduct.java</file>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmCustomerService.java</file>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmReserveRoom.java</file>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmConsumptionDetail.java</file>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmShowRooms.java</file>
-            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmAdminMenu.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Registry.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/controller/MenuController.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Customer.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Product.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/test/ec/edu/espe/hotelaps/model/AuthenticationTest.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Person.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Conection.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/RegistrationRoom.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmReserveRoom.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Inventory.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Registration.java</file>
+            <file>file:/C:/Users/DELL/Desktop/Proyecto/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmRegisterRoom.java</file>
         </group>
     </open-files>
 </project-private>

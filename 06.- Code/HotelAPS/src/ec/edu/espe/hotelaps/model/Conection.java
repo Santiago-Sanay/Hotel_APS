@@ -171,6 +171,54 @@ public class Conection {
         return customerRetrieved;
 
     }
+    public ArrayList<Product> retrieveProducts() {
+        ArrayList<Product> products = new ArrayList<>();
+        MongoCursor<Document> resultDocument = collection.find().iterator();
+        String idProduct;
+        String stock;
+        String salePrice;
+        String nameProduct;
+        Boolean isAvailable;
+        
+        Product product;
+
+        while (resultDocument.hasNext()) {
+            Document lineByLine = resultDocument.next();
+            idProduct = gson.toJson(lineByLine.get("id")).replace("\"", "");
+            stock = gson.toJson(lineByLine.get("stock")).replace("\"", "");
+            salePrice = gson.toJson(lineByLine.get("price")).replace("\"", "");
+            nameProduct = gson.toJson(lineByLine.get("name")).replace("\"", "");
+            isAvailable = Boolean.parseBoolean(gson.toJson(lineByLine.get("availability")));         
+            product = new Product(idProduct, stock, salePrice, nameProduct,isAvailable);
+            products.add(product);
+        }
+        return products;
+
+    }
+    
+        public ArrayList<Room> retrieveRooms() {
+        ArrayList<Room> rooms = new ArrayList<>();
+        MongoCursor<Document> resultDocument = collection.find().iterator();
+        String numberRoom;
+        String price;
+        String status;
+        String capacityPerson;
+        String description;     
+        Room room;
+
+        while (resultDocument.hasNext()) {
+            Document lineByLine = resultDocument.next();
+            numberRoom = gson.toJson(lineByLine.get("number")).replace("\"", "");
+            price = gson.toJson(lineByLine.get("price")).replace("\"", "");
+            status = gson.toJson(lineByLine.get("status")).replace("\"", "");
+            capacityPerson = gson.toJson(lineByLine.get("type")).replace("\"", "");
+            description = gson.toJson(lineByLine.get("description")).replace("\"", "");      
+            room = new Room(numberRoom, price, status, capacityPerson, description);
+            rooms.add(room);
+        }
+        return rooms;
+
+    }
     
     public Product retrieveNameProduct(String username) {
         Product product;

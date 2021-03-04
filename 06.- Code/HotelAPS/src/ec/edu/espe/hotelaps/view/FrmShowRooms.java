@@ -5,6 +5,9 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.MenuController;
+import ec.edu.espe.hotelaps.model.Conection;
+
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
@@ -16,6 +19,15 @@ public class FrmShowRooms extends javax.swing.JFrame {
      */
     public FrmShowRooms() {
         initComponents();
+        Conection conection = new Conection("Room");
+        String[][] rooms;
+        rooms = MenuController.showRoms();
+        listRooms.setModel(new javax.swing.table.DefaultTableModel(rooms,
+                new String[]{
+                    "Numero de Habitacion", "Precio", "Capacidad", "Descripcion"
+                }
+        ));
+
     }
 
     /**
@@ -45,13 +57,10 @@ public class FrmShowRooms extends javax.swing.JFrame {
 
         listRooms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de Habitacion", "Precio", "Capacidad", "Descripcion"
             }
         ));
         jScrollPane1.setViewportView(listRooms);

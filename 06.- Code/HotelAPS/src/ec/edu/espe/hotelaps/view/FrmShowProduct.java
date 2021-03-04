@@ -5,7 +5,9 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.MenuController;
 import static ec.edu.espe.hotelaps.controller.MenuController.showProducts;
+import ec.edu.espe.hotelaps.model.Conection;
 
 /**
  *
@@ -18,6 +20,15 @@ public class FrmShowProduct extends javax.swing.JFrame {
      */
     public FrmShowProduct() {
         initComponents();
+        Conection conection = new Conection("inventoryShop");
+        String[][] products;
+        products = MenuController.showProducts();
+        listRooms.setModel(new javax.swing.table.DefaultTableModel(products,
+    new String [] {
+        "id", "stock", "precio", "nombre"
+    }
+));
+       
     }
 
     /**
@@ -116,19 +127,17 @@ public class FrmShowProduct extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTotalRegisterRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnSearch)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnAddStock)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnDelete)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnExit)))))
+                        .addComponent(lblTotalRegisterRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
+                        .addComponent(btnSearch)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddStock)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDelete)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExit)))
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 819, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,17 +169,7 @@ public class FrmShowProduct extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         
-        String[][] product;
-        product= showProducts();
-        if(txtSearch.equals("Galletitas")){
-        listRooms.setModel(new javax.swing.table.DefaultTableModel(
-                product,
-                new String[]{
-                    "id", "stock", "precio", "nombre"
-                }
-                
-        ));
-        }
+
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed

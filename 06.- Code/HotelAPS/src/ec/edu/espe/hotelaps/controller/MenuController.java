@@ -38,26 +38,37 @@ import org.json.simple.parser.ParseException;
  */
 public class MenuController {
 
-    
-    
-    
-
-    public static String[][] showProducts(){
+    public static String[][] showProducts() {
         int i;
-        Conection conection = new Conection("hotel.inventoryShop");
-        ArrayList<Product> products = new ArrayList<Product>();
-        String[][] product = new String[products.size()][3];
-        for(i=0;i<products.size();i++){
-            product[i][0]=products.get(i).getIdProduct();
-            product[i][1]=products.get(i).getStock();
-            product[i][2]=products.get(i).getSalePrice();
-            product[i][3]=products.get(i).getNameProduct();
+        Conection conection = new Conection("inventoryShop");
+        ArrayList<Product> products = conection.retrieveProducts();
+        String[][] product = new String[products.size()][5];
+        for (i = 0; i < products.size(); i++) {
+            product[i][0] = products.get(i).getNameProduct();
+            product[i][1] = products.get(i).getIdProduct();
+            product[i][2] = products.get(i).getSalePrice();
+            product[i][3] = products.get(i).getStock();
         }
-        
+
         return product;
     }
+
+    public static String[][] showRoms() {
+        int i;
+        Conection conection = new Conection("Room");
+        ArrayList<Room> rooms = conection.retrieveRooms();
+        String[][] room = new String[rooms.size()][5];
+        for (i = 0; i < rooms.size(); i++) {
+            room[i][0] = rooms.get(i).getNumberRoom();
+            room[i][1] = rooms.get(i).getPrice();
+            room[i][2] = rooms.get(i).getCapacityPerson();
+            room[i][3] = rooms.get(i).getDescription();
+        }
+
+        return room;
+    }
 }
-    /*
+/*
 public static void registerCustumer() {
         Scanner scanner = new Scanner(System.in);
         Document document = new Document();
@@ -151,9 +162,9 @@ public static void registerWorker() {
         customers = gson.fromJson(json, customerType);
         for (Customer customer : customers) {
         }*/
-        //Sacar de la base de datos a lista de objtetos
-        
-        /*int option;
+//Sacar de la base de datos a lista de objtetos
+
+/*int option;
         do {
 
             System.out.println("Habitaciones:");

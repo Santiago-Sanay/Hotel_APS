@@ -15,7 +15,15 @@ public class FrmReserveRoom extends javax.swing.JFrame {
      * Creates new form frmReserveRoom
      */
     public FrmReserveRoom() {
-        initComponents();
+
+        listRooms.setModel(new javax.swing.table.DefaultTableModel(
+    new Object [][] {
+
+    },
+    new String [] {
+        "Numero de Habitacion", "Precio", "Capacidad", "Descripcion"
+    }
+));
     }
 
     /**
@@ -43,13 +51,10 @@ public class FrmReserveRoom extends javax.swing.JFrame {
 
         listRooms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero de Habitacion", "Precio", "Capacidad", "Descripcion"
             }
         ));
         jScrollPane1.setViewportView(listRooms);
@@ -63,6 +68,11 @@ public class FrmReserveRoom extends javax.swing.JFrame {
         });
 
         btnReserv.setText("Reservar");
+        btnReserv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReservActionPerformed(evt);
+            }
+        });
 
         btnExit5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/house-chimney.png"))); // NOI18N
         btnExit5.setText("Regresar");
@@ -125,6 +135,10 @@ public class FrmReserveRoom extends javax.swing.JFrame {
         principalMenu.setVisible(true);
     }//GEN-LAST:event_btnExit5ActionPerformed
 
+    private void btnReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReservActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -162,11 +176,6 @@ public class FrmReserveRoom extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnExit1;
-    private javax.swing.JButton btnExit2;
-    private javax.swing.JButton btnExit3;
-    private javax.swing.JButton btnExit4;
     private javax.swing.JButton btnExit5;
     private javax.swing.JButton btnReserv;
     private javax.swing.JLabel jLabel1;

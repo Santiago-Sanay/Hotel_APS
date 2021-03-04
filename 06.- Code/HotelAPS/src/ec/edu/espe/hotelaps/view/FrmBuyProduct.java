@@ -5,6 +5,11 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.MenuController;
+import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.model.Product;
+import java.util.ArrayList;
+
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
@@ -16,6 +21,15 @@ public class FrmBuyProduct extends javax.swing.JFrame {
      */
     public FrmBuyProduct() {
         initComponents();
+        Conection conection = new Conection("inventoryShop");
+        String[][] products;
+        products = MenuController.showProducts();
+        listProducts.setModel(new javax.swing.table.DefaultTableModel(
+                products,
+                new String[]{
+                    "Producto", "Id", "Precio", "Stock"
+                }
+        ));
     }
 
     /**
@@ -43,10 +57,7 @@ public class FrmBuyProduct extends javax.swing.JFrame {
 
         listProducts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Producto", "Id", "Precio", "Stock"
@@ -63,6 +74,11 @@ public class FrmBuyProduct extends javax.swing.JFrame {
         });
 
         btnBuy.setText("Comprar");
+        btnBuy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuyActionPerformed(evt);
+            }
+        });
 
         btnExit5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/house-chimney.png"))); // NOI18N
         btnExit5.setText("Regresar");
@@ -79,7 +95,7 @@ public class FrmBuyProduct extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(24, Short.MAX_VALUE)
+                        .addContainerGap(48, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -130,6 +146,13 @@ public class FrmBuyProduct extends javax.swing.JFrame {
         this.setVisible(false);
         principalMenu.setVisible(true);
     }//GEN-LAST:event_btnExit5ActionPerformed
+
+    private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
+        // TODO add your handling code here:
+        
+ 
+
+    }//GEN-LAST:event_btnBuyActionPerformed
 
     /**
      * @param args the command line arguments
