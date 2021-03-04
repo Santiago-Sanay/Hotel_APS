@@ -11,6 +11,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import ec.edu.espe.dbmanager.MongoDB;
 import ec.edu.espe.hotelaps.model.Authentication;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
@@ -21,6 +22,7 @@ import ec.edu.espe.hotelaps.model.Registry;
 import ec.edu.espe.hotelaps.model.Room;
 import ec.edu.espe.hotelaps.model.Shop;
 import ec.edu.espe.hotelaps.model.Worker;
+import java.util.ArrayList;
 import java.util.Scanner;
 import org.bson.BSONObject;
 import org.bson.Document;
@@ -36,7 +38,27 @@ import org.json.simple.parser.ParseException;
  */
 public class MenuController {
 
-    public static void registerCustumer() {
+    
+    
+    
+
+    public static String[][] showProducts(){
+        int i;
+        Conection conection = new Conection("hotel.inventoryShop");
+        ArrayList<Product> products = new ArrayList<Product>();
+        String[][] product = new String[products.size()][3];
+        for(i=0;i<products.size();i++){
+            product[i][0]=products.get(i).getIdProduct();
+            product[i][1]=products.get(i).getStock();
+            product[i][2]=products.get(i).getSalePrice();
+            product[i][3]=products.get(i).getNameProduct();
+        }
+        
+        return product;
+    }
+}
+    /*
+public static void registerCustumer() {
         Scanner scanner = new Scanner(System.in);
         Document document = new Document();
         String id;
@@ -69,12 +91,11 @@ public class MenuController {
         Customer customerNew = new Customer(name, id, documentNumber, telephone, email);
         /*
         Registry registry = new Registry("Customer");
-        registry.createCustomer(customerNew);*/
+        registry.createCustomer(customerNew);
         MongoDB.save(document, "Customer", FrmDatabaseSetup.database);
 
     }
-    
-    public static void registerWorker() {
+public static void registerWorker() {
         Scanner scanner = new Scanner(System.in);
         String id;
         String name;
@@ -111,7 +132,6 @@ public class MenuController {
         registry.createWorker(workerNew);
 
     }
-
     public static void pickRoomClient() throws ParseException {
         Hotel hotel = new Hotel();
         Document document = new Document();
@@ -122,7 +142,7 @@ public class MenuController {
         String findRoom;
         String nameSearch = null;
         
-        /*ArrayList<Customer> customers = new ArrayList<>();
+        ArrayList<Customer> customers = new ArrayList<>();
         Gson gson = new Gson();
         String json = MongoDB.findCollection("Customers", FrmDatabaseSetup.database);
 
@@ -133,7 +153,7 @@ public class MenuController {
         }*/
         //Sacar de la base de datos a lista de objtetos
         
-        int option;
+        /*int option;
         do {
 
             System.out.println("Habitaciones:");
@@ -349,4 +369,4 @@ public class MenuController {
         }
         return json;
     }
-}
+}*/

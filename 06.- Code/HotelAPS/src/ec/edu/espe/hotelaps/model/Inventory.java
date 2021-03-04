@@ -35,7 +35,7 @@ public class Inventory {
                 .append("stock", product.getStock())
                 .append("salePrice", product.getSalePrice())
                 .append("nameProduct", product.getNameProduct())
-                .append("isAvailable", product.isIsAvailable());
+                .append("isAvailable", product.getIsAvailable());
         conection.getCollection().insert(document);
     }
 
@@ -58,7 +58,7 @@ public class Inventory {
             object.put("stock", product.getStock());
             object.put("salePrice", product.getSalePrice());
             object.put("nameProduct", product.getNameProduct());
-            object.put("isAvailable", product.isIsAvailable());
+            object.put("isAvailable", product.getIsAvailable());
             conection.getCollection().save(object);
         }
     }

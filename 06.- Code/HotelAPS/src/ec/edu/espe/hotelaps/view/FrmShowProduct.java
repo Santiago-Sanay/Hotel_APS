@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import static ec.edu.espe.hotelaps.controller.MenuController.showProducts;
+
 /**
  *
  * @author Santiago Sanay ESPE-DCCO
@@ -54,13 +56,10 @@ public class FrmShowProduct extends javax.swing.JFrame {
 
         listRooms.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "id", "stock", "precio", "nombre"
             }
         ));
         jScrollPane1.setViewportView(listRooms);
@@ -160,7 +159,18 @@ public class FrmShowProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+        
+        String[][] product;
+        product= showProducts();
+        if(txtSearch.equals("Galletitas")){
+        listRooms.setModel(new javax.swing.table.DefaultTableModel(
+                product,
+                new String[]{
+                    "id", "stock", "precio", "nombre"
+                }
+                
+        ));
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed

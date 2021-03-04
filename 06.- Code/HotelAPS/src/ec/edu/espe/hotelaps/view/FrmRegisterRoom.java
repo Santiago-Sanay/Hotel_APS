@@ -41,11 +41,10 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
         cboType = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        btnNewRegister = new javax.swing.JButton();
         btnSaveRegister = new javax.swing.JButton();
         btnCancelRegister = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtFeatures = new javax.swing.JTextField();
         cboStatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,14 +72,6 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
 
         jLabel6.setText("Caracteristicas:");
 
-        btnNewRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/pencil-write-1-alternate.png"))); // NOI18N
-        btnNewRegister.setText("Nuevo");
-        btnNewRegister.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewRegisterActionPerformed(evt);
-            }
-        });
-
         btnSaveRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/task-checklist-check.png"))); // NOI18N
         btnSaveRegister.setText("Guardar");
         btnSaveRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +82,11 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
 
         btnCancelRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
         btnCancelRegister.setText("Cancelar");
+        btnCancelRegister.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelRegisterActionPerformed(evt);
+            }
+        });
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/house-chimney.png"))); // NOI18N
         btnExit.setText("Regresar");
@@ -114,31 +110,26 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnNewRegister)
-                                .addComponent(jLabel4)))
+                                .addComponent(btnSaveRegister)
+                                .addComponent(jLabel3)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(151, 151, 151)
-                                        .addComponent(btnCancelRegister))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(btnSaveRegister)
-                                        .addComponent(btnExit))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtNumberRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                                     .addComponent(cboType, 0, 181, Short.MAX_VALUE)
                                     .addComponent(txtPriceRoom)
-                                    .addComponent(jTextField1)
-                                    .addComponent(cboStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(txtFeatures)
+                                    .addComponent(cboStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(btnCancelRegister)
+                                .addGap(34, 34, 34)
+                                .addComponent(btnExit))))
                     .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,31 +155,25 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93)
+                    .addComponent(txtFeatures, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNewRegister)
+                    .addComponent(btnCancelRegister)
                     .addComponent(btnSaveRegister)
-                    .addComponent(btnCancelRegister))
-                .addGap(18, 18, 18)
-                .addComponent(btnExit)
+                    .addComponent(btnExit))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNewRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewRegisterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNewRegisterActionPerformed
-
     private void btnSaveRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveRegisterActionPerformed
         // TODO add your handling code here:
         
         Conection conection = new Conection("Room");
-        String a = cboStatus.getActionCommand();
-        String b = cboType.getActionCommand();
-        Room room = new Room(txtNumberRoom.getText(),txtPriceRoom.getText(),a,b,jTextField1.getText());
+        String a = (String) cboStatus.getSelectedItem();
+        String b = (String) cboType.getSelectedItem();
+        Room room = new Room(txtNumberRoom.getText(),txtPriceRoom.getText(),a,b,txtFeatures.getText());
         conection.saveRoom(room);
         
         //String[] options = {"Guardar", "Salir"};
@@ -223,6 +208,12 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
         this.setVisible(false);
         principalMenu.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnCancelRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelRegisterActionPerformed
+        txtNumberRoom.setText("");
+        txtPriceRoom.setText("");
+        txtFeatures.setText("");
+    }//GEN-LAST:event_btnCancelRegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,7 +256,6 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelRegister;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnNewRegister;
     private javax.swing.JButton btnSaveRegister;
     private javax.swing.JComboBox<String> cboStatus;
     private javax.swing.JComboBox<String> cboType;
@@ -274,8 +264,8 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel room;
+    private javax.swing.JTextField txtFeatures;
     private javax.swing.JTextField txtNumberRoom;
     private javax.swing.JTextField txtPriceRoom;
     // End of variables declaration//GEN-END:variables

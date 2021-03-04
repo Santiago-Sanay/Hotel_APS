@@ -3,41 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/WhatsApp%20Image%202021-03-02%20at%2023.46.40.jpeg</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmClientLoggin.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Room.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/search-alternate.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmAdminMenu.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/HotelAPS.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/pencil-write-1-alternate.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Person.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/aprendizaje-3.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/._login-1-alternate.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmWorkerLoggin.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmRegisterProduct.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/task-checklist-check.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/listWorker.json</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Conection.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmPrincipalMenu.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmConection.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/bin-1.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Inventory.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/utils/MainMenu.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/inventoryShop.json</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmRegisterRoom.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmCustomerService.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/Room.json</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/house-chimney.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Customer.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/consumption.json</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Worker.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmBuyProduct.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/listCostumer.json</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/cliente.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/model/Product.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/files/delete.png</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmConsumptionDetail.java</file>
-            <file>file:/C:/Users/theda/OneDrive/Escritorio/Version%20final%20proyecto/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmRegisterCustomer.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmBuyProduct.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmShowProduct.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmCustomerService.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmReserveRoom.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmConsumptionDetail.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmShowRooms.java</file>
+            <file>file:/C:/Users/Asesor/Hotel_APS/06.-%20Code/HotelAPS/src/ec/edu/espe/hotelaps/view/FrmAdminMenu.java</file>
         </group>
     </open-files>
 </project-private>

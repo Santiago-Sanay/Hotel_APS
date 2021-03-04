@@ -15,6 +15,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import java.util.ArrayList;
 import java.util.Iterator;
 import org.bson.BSONObject;
 import org.bson.Document;
@@ -96,6 +97,29 @@ public class Conection {
 
     }
     
+    public ArrayList<Product> retrieveProduct() {
+        Product product;
+        MongoCursor<Document> searchDocument = collection.find().iterator();
+        String id;
+        String stock;
+        String price;
+        String name;
+        String status;
+
+        ArrayList<Product> productRetrieved = new ArrayList<Product>();
+        while (searchDocument.hasNext()) {
+            Document theObj = searchDocument.next();
+            id = gson.toJson(theObj.get("id")).replace("\"", "");
+            stock = gson.toJson(theObj.get("stock")).replace("\"", "");
+            price = gson.toJson(theObj.get("price")).replace("\"", "");
+            name = gson.toJson(theObj.get("name")).replace("\"", "");
+            status = gson.toJson(theObj.get("status")).replace("\"", "");
+            product = new Product(id,stock,price,name,true);
+        }
+        return productRetrieved;
+
+    }
+    
     public void saveProduct(Product product) {
         
         BSONObject bson;
@@ -124,8 +148,6 @@ public class Conection {
 
     }
     
-
-    
     public Customer retrieveNameCustomer(String username) {
         Customer customer;
         MongoCursor<Document> searchDocument = collection.find().iterator();
@@ -147,6 +169,31 @@ public class Conection {
 
         }
         return customerRetrieved;
+
+    }
+    
+    public Product retrieveNameProduct(String username) {
+        Product product;
+        MongoCursor<Document> searchDocument = collection.find().iterator();
+        String name,id,stock,price,status;
+
+        Product productRetrieved = new Product("id", " stock","price", "name", true);
+        while (searchDocument.hasNext()) {
+            Document theObj = searchDocument.next();
+            id = gson.toJson(theObj.get("id")).replace("\"", "");
+            stock = gson.toJson(theObj.get("stock")).replace("\"", "");
+            price = gson.toJson(theObj.get("price")).replace("\"", "");
+            name = gson.toJson(theObj.get("name")).replace("\"", "");
+            status = gson.toJson(theObj.get("status")).replace("\"", "");
+            product = new Product(id,stock,price,name,true);
+
+            if (username.contentEquals(product.getNameProduct())) {
+                productRetrieved = product;
+            }
+            System.out.println("prueba impresio--->"+product);
+
+        }
+        return productRetrieved;
 
     }
     /*MongoCollection<Document> collection;

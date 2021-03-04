@@ -71,6 +71,11 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
 
         btnCancelCustomer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
         btnCancelCustomer.setText("Cancelar");
+        btnCancelCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelCustomerActionPerformed(evt);
+            }
+        });
 
         txtNameCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +192,13 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnSaveCustomerActionPerformed
+
+    private void btnCancelCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelCustomerActionPerformed
+        txtNameCustomer.setText("");
+        txtCiCustomer.setText("");
+        txtTelephoneCustomer.setText("");
+        txtEmailCustomer.setText("");
+    }//GEN-LAST:event_btnCancelCustomerActionPerformed
 
     /**
      * @param args the command line arguments

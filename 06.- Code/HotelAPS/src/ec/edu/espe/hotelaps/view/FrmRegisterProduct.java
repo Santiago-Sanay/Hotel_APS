@@ -69,6 +69,11 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
         btnCancel.setText("Cancelar");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/house-chimney.png"))); // NOI18N
         btnExit.setText("Salir");
@@ -175,6 +180,13 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
             txtNameProduct.setText("");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        txtNameProduct.setText("");
+        txtIdProduct.setText("");
+        txtCuantity.setText("");
+        txtPrice.setText("");
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments

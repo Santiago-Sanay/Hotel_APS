@@ -144,9 +144,7 @@ public class FrmWorkerLoggin extends javax.swing.JFrame {
         }
                 
         }
-        
-        
-        
+ 
         
         /**
          * @param args the command line arguments
