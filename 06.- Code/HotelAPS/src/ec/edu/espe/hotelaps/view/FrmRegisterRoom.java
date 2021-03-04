@@ -5,6 +5,11 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.model.Product;
+import ec.edu.espe.hotelaps.model.Room;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
@@ -31,7 +36,6 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
         txtNumberRoom = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtPriceRoom = new javax.swing.JTextField();
-        cboStatus = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cboType = new javax.swing.JComboBox<>();
@@ -40,9 +44,9 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
         btnNewRegister = new javax.swing.JButton();
         btnSaveRegister = new javax.swing.JButton();
         btnCancelRegister = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtDescription = new javax.swing.JTextArea();
         btnExit = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        cboStatus = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,13 +63,11 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
             }
         });
 
-        cboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-seleccione el estado-", "Disponible", "Ocupado" }));
-
         jLabel2.setText("Precio diario de la habitación:");
 
         jLabel3.setText("Estatus de la habitación:");
 
-        cboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-seleccione el tipo-", "Matrimonial", "Individual", "Familiar" }));
+        cboType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Matrimonial", "Individual", "Familiar" }));
 
         jLabel4.setText("Tipo de la habitación:");
 
@@ -90,10 +92,6 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
         btnCancelRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
         btnCancelRegister.setText("Cancelar");
 
-        txtDescription.setColumns(20);
-        txtDescription.setRows(5);
-        jScrollPane1.setViewportView(txtDescription);
-
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/house-chimney.png"))); // NOI18N
         btnExit.setText("Regresar");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +99,8 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
+
+        cboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Habilitado", "Deshabilitado" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,24 +119,24 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
                                 .addComponent(btnNewRegister)
                                 .addComponent(jLabel4)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNumberRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(cboType, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cboStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, 181, Short.MAX_VALUE)
-                                        .addComponent(txtPriceRoom, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnCancelRegister, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(151, 151, 151)
+                                        .addComponent(btnCancelRegister))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(btnSaveRegister)
-                                        .addComponent(btnExit))))))
+                                        .addComponent(btnExit))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNumberRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                                    .addComponent(cboType, 0, 181, Short.MAX_VALUE)
+                                    .addComponent(txtPriceRoom)
+                                    .addComponent(jTextField1)
+                                    .addComponent(cboStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
@@ -155,17 +155,17 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(cboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cboType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(27, 27, 27)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(93, 93, 93)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNewRegister)
                     .addComponent(btnSaveRegister)
@@ -184,6 +184,34 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
 
     private void btnSaveRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveRegisterActionPerformed
         // TODO add your handling code here:
+        
+        Conection conection = new Conection("Room");
+        String a = cboStatus.getActionCommand();
+        String b = cboType.getActionCommand();
+        Room room = new Room(txtNumberRoom.getText(),txtPriceRoom.getText(),a,b,jTextField1.getText());
+        conection.saveRoom(room);
+        
+        //String[] options = {"Guardar", "Salir"};
+        
+        /*
+        int x = JOptionPane.showOptionDialog(null, "Seleccione su opcion",
+                "!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if(x==0){
+            
+            
+            txtIdProduct.setText("");
+            txtCuantity.setText("");
+            txtPrice.setText("");
+            txtNameProduct.setText("");
+      
+        }
+        else{
+            txtIdProduct.setText("");
+            txtCuantity.setText("");
+            txtPrice.setText("");
+            txtNameProduct.setText("");
+        }*/
     }//GEN-LAST:event_btnSaveRegisterActionPerformed
 
     private void txtPriceRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceRoomActionPerformed
@@ -246,9 +274,8 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel room;
-    private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtNumberRoom;
     private javax.swing.JTextField txtPriceRoom;
     // End of variables declaration//GEN-END:variables

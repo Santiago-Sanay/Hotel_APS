@@ -7,7 +7,7 @@ package ec.edu.espe.hotelaps.view;
 
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Santiago Sanay ESPE-DCCO
  */
 public class FrmConsumptionDetail extends javax.swing.JFrame {
 

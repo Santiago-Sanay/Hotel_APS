@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
@@ -117,14 +119,41 @@ public class FrmWorkerLoggin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnEnterWorkerLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterWorkerLogginActionPerformed
-        FrmAdminMenu adminMenu = new FrmAdminMenu();
-        this.setVisible(false);
-        adminMenu.setVisible(true);
+        if (txtUserLoggin.getText().contentEquals("admin") && pfdPasswordWorkerLoggin.getText().contentEquals("admin")) {
+            FrmAdminMenu adminMenu = new FrmAdminMenu();
+            this.setVisible(false);
+            adminMenu.setVisible(true);
+
     }//GEN-LAST:event_btnEnterWorkerLogginActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+        else{
+            
+        String[] options = {"Volver a intentar", "Salir"};
+   
+        int x = JOptionPane.showOptionDialog(null, "Usuario / Contraseña incorrectos",
+                "!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+        if(x==0){
+            
+            txtUserLoggin.setText("");
+            pfdPasswordWorkerLoggin.setText("");
+            
+        }
+        else{
+            System.exit(0);
+        }
+                
+        }
+        
+        
+        
+        
+        /**
+         * @param args the command line arguments
+         */
+        
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -139,20 +168,21 @@ public class FrmWorkerLoggin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmWorkerLoggin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmWorkerLoggin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmWorkerLoggin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmWorkerLoggin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmPrincipalMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmWorkerLoggin().setVisible(true);
+                new FrmPrincipalMenu().setVisible(true);
             }
         });
     }

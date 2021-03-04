@@ -9,6 +9,7 @@ import ec.edu.espe.dbmanager.MongoDB;
 import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
+import javax.swing.JOptionPane;
 import org.bson.Document;
 
 /**
@@ -162,7 +163,29 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         
         Conection conection = new Conection("Customer");
         Customer customer=new Customer(txtNameCustomer.getText(),"",txtCiCustomer.getText(),txtTelephoneCustomer.getText(),txtEmailCustomer.getText());
-        conection.save(customer);
+    
+        //JOptionPane.INFORMATION_MESSAGE,("Se ha guardado correctamente");
+        String[] options = {"Guardar", "Salir"};
+
+        int x = JOptionPane.showOptionDialog(null, "Seleccione su opcion",
+                "!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if(x==0){
+            
+            conection.save(customer);
+            txtNameCustomer.setText("");
+            txtCiCustomer.setText("");
+            txtTelephoneCustomer.setText("");
+            txtEmailCustomer.setText("");
+      
+        }
+        else{
+            txtNameCustomer.setText("");
+            txtCiCustomer.setText("");
+            txtTelephoneCustomer.setText("");
+            txtEmailCustomer.setText("");
+        }
+        
     }//GEN-LAST:event_btnSaveCustomerActionPerformed
 
     /**

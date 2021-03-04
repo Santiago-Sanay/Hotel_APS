@@ -23,7 +23,7 @@ public class Inventory {
     
 
     public Inventory() {
-        conection = new Conection("Products","Product");
+        conection = new Conection("inventoryShop");
         document = new BasicDBObject();
         listProduct = new ArrayList();
 

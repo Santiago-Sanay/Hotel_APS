@@ -274,10 +274,10 @@ public class MenuController {
     }
 
     public static void addProduct() {
-        int option;
-        int idProduct;
-        int stock;
-        float salePrice;
+        String option;
+        String idProduct;
+        String stock;
+        String salePrice;
         String nameProduct;
         Scanner scanner = new Scanner(System.in);
 
@@ -289,13 +289,13 @@ public class MenuController {
             nameProduct = scanner.nextLine();
 
             System.out.println("Ingrese el id del producto: ");
-            idProduct = scanner.nextInt();
+            idProduct = scanner.nextString();
 
             System.out.println("Ingrese la cantidad que desea agregar: ");
-            stock = scanner.nextInt();
+            stock = scanner.nextString();
 
             System.out.println("Ingrese el precio de venta: ");
-            salePrice = scanner.nextFloat();
+            salePrice = scanner.nextString();
 
             Product productNew = new Product(idProduct, stock, salePrice, nameProduct, true);
             Inventory inventory = new Inventory();

@@ -7,6 +7,7 @@ package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,6 +115,24 @@ public class FrmConection extends javax.swing.JFrame {
             FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
             this.setVisible(false);
             principalMenu.setVisible(true);
+        }
+        else{
+            
+        String[] options = {"Volver a intentar", "Salir"};
+
+        int x = JOptionPane.showOptionDialog(null, "Usuario / Contraseña incorrectos",
+                "!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[0]);
+        if(x==0){
+            
+            txtUserConect.setText("");
+            txtPassConect.setText("");
+            
+        }
+        else{
+            System.exit(0);
+        }
+                
         }
         
     }//GEN-LAST:event_btnAccesActionPerformed

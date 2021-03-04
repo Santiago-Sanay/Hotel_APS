@@ -13,10 +13,11 @@ import com.mongodb.BasicDBObject;
  */
 public class Room {
 
-    private int numberRoom;
-    private float price;
-    private boolean status;
-    private int capacityPerson;
+    private String numberRoom;
+    private String price;
+    private String status;
+    private String capacityPerson;
+    private String description;
 
     public Room() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -24,51 +25,94 @@ public class Room {
 
     @Override
     public String toString() {
-        return "\t" + numberRoom + "\t\t" + price + "\t" + capacityPerson;
+        return "\t" + getNumberRoom() + "\t\t" + getPrice() + "\t" + getCapacityPerson();
     }
 
-    public Room(int numberRoom, float price, boolean status, int capacityPerson) {
+    public Room(String numberRoom, String price, String status, String capacityPerson, String description) {
         this.numberRoom = numberRoom;
         this.price = price;
         this.status = status;
         this.capacityPerson = capacityPerson;
+        this.description = description;
     }
         public Room(BasicDBObject object) {
-        numberRoom = object.getInt("numberRoom");
-        price = object.getInt("price");
-        status = object.getBoolean("status");
-        capacityPerson = object.getInt("capacityPerson");
+        numberRoom = object.getString("numberRoom");
+        price = object.getString("price");
+        status = object.getString("status");
+        capacityPerson = object.getString("capacityPerson");
+        description = object.getString("description");
     }
 
-    public int getNumberRoom() {
+    /**
+     * @return the numberRoom
+     */
+    public String getNumberRoom() {
         return numberRoom;
     }
 
-    public void setNumberRoom(int numberRoom) {
+    /**
+     * @param numberRoom the numberRoom to set
+     */
+    public void setNumberRoom(String numberRoom) {
         this.numberRoom = numberRoom;
     }
 
-    public float getPrice() {
+    /**
+     * @return the price
+     */
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public boolean isStatus() {
+    /**
+     * @return the status
+     */
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public int getCapacityPerson() {
+    /**
+     * @return the capacityPerson
+     */
+    public String getCapacityPerson() {
         return capacityPerson;
     }
 
-    public void setCapacityPerson(int capacityPerson) {
+    /**
+     * @param capacityPerson the capacityPerson to set
+     */
+    public void setCapacityPerson(String capacityPerson) {
         this.capacityPerson = capacityPerson;
     }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    
+        
 }

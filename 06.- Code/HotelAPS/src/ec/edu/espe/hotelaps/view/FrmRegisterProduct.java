@@ -5,9 +5,14 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.Product;
+import javax.swing.JOptionPane;
+
 /**
  *
- * @author Gabriel Rosero ESPE-DCCO
+ * @author Santiago Sanay ESPE-DCCO
  */
 public class FrmRegisterProduct extends javax.swing.JFrame {
 
@@ -56,6 +61,11 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/task-checklist-check.png"))); // NOI18N
         btnSave.setText("Guardar");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
         btnCancel.setText("Cancelar");
@@ -138,6 +148,33 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
         this.setVisible(false);
         principalMenu.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
+        Conection conection = new Conection("inventoryShop");
+        Product product = new Product(txtIdProduct.getText(),txtCuantity.getText(),txtPrice.getText(),txtNameProduct.getText(),true);
+        conection.saveProduct(product);
+        String[] options = {"Guardar", "Salir"};
+
+        int x = JOptionPane.showOptionDialog(null, "Seleccione su opcion",
+                "!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if(x==0){
+            
+            conection.saveProduct(product);
+            txtIdProduct.setText("");
+            txtCuantity.setText("");
+            txtPrice.setText("");
+            txtNameProduct.setText("");
+      
+        }
+        else{
+            txtIdProduct.setText("");
+            txtCuantity.setText("");
+            txtPrice.setText("");
+            txtNameProduct.setText("");
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments

@@ -67,6 +67,7 @@ public class Conection {
 
     }
     
+    
     public Customer retrieveCustomer(String username, String password) {
         Customer customer;
         MongoCursor<Document> searchDocument = collection.find().iterator();
@@ -94,6 +95,36 @@ public class Conection {
         return customerRetrieved;
 
     }
+    
+    public void saveProduct(Product product) {
+        
+        BSONObject bson;
+        Document products;
+        products = new Document("name", product.getNameProduct());
+        products.append("id", product.getIdProduct());
+        products.append("price", product.getSalePrice());
+        products.append("stock", product.getStock());
+        products.append("availability", product.getIsAvailable());
+        collection.insertOne(products);
+        mongo.close();
+
+    }
+    
+    public void saveRoom(Room room) {
+        
+        BSONObject bson;
+        Document rooms;
+        rooms = new Document("number", room.getNumberRoom());
+        rooms.append("price", room.getPrice());
+        rooms.append("status", room.getStatus());
+        rooms.append("type", room.getCapacityPerson());
+        rooms.append("description", room.getDescription());
+        collection.insertOne(rooms);
+        mongo.close();
+
+    }
+    
+
     
     public Customer retrieveNameCustomer(String username) {
         Customer customer;
