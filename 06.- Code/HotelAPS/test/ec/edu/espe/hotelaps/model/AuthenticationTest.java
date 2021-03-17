@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import ec.edu.espe.hotelaps.utils.Authentication;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

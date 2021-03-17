@@ -5,6 +5,7 @@
  */
 package ec.edu.espe.hotelaps.model;
 
+import ec.edu.espe.hotelaps.utils.Conection;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;

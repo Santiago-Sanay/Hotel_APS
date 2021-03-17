@@ -7,7 +7,7 @@ package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.hotelaps.controller.MenuController;
 import static ec.edu.espe.hotelaps.controller.MenuController.showProducts;
-import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.utils.Conection;
 
 /**
  *

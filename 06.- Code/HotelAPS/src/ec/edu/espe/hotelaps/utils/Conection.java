@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.hotelaps.model;
+package ec.edu.espe.hotelaps.utils;
 import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
@@ -15,6 +15,9 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.Product;
+import ec.edu.espe.hotelaps.model.Room;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.bson.BSONObject;

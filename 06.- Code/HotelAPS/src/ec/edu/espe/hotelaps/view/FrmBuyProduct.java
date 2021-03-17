@@ -6,7 +6,7 @@
 package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.hotelaps.controller.MenuController;
-import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Product;
 import java.util.ArrayList;
 

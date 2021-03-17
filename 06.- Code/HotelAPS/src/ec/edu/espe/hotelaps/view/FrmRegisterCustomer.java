@@ -6,7 +6,7 @@
 package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.dbmanager.MongoDB;
-import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
 import javax.swing.JOptionPane;

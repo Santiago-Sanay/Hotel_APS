@@ -5,7 +5,6 @@
  */
 package ec.edu.espe.hotelaps.utils;
 
-import ec.edu.espe.hotelaps.model.Authentication;
 import java.util.Scanner;
 
 /**

@@ -8,7 +8,7 @@ package ec.edu.espe.hotelaps.view;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import ec.edu.espe.hotelaps.controller.MenuController;
-import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
 import static ec.edu.espe.hotelaps.model.FrmDatabaseSetup.database;
 import org.bson.Document;

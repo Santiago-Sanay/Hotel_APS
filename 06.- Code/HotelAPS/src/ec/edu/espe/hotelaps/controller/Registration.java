@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.hotelaps.model;
+package ec.edu.espe.hotelaps.controller;
 
 import com.google.gson.Gson;
 import ec.edu.espe.filemanager.utils.FileManager;
+import ec.edu.espe.hotelaps.model.Customer;
+import ec.edu.espe.hotelaps.model.Worker;
 import java.util.ArrayList;
 
 /**

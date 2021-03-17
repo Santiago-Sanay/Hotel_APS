@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.hotelaps.view;
 
-import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Product;
 import ec.edu.espe.hotelaps.model.Room;
 import javax.swing.JOptionPane;

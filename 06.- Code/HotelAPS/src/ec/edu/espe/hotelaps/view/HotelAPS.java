@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;
 import ec.edu.espe.dbmanager.MongoDB;
 import ec.edu.espe.hotelaps.controller.MenuController;
-import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Consumption;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
