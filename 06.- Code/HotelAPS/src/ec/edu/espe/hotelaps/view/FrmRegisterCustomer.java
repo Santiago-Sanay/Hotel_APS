@@ -180,7 +180,10 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         
         customer = new Customer(Name, Ci, Name, Telephone, Email);
         register.save(customer);
-        //
+        
+        
+        ///////////////
+        // Conection Mongo db
         
         
         Conection conection = new Conection("Customer");
@@ -207,6 +210,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             txtTelephoneCustomer.setText("");
             txtEmailCustomer.setText("");
         }
+        
         
     }//GEN-LAST:event_btnSaveCustomerActionPerformed
 

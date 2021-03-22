@@ -5,6 +5,8 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.Register;
+import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Product;
 import ec.edu.espe.hotelaps.model.Room;
@@ -13,6 +15,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
+ * @author Jimmy Simbaña
  */
 public class FrmRegisterRoom extends javax.swing.JFrame {
 
@@ -169,11 +172,26 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
 
     private void btnSaveRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveRegisterActionPerformed
         // TODO add your handling code here:
+        String NumberRoom;
+        String PriceRoom;
+        String Features;
+        String Status;
+        Customer Type;
+        Register register = new Register();
         
+        NumberRoom = txtNumberRoom.getText();
+        PriceRoom = txtPriceRoom.getText();
+        Features = txtFeatures.getText();
+ 
+        
+        Room room= new Room();
+        register.save(room);
+        
+        //  Conection Mongo db
         Conection conection = new Conection("Room");
         String a = (String) cboStatus.getSelectedItem();
         String b = (String) cboType.getSelectedItem();
-        Room room = new Room(txtNumberRoom.getText(),txtPriceRoom.getText(),a,b,txtFeatures.getText());
+        //Room room = new Room(txtNumberRoom.getText(),txtPriceRoom.getText(),a,b,txtFeatures.getText());
         conection.saveRoom(room);
         
         //String[] options = {"Guardar", "Salir"};

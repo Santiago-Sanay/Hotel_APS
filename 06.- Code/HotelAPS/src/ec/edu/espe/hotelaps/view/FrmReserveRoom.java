@@ -8,6 +8,7 @@ package ec.edu.espe.hotelaps.view;
 /**
  *
  * @author Santiago Sanay ESPE-DCCO
+ * @author Jimmy Simbaña
  */
 public class FrmReserveRoom extends javax.swing.JFrame {
 

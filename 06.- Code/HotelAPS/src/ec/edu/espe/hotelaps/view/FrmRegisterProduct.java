@@ -5,14 +5,18 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.Register;
 import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Product;
+import ec.edu.espe.hotelaps.model.Room;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Santiago Sanay ESPE-DCCO
+ * @author Jimmy Simbaña
+ * 
  */
 public class FrmRegisterProduct extends javax.swing.JFrame {
 
@@ -156,8 +160,26 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
+        String IdProduct;
+        String Cuantify;
+        String Price;
+        String NameProduct;
+        Boolean isAvailable;
+        Register register = new Register();
+        
+        IdProduct = txtIdProduct.getText();
+        Cuantify = txtCuantity.getText();
+        Price = txtPrice.getText();
+        NameProduct = txtNameProduct.getText();
+        isAvailable = true;
+        
+        Product product= new Product(IdProduct, Price, Price, NameProduct, true);
+        register.save(product);
+        
+        // // Conection Mongo db
+        
         Conection conection = new Conection("inventoryShop");
-        Product product = new Product(txtIdProduct.getText(),txtCuantity.getText(),txtPrice.getText(),txtNameProduct.getText(),true);
+        //Product product = new Product(txtIdProduct.getText(),txtCuantity.getText(),txtPrice.getText(),txtNameProduct.getText(),true);
         conection.saveProduct(product);
         String[] options = {"Guardar", "Salir"};
 
