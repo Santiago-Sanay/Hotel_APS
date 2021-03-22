@@ -28,6 +28,7 @@ public class Person {
         this.telephone = telephone;
         this.email = email;
     }
+    
 
     public Person(BasicDBObject object) {
         
