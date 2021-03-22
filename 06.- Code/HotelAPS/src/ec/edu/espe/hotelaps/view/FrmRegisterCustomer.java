@@ -6,6 +6,7 @@
 package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.dbmanager.MongoDB;
+import ec.edu.espe.hotelaps.controller.Register;
 import ec.edu.espe.hotelaps.utils.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
@@ -165,9 +166,25 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
 
     private void btnSaveCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCustomerActionPerformed
 
+        String Name;
+        String Ci;
+        String Telephone;
+        String Email;
+        Customer customer;
+        Register register = new Register();
+        
+        Name = txtNameCustomer.getText();
+        Ci = txtCiCustomer.getText();
+        Telephone = txtTelephoneCustomer.getText();
+        Email = txtEmailCustomer.getText();
+        
+        customer = new Customer(Name, Ci, Name, Telephone, Email);
+        register.save(customer);
+        //
+        
         
         Conection conection = new Conection("Customer");
-        Customer customer=new Customer(txtNameCustomer.getText(),"",txtCiCustomer.getText(),txtTelephoneCustomer.getText(),txtEmailCustomer.getText());
+        //Customer customer=new Customer(txtNameCustomer.getText(),"",txtCiCustomer.getText(),txtTelephoneCustomer.getText(),txtEmailCustomer.getText());
     
         //JOptionPane.INFORMATION_MESSAGE,("Se ha guardado correctamente");
         String[] options = {"Guardar", "Salir"};

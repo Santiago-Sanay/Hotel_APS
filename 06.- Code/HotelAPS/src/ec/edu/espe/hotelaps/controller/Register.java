@@ -6,6 +6,7 @@
 package ec.edu.espe.hotelaps.controller;
 
 import ec.edu.espe.filemanager.utils.FileManager;
+import ec.edu.espe.hotelaps.model.Customer;
 import ec.edu.espe.hotelaps.model.Person;
 import ec.edu.espe.hotelaps.utils.Persistence;
 
@@ -14,7 +15,7 @@ import ec.edu.espe.hotelaps.utils.Persistence;
  * @author Jimmy Simbaña <your.name at your.org>
  */
 public class Register {
-        public boolean save(Person person){
+        public boolean save(Customer customer){
         boolean saved = saved = false;
         FileManager persistence = new FileManager();
         
@@ -24,7 +25,7 @@ public class Register {
         
         
         //json conversion, or any string Iwant to save
-        persistence.save(person.toString(),"reservations");
+        persistence.save(customer.toString(),"reservations");
         
         return saved;
         
