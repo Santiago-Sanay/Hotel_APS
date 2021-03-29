@@ -5,7 +5,7 @@
  */
 package ec.edu.espe.hotelaps.view;
 
-import ec.edu.espe.hotelaps.utils.Conection;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
 import javax.swing.JOptionPane;
 
@@ -31,12 +31,15 @@ public class FrmConection extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUserConect = new javax.swing.JTextField();
-        txtPassConect = new javax.swing.JTextField();
         btnAcces = new javax.swing.JButton();
+        pswPassConect = new javax.swing.JPasswordField();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,10 +74,14 @@ public class FrmConection extends javax.swing.JFrame {
                                 .addComponent(txtUserConect, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnAcces)
-                                    .addComponent(txtPassConect, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnAcces)
+                                        .addGap(31, 31, 31))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(39, 39, 39)
+                                        .addComponent(pswPassConect, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap(147, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,12 +94,12 @@ public class FrmConection extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtUserConect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(txtPassConect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(pswPassConect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addComponent(btnAcces)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
@@ -111,7 +118,7 @@ public class FrmConection extends javax.swing.JFrame {
             principalMenu.setVisible(true);
         }*/
        
-        if(txtUserConect.getText().contentEquals("rrssDevelopers")&&txtPassConect.getText().contentEquals("hotelAPS")){ 
+        if(txtUserConect.getText().contentEquals("rrssDevelopers")&&pswPassConect.getText().contentEquals("hotelAPS")){ 
             FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
             this.setVisible(false);
             principalMenu.setVisible(true);
@@ -126,7 +133,7 @@ public class FrmConection extends javax.swing.JFrame {
         if(x==0){
             
             txtUserConect.setText("");
-            txtPassConect.setText("");
+            pswPassConect.setText("");
             
         }
         else{
@@ -177,7 +184,8 @@ public class FrmConection extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtPassConect;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField pswPassConect;
     private javax.swing.JTextField txtUserConect;
     // End of variables declaration//GEN-END:variables
 

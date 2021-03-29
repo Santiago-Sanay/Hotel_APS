@@ -5,9 +5,8 @@
  */
 package ec.edu.espe.hotelaps.view;
 
-import ec.edu.espe.hotelaps.controller.Register;
-import ec.edu.espe.hotelaps.model.Customer;
-import ec.edu.espe.hotelaps.utils.Conection;
+import ec.edu.espe.hotelaps.controller.RegisterController;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Product;
 import ec.edu.espe.hotelaps.model.Room;
 import javax.swing.JOptionPane;
@@ -15,7 +14,6 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Gabriel Rosero ESPE-DCCO
- * @author Jimmy Simbaña
  */
 public class FrmRegisterRoom extends javax.swing.JFrame {
 
@@ -171,50 +169,41 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveRegisterActionPerformed
-        // TODO add your handling code here:
-        String NumberRoom;
-        String PriceRoom;
-        String Features;
-        String Status;
-        Customer Type;
-        Register register = new Register();
+        String numberRoom;
+        String priceRoom;
+        String status = (String) cboStatus.getSelectedItem();
+        String type = (String) cboType.getSelectedItem();
+        String features;
+        Room room;
+        RegisterController controller;
         
-        NumberRoom = txtNumberRoom.getText();
-        PriceRoom = txtPriceRoom.getText();
-        Features = txtFeatures.getText();
- 
+        numberRoom = txtNumberRoom.getText();
+        priceRoom = txtPriceRoom.getText();
+        features = txtFeatures.getText();
+//        Conection conection = new Conection("Room");
+
+         room = new Room(numberRoom,priceRoom,status,type,features);
+         controller = new RegisterController(this);
         
-        Room room= new Room();
-        register.save(room);
+        String[] options = {"Guardar", "Salir"};
         
-        //  Conection Mongo db
-        Conection conection = new Conection("Room");
-        String a = (String) cboStatus.getSelectedItem();
-        String b = (String) cboType.getSelectedItem();
-        //Room room = new Room(txtNumberRoom.getText(),txtPriceRoom.getText(),a,b,txtFeatures.getText());
-        conection.saveRoom(room);
         
-        //String[] options = {"Guardar", "Salir"};
-        
-        /*
         int x = JOptionPane.showOptionDialog(null, "Seleccione su opcion",
                 "!",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
         if(x==0){
             
-            
-            txtIdProduct.setText("");
-            txtCuantity.setText("");
-            txtPrice.setText("");
-            txtNameProduct.setText("");
+            controller.registerRoom(room);
+            txtFeatures.setText("");
+            txtNumberRoom.setText("");
+            txtPriceRoom.setText("");
       
         }
         else{
-            txtIdProduct.setText("");
-            txtCuantity.setText("");
-            txtPrice.setText("");
-            txtNameProduct.setText("");
-        }*/
+            txtFeatures.setText("");
+            txtNumberRoom.setText("");
+            txtPriceRoom.setText("");
+        }
     }//GEN-LAST:event_btnSaveRegisterActionPerformed
 
     private void txtPriceRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceRoomActionPerformed

@@ -5,9 +5,10 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.DeleteController;
 import ec.edu.espe.hotelaps.controller.MenuController;
 import static ec.edu.espe.hotelaps.controller.MenuController.showProducts;
-import ec.edu.espe.hotelaps.utils.Conection;
+import ec.edu.espe.hotelaps.model.Conection;
 
 /**
  *
@@ -24,7 +25,7 @@ public class FrmShowProduct extends javax.swing.JFrame {
         String[][] products;
         products = MenuController.showProducts();
         listRooms.setModel(new javax.swing.table.DefaultTableModel(products,
-    new String [] {
+        new String [] {
         "id", "stock", "precio", "nombre"
     }
 ));
@@ -42,12 +43,10 @@ public class FrmShowProduct extends javax.swing.JFrame {
 
         room = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtSearch = new javax.swing.JTextField();
+        txtDeleteProduct = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         listRooms = new javax.swing.JTable();
         lblTotalRegisterRooms = new javax.swing.JLabel();
-        btnSearch = new javax.swing.JButton();
-        btnAddStock = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
@@ -57,11 +56,11 @@ public class FrmShowProduct extends javax.swing.JFrame {
         room.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         room.setText("APSShop");
 
-        jLabel2.setText("Buscar:");
+        jLabel2.setText("Producto a eliminar ");
 
-        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtDeleteProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSearchActionPerformed(evt);
+                txtDeleteProductActionPerformed(evt);
             }
         });
 
@@ -76,21 +75,6 @@ public class FrmShowProduct extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listRooms);
 
         lblTotalRegisterRooms.setText("Registros totales");
-
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/search-alternate.png"))); // NOI18N
-        btnSearch.setText("Buscar");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnAddStock.setText("Agregar S.");
-        btnAddStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddStockActionPerformed(evt);
-            }
-        });
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/bin-1.png"))); // NOI18N
         btnDelete.setText("Eliminar");
@@ -119,8 +103,8 @@ public class FrmShowProduct extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtDeleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(233, 233, 233)
                                 .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -128,11 +112,7 @@ public class FrmShowProduct extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lblTotalRegisterRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 265, Short.MAX_VALUE)
-                        .addComponent(btnSearch)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAddStock)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnExit)))
@@ -144,40 +124,33 @@ public class FrmShowProduct extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDeleteProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotalRegisterRooms)
-                    .addComponent(btnSearch)
-                    .addComponent(btnAddStock)
                     .addComponent(btnDelete)
                     .addComponent(btnExit))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+    private void txtDeleteProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteProductActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSearchActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        
-
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnAddStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStockActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAddStockActionPerformed
+    }//GEN-LAST:event_txtDeleteProductActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        String delete ;
+        delete = txtDeleteProduct.getText();
+        DeleteController deleteController = new DeleteController();
+        deleteController.DeleteProduct(delete);
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
@@ -222,15 +195,13 @@ public class FrmShowProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddStock;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTotalRegisterRooms;
     private javax.swing.JTable listRooms;
     private javax.swing.JLabel room;
-    private javax.swing.JTextField txtSearch;
+    private javax.swing.JTextField txtDeleteProduct;
     // End of variables declaration//GEN-END:variables
 }

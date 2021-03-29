@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espe.hotelaps.utils;
+package ec.edu.espe.hotelaps.model;
 import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.Block;
@@ -15,9 +15,6 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import ec.edu.espe.hotelaps.model.Customer;
-import ec.edu.espe.hotelaps.model.Product;
-import ec.edu.espe.hotelaps.model.Room;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.bson.BSONObject;
@@ -57,19 +54,19 @@ public class Conection {
         }
     }
 
-    public void save(Customer customer) {
-
-        BSONObject bson;
-        Document admin;
-        admin = new Document("name", customer.getName());
-        admin.append("id", customer.getId());
-        admin.append("documentNumber", customer.getDocumentNumber());
-        admin.append("Telephone", customer.getTelephone());
-        admin.append("Email", customer.getEmail());
-        collection.insertOne(admin);
-        mongo.close();
-
-    }
+//    public void save(Customer customer) {
+//
+//        BSONObject bson;
+//        Document admin;
+//        admin = new Document("name", customer.getName());
+//        admin.append("id", customer.getId());
+//        admin.append("documentNumber", customer.getDocumentNumber());
+//        admin.append("Telephone", customer.getTelephone());
+//        admin.append("Email", customer.getEmail());
+//        collection.insertOne(admin);
+//        mongo.close();
+//
+//    }
     
     
     public Customer retrieveCustomer(String username, String password) {
@@ -123,57 +120,58 @@ public class Conection {
 
     }
     
-    public void saveProduct(Product product) {
-        
-        BSONObject bson;
-        Document products;
-        products = new Document("name", product.getNameProduct());
-        products.append("id", product.getIdProduct());
-        products.append("price", product.getSalePrice());
-        products.append("stock", product.getStock());
-        products.append("availability", product.getIsAvailable());
-        collection.insertOne(products);
-        mongo.close();
-
-    }
+//    public void saveProduct(Product product) {
+//        
+//        BSONObject bson;
+//        Document products;
+//        products = new Document("name", product.getNameProduct());
+//        products.append("id", product.getIdProduct());
+//        products.append("price", product.getSalePrice());
+//        products.append("stock", product.getStock());
+//        products.append("availability", product.getIsAvailable());
+//        collection.insertOne(products);
+//        mongo.close();
+//
+//    }
     
-    public void saveRoom(Room room) {
-        
-        BSONObject bson;
-        Document rooms;
-        rooms = new Document("number", room.getNumberRoom());
-        rooms.append("price", room.getPrice());
-        rooms.append("status", room.getStatus());
-        rooms.append("type", room.getCapacityPerson());
-        rooms.append("description", room.getDescription());
-        collection.insertOne(rooms);
-        mongo.close();
-
-    }
+//    public void saveRoom(Room room) {
+//        
+//        BSONObject bson;
+//        Document rooms;
+//        rooms = new Document("number", room.getNumberRoom());
+//        rooms.append("price", room.getPrice());
+//        rooms.append("status", room.getStatus());
+//        rooms.append("type", room.getCapacityPerson());
+//        rooms.append("description", room.getDescription());
+//        collection.insertOne(rooms);
+//        mongo.close();
+//
+//    }
     
-    public Customer retrieveNameCustomer(String username) {
-        Customer customer;
-        MongoCursor<Document> searchDocument = collection.find().iterator();
-        String name,id,documentNumber,telephone,email;
+//    public Customer retrieveNameCustomer(String username) {
+//        Customer customer;
+//        MongoCursor<Document> searchDocument = collection.find().iterator();
+//        String name,id,documentNumber,telephone,email;
+//
+//        Customer customerRetrieved = new Customer("name", " id","documentNumber", "telephone", "email");
+//        while (searchDocument.hasNext()) {
+//            Document theObj = searchDocument.next();
+////            name = gson.toJson(theObj.get("name")).replace("\"", "");
+//             id = gson.toJson(theObj.get("id"));
+////            documentNumber = gson.toJson(theObj.get("documentNumber")).replace("\"", "");
+////            telephone = gson.toJson(theObj.get("telephone")).replace("\"", "");
+////            email = gson.toJson(theObj.get("email")).replace("\"", "");
+//            customer = new Customer(name,id,documentNumber,telephone,email);
+//    
+//            if (username.)
+//           if(username.equals(customer.getId()){
+//                customerRetrieved = customer;
+//            }
+//
+//        }
+//        return customerRetrieved;
 
-        Customer customerRetrieved = new Customer("name", " id","documentNumber", "telephone", "email");
-        while (searchDocument.hasNext()) {
-            Document theObj = searchDocument.next();
-            name = gson.toJson(theObj.get("name")).replace("\"", "");
-            id = gson.toJson(theObj.get("id")).replace("\"", "");
-            documentNumber = gson.toJson(theObj.get("documentNumber")).replace("\"", "");
-            telephone = gson.toJson(theObj.get("telephone")).replace("\"", "");
-            email = gson.toJson(theObj.get("email")).replace("\"", "");
-            customer = new Customer(name,id,documentNumber,telephone,email);
-
-            if (username.contentEquals(customer.getName())) {
-                customerRetrieved = customer;
-            }
-
-        }
-        return customerRetrieved;
-
-    }
+   // }
     public ArrayList<Product> retrieveProducts() {
         ArrayList<Product> products = new ArrayList<>();
         MongoCursor<Document> resultDocument = collection.find().iterator();
@@ -247,20 +245,6 @@ public class Conection {
         return productRetrieved;
 
     }
-    /*MongoCollection<Document> collection;
-    private String cluster;
-    private MongoClientURI uri;
-    private MongoClient mongoClient;
-    private DB database;
-    //private DBCollection collection;
-
-    public Conection(String dBname, String collectionName) {
-        cluster =  "mongodb+srv://rrssDevelopers:hotelAPS@cluster0.oqpo1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-        uri = new MongoClientURI(cluster);
-        mongoClient = new MongoClient(uri);
-        database = mongoClient.getDB(dBname);
-        collection = database.getCollection("customer");
-    }*/
 
 }
 

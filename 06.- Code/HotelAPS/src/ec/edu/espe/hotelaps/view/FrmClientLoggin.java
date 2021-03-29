@@ -8,13 +8,11 @@ package ec.edu.espe.hotelaps.view;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import ec.edu.espe.hotelaps.controller.MenuController;
-import ec.edu.espe.hotelaps.utils.Conection;
+import ec.edu.espe.hotelaps.controller.RetriveDataController;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
-import static ec.edu.espe.hotelaps.model.FrmDatabaseSetup.database;
 import org.bson.Document;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+
 
 /**
  *
@@ -53,6 +51,12 @@ public class FrmClientLoggin extends javax.swing.JFrame {
         room1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         room1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         room1.setText("Ingrese el nombre con");
+
+        txtNameCustomerLoggin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameCustomerLogginActionPerformed(evt);
+            }
+        });
 
         btnEnter.setText("Iniciar Sesion");
         btnEnter.addActionListener(new java.awt.event.ActionListener() {
@@ -117,17 +121,18 @@ public class FrmClientLoggin extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
 
-        txtNameCustomerLoggin.getText();
-        Conection conection = new Conection("Customer");
-        Customer customer = conection.retrieveNameCustomer(txtNameCustomerLoggin.getText());
-        System.out.println("customer" + customer.getName() + "");
-        if (customer.getName().contentEquals(txtNameCustomerLoggin.getText())) {
-            FrmCustomerService loggin = new FrmCustomerService();
-            this.setVisible(false);
-            loggin.setVisible(true);
+    String id;
+        RetriveDataController controller;
+        id = txtNameCustomerLoggin.getText();
+        controller = new RetriveDataController(this);
+        controller.validationCustomer(id);
 
     }//GEN-LAST:event_btnEnterActionPerformed
-    }
+
+    private void txtNameCustomerLogginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameCustomerLogginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameCustomerLogginActionPerformed
+    
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

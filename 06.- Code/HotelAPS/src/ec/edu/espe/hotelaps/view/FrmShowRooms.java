@@ -6,7 +6,8 @@
 package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.hotelaps.controller.MenuController;
-import ec.edu.espe.hotelaps.utils.Conection;
+import ec.edu.espe.hotelaps.model.Conection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -163,7 +164,7 @@ public class FrmShowRooms extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
+       // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed

@@ -5,10 +5,15 @@
  */
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.controller.MenuController;
+import ec.edu.espe.hotelaps.controller.RegisterController;
+import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.model.Customer;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Santiago Sanay ESPE-DCCO
- * @author Jimmy Simbaña
  */
 public class FrmReserveRoom extends javax.swing.JFrame {
 
@@ -16,15 +21,15 @@ public class FrmReserveRoom extends javax.swing.JFrame {
      * Creates new form frmReserveRoom
      */
     public FrmReserveRoom() {
-
-        listRooms.setModel(new javax.swing.table.DefaultTableModel(
-    new Object [][] {
-
-    },
-    new String [] {
-        "Numero de Habitacion", "Precio", "Capacidad", "Descripcion"
-    }
-));
+        initComponents();
+        Conection conection = new Conection("Room");
+        String[][] rooms;
+        rooms = MenuController.showRoms();
+        listRooms.setModel(new javax.swing.table.DefaultTableModel(rooms,
+                new String[]{
+                    "Numero de Habitacion", "Precio", "Capacidad", "Descripcion"
+                }
+        ));
     }
 
     /**
@@ -98,9 +103,9 @@ public class FrmReserveRoom extends javax.swing.JFrame {
                         .addGap(0, 297, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(btnReserv)
-                .addGap(68, 68, 68)
+                .addGap(238, 238, 238)
+                .addComponent(btnReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
                 .addComponent(btnExit5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
@@ -117,9 +122,11 @@ public class FrmReserveRoom extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtSelectRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReserv)
-                    .addComponent(btnExit5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnExit5)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReserv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(5, 5, 5)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -137,7 +144,24 @@ public class FrmReserveRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExit5ActionPerformed
 
     private void btnReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservActionPerformed
+        String dataReserve;
+        dataReserve=txtSelectRoom.getText();
+        RegisterController controller = new RegisterController();
+        controller.registerRoomCustumer(dataReserve);
+        String[] options = {"Reservar", "Salir"};
+
+        int x = JOptionPane.showOptionDialog(null, "Ustd va a reservar la habitacion" + txtSelectRoom.getText(),
+                "!",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if (x == 0) {
+
+            txtSelectRoom.setText("");
+
+        } else {
+            txtSelectRoom.setText("");
+        }
         // TODO add your handling code here:
+
     }//GEN-LAST:event_btnReservActionPerformed
 
     /**

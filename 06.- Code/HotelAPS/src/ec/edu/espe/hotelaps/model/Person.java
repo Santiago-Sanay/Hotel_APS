@@ -12,7 +12,7 @@ import com.mongodb.BasicDBObject;
  * @author Gabriel Rosero ESPE-DCCO
  * @author Jimmy Simbaña
  */
-public class Person {
+public abstract class Person {
 
     private String name;
     private String id;
@@ -28,7 +28,6 @@ public class Person {
         this.telephone = telephone;
         this.email = email;
     }
-    
 
     public Person(BasicDBObject object) {
         

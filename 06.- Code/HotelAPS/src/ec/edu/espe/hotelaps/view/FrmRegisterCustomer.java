@@ -5,11 +5,10 @@
  */
 package ec.edu.espe.hotelaps.view;
 
-import ec.edu.espe.dbmanager.MongoDB;
-import ec.edu.espe.hotelaps.controller.Register;
-import ec.edu.espe.hotelaps.utils.Conection;
+
+import ec.edu.espe.hotelaps.controller.RegisterController;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Customer;
-import ec.edu.espe.hotelaps.model.FrmDatabaseSetup;
 import javax.swing.JOptionPane;
 import org.bson.Document;
 
@@ -47,6 +46,8 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         txtCiCustomer = new javax.swing.JTextField();
         txtEmailCustomer = new javax.swing.JTextField();
         btnExit = new javax.swing.JButton();
+        ID = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +93,8 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             }
         });
 
+        ID.setText("I.D:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +110,11 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
                         .addComponent(btnExit))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtId))
                             .addComponent(room, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,12 +123,12 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
                                 .addGap(65, 65, 65)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmailCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTelephoneCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCiCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNameCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEmailCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(txtTelephoneCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(txtCiCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                                    .addComponent(txtNameCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))))))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +151,11 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmailCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ID))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelCustomer)
                     .addComponent(btnSaveCustomer)
@@ -166,42 +177,31 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
 
     private void btnSaveCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveCustomerActionPerformed
 
-        String Name;
-        String Ci;
-        String Telephone;
-        String Email;
-        Customer customer;
-        Register register = new Register();
-        
-        Name = txtNameCustomer.getText();
-        Ci = txtCiCustomer.getText();
-        Telephone = txtTelephoneCustomer.getText();
-        Email = txtEmailCustomer.getText();
-        
-        customer = new Customer(Name, Ci, Name, Telephone, Email);
-        register.save(customer);
-        
-        
-        ///////////////
-        // Conection Mongo db
-        
-        
-        Conection conection = new Conection("Customer");
-        //Customer customer=new Customer(txtNameCustomer.getText(),"",txtCiCustomer.getText(),txtTelephoneCustomer.getText(),txtEmailCustomer.getText());
-    
-        //JOptionPane.INFORMATION_MESSAGE,("Se ha guardado correctamente");
+        String name;
+        String id;
+        String idDocument;
+        String telephone;
+        String mail;
+        Customer customer ;
+        RegisterController controller;
+        name = txtNameCustomer.getText();
+        id = txtId.getText();
+        idDocument = txtCiCustomer.getText();
+        telephone =txtTelephoneCustomer.getText();
+        mail = txtEmailCustomer.getText();
+        customer = new Customer(name, id, idDocument, telephone, mail);
+        controller = new RegisterController(this);
         String[] options = {"Guardar", "Salir"};
-
         int x = JOptionPane.showOptionDialog(null, "Seleccione su opcion",
                 "!",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
         if(x==0){
-            
-            conection.save(customer);
+             controller.registerCustomer(customer);
             txtNameCustomer.setText("");
             txtCiCustomer.setText("");
             txtTelephoneCustomer.setText("");
             txtEmailCustomer.setText("");
+            txtId.setText("");
       
         }
         else{
@@ -209,8 +209,8 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
             txtCiCustomer.setText("");
             txtTelephoneCustomer.setText("");
             txtEmailCustomer.setText("");
+            txtId.setText("");
         }
-        
         
     }//GEN-LAST:event_btnSaveCustomerActionPerformed
 
@@ -219,6 +219,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
         txtCiCustomer.setText("");
         txtTelephoneCustomer.setText("");
         txtEmailCustomer.setText("");
+         txtId.setText("");
     }//GEN-LAST:event_btnCancelCustomerActionPerformed
 
     /**
@@ -260,6 +261,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ID;
     private javax.swing.JButton btnCancelCustomer;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnSaveCustomer;
@@ -270,6 +272,7 @@ public class FrmRegisterCustomer extends javax.swing.JFrame {
     private javax.swing.JLabel room;
     private javax.swing.JTextField txtCiCustomer;
     private javax.swing.JTextField txtEmailCustomer;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNameCustomer;
     private javax.swing.JTextField txtTelephoneCustomer;
     // End of variables declaration//GEN-END:variables

@@ -5,17 +5,11 @@
  */
 package ec.edu.espe.hotelaps.utils;
 
-import org.bson.Document;
-
 /**
  *
  * @author SSS SANTIAGO
  */
-public interface Persistence {
-    
-    boolean  save(Document data);
-    
-    
+public interface NOSQLDBManager extends Persistence{
     
     
     

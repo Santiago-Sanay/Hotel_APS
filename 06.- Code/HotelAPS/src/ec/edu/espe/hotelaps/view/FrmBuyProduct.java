@@ -6,9 +6,10 @@
 package ec.edu.espe.hotelaps.view;
 
 import ec.edu.espe.hotelaps.controller.MenuController;
-import ec.edu.espe.hotelaps.utils.Conection;
+import ec.edu.espe.hotelaps.model.Conection;
 import ec.edu.espe.hotelaps.model.Product;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +32,6 @@ public class FrmBuyProduct extends javax.swing.JFrame {
                 }
         ));
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,9 +148,20 @@ public class FrmBuyProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExit5ActionPerformed
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
-        // TODO add your handling code here:
-        
- 
+    String[] options = {"Comprar", "Salir"};
+
+        int x = JOptionPane.showOptionDialog(null, "Usted va a comprar"+txtNameProduct.getText(),
+                "Compra Producto",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+        if(x==0){
+            
+            txtNameProduct.setText("");
+      
+        }
+        else{
+
+            txtNameProduct.setText("");
+        }
 
     }//GEN-LAST:event_btnBuyActionPerformed
 
