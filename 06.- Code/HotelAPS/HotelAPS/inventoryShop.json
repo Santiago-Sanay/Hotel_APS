@@ -1,7 +1,0 @@
-{"idProduct":2,"stock":3,"salePrice":1.5,"nameProduct":"CocaCola","isAvailable":true}
-{"idProduct":3,"stock":5,"salePrice":0.9,"nameProduct":"Doritos","isAvailable":true}
-{"idProduct":4,"stock":5,"salePrice":1.5,"nameProduct":"Corneto","isAvailable":true}
-{"idProduct":5,"stock":3,"salePrice":2.00,"nameProduct":"Cerveza","isAvailable":true}
-{"idProduct":6,"stock":5,"salePrice":2.50,"nameProduct":"Redbull","isAvailable":true}
-{"idProduct":1,"stock":1,"salePrice":0.75,"nameProduct":"Manicho","isAvailable":false}
-{"idProduct":123,"stock":12,"salePrice":1.3,"nameProduct":"oreo","isAvailable":true}
