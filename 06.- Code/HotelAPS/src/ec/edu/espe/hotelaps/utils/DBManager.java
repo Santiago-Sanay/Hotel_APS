@@ -14,7 +14,6 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import java.util.ArrayList;
-import static jdk.internal.org.jline.keymap.KeyMap.key;
 import org.bson.Document;
 
 /**
