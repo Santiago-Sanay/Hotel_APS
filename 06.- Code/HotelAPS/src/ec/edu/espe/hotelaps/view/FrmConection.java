@@ -31,15 +31,14 @@ public class FrmConection extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUserConect = new javax.swing.JTextField();
         btnAcces = new javax.swing.JButton();
         pswPassConect = new javax.swing.JPasswordField();
-
-        jPasswordField1.setText("jPasswordField1");
+        jLabel4 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -63,6 +62,17 @@ public class FrmConection extends javax.swing.JFrame {
         });
         getContentPane().add(btnAcces, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
         getContentPane().add(pswPassConect, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 114, 102, -1));
+
+        jLabel4.setBackground(new java.awt.Color(153, 153, 153));
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/WAAAAAALLLL.png"))); // NOI18N
+        jLabel4.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jLabel4ComponentAdded(evt);
+            }
+        });
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -106,6 +116,10 @@ public class FrmConection extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAccesActionPerformed
 
+    private void jLabel4ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jLabel4ComponentAdded
+        
+    }//GEN-LAST:event_jLabel4ComponentAdded
+
     /**
      * @param args the command line arguments
      */
@@ -146,7 +160,8 @@ public class FrmConection extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField pswPassConect;
     private javax.swing.JTextField txtUserConect;
     // End of variables declaration//GEN-END:variables
