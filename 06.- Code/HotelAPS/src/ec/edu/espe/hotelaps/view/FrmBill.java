@@ -68,7 +68,7 @@ private void cargaCli(){
 
         jLabel1.setText("Factura");
 
-        jLabel2.setText("Cliente");
+        jLabel2.setText("Usuario");
 
         jLabel3.setText("C.I.");
 
