@@ -220,6 +220,30 @@ public class Conection {
         return rooms;
 
     }
+        public ArrayList<Customer> retrieveCustomers() {
+        ArrayList<Customer> customers = new ArrayList<>();
+        MongoCursor<Document> resultDocument = collection.find().iterator();
+        String name;
+        String id;
+        String documentNumber;
+        String telephone;
+        String email;
+        Customer customer;
+
+        while (resultDocument.hasNext()) {
+            Document theObj = resultDocument.next();
+            name = gson.toJson(theObj.get("name")).replace("\"", "");
+            id = gson.toJson(theObj.get("id")).replace("\"", "");
+            documentNumber = gson.toJson(theObj.get("documentNumber")).replace("\"", "");
+            telephone = gson.toJson(theObj.get("telephone")).replace("\"", "");
+            email = gson.toJson(theObj.get("email")).replace("\"", "");
+            customer = new Customer(name,id,documentNumber,telephone,email);
+            customers.add(customer);
+        }
+        return customers;
+
+    }
+        
     
     public Product retrieveNameProduct(String username) {
         Product product;
