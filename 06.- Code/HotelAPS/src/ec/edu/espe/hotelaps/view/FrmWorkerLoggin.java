@@ -47,6 +47,7 @@ public class FrmWorkerLoggin extends javax.swing.JFrame {
 
         jLabel2.setText("Clave:");
 
+        btnEnterWorkerLoggin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/task-checklist-check.png"))); // NOI18N
         btnEnterWorkerLoggin.setText("Iniciar Sesion");
         btnEnterWorkerLoggin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

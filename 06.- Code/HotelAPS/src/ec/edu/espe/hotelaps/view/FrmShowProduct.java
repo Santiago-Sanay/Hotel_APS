@@ -46,7 +46,6 @@ public class FrmShowProduct extends javax.swing.JFrame {
         txtDeleteProduct = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         listRooms = new javax.swing.JTable();
-        lblTotalRegisterRooms = new javax.swing.JLabel();
         btnDelete = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
@@ -73,8 +72,6 @@ public class FrmShowProduct extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(listRooms);
-
-        lblTotalRegisterRooms.setText("Registros totales");
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/bin-1.png"))); // NOI18N
         btnDelete.setText("Eliminar");
@@ -110,9 +107,7 @@ public class FrmShowProduct extends javax.swing.JFrame {
                                 .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblTotalRegisterRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDelete)
                         .addGap(18, 18, 18)
                         .addComponent(btnExit)))
@@ -132,7 +127,6 @@ public class FrmShowProduct extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotalRegisterRooms)
                     .addComponent(btnDelete)
                     .addComponent(btnExit))
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -154,9 +148,9 @@ public class FrmShowProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmAdminMenu adminMenu = new FrmAdminMenu();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        adminMenu.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
@@ -199,7 +193,6 @@ public class FrmShowProduct extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTotalRegisterRooms;
     private javax.swing.JTable listRooms;
     private javax.swing.JLabel room;
     private javax.swing.JTextField txtDeleteProduct;

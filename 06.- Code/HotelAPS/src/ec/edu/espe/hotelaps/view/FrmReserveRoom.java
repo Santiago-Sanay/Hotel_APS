@@ -73,6 +73,7 @@ public class FrmReserveRoom extends javax.swing.JFrame {
             }
         });
 
+        btnReserv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/pencil-write-1-alternate.png"))); // NOI18N
         btnReserv.setText("Reservar");
         btnReserv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +105,8 @@ public class FrmReserveRoom extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(238, 238, 238)
-                .addComponent(btnReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addComponent(btnReserv)
+                .addGap(35, 35, 35)
                 .addComponent(btnExit5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
@@ -127,7 +128,7 @@ public class FrmReserveRoom extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnReserv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(5, 5, 5)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
         pack();
@@ -138,9 +139,9 @@ public class FrmReserveRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSelectRoomActionPerformed
 
     private void btnExit5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit5ActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmCustomerService customerService = new FrmCustomerService();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        customerService.setVisible(true);
     }//GEN-LAST:event_btnExit5ActionPerformed
 
     private void btnReservActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservActionPerformed

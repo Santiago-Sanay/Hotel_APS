@@ -95,9 +95,9 @@ public class FrmConsumptionDetail extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmCustomerService customerService = new FrmCustomerService();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        customerService.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
@@ -125,6 +125,7 @@ public class FrmConsumptionDetail extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrmConsumptionDetail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

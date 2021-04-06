@@ -41,16 +41,17 @@ public class FrmClientLoggin extends javax.swing.JFrame {
         txtNameCustomerLoggin = new javax.swing.JTextField();
         btnEnter = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        room2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         room.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         room.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        room.setText("el que se regsitro");
+        room.setText("la palabra \"Custom\"");
 
         room1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
         room1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        room1.setText("Ingrese el nombre con");
+        room1.setText("Ingrese la cedula con la que");
 
         txtNameCustomerLoggin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +59,7 @@ public class FrmClientLoggin extends javax.swing.JFrame {
             }
         });
 
+        btnEnter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/task-checklist-check.png"))); // NOI18N
         btnEnter.setText("Iniciar Sesion");
         btnEnter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,41 +75,51 @@ public class FrmClientLoggin extends javax.swing.JFrame {
             }
         });
 
+        room2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        room2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        room2.setText("se regsitro seguida de");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(room1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(room1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(txtNameCustomerLoggin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(btnEnter)
-                        .addGap(60, 60, 60)
-                        .addComponent(btnExit)))
-                .addContainerGap(54, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(112, 112, 112)
+                                .addComponent(txtNameCustomerLoggin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(53, 53, 53)
+                                    .addComponent(btnEnter)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnExit))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGap(29, 29, 29)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(room2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 42, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(room1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(room2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtNameCustomerLoggin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnter)
                     .addComponent(btnExit))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -121,11 +133,11 @@ public class FrmClientLoggin extends javax.swing.JFrame {
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
 
-    String id;
+    String name;
         RetriveDataController controller;
-        id = txtNameCustomerLoggin.getText();
+        name = txtNameCustomerLoggin.getText();
         controller = new RetriveDataController(this);
-        controller.validationCustomer(id);
+        controller.validationCustomer(name);
 
     }//GEN-LAST:event_btnEnterActionPerformed
 
@@ -171,6 +183,7 @@ public class FrmClientLoggin extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JLabel room;
     private javax.swing.JLabel room1;
+    private javax.swing.JLabel room2;
     private javax.swing.JTextField txtNameCustomerLoggin;
     // End of variables declaration//GEN-END:variables
 }

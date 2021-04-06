@@ -167,6 +167,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnStatusRoom">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/ec/edu/espe/hotelaps/files/pencil-write-1-alternate.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Habilitar"/>
       </Properties>
     </Component>

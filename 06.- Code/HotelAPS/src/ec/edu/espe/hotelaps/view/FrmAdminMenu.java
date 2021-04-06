@@ -37,6 +37,9 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         mbrRooms = new javax.swing.JMenu();
         mimCreateRoom = new javax.swing.JMenuItem();
         mimShorRoom = new javax.swing.JMenuItem();
+        mbrRooms1 = new javax.swing.JMenu();
+        mimShorRoom1 = new javax.swing.JMenuItem();
+        mimShorRoom2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,32 +93,52 @@ public class FrmAdminMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(mbrRooms);
 
+        mbrRooms1.setText("Gestion");
+
+        mimShorRoom1.setText("Generar Factura");
+        mimShorRoom1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mimShorRoom1ActionPerformed(evt);
+            }
+        });
+        mbrRooms1.add(mimShorRoom1);
+
+        mimShorRoom2.setText("Salir");
+        mimShorRoom2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mimShorRoom2ActionPerformed(evt);
+            }
+        });
+        mbrRooms1.add(mimShorRoom2);
+
+        jMenuBar1.add(mbrRooms1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(room1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(room2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(room1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(room2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addComponent(room1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(room2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -144,6 +167,18 @@ public class FrmAdminMenu extends javax.swing.JFrame {
         this.setVisible(false);
         product.setVisible(true);
     }//GEN-LAST:event_mimAddActionPerformed
+
+    private void mimShorRoom1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mimShorRoom1ActionPerformed
+        FrmBill bill = new FrmBill();
+        this.setVisible(false);
+        bill.setVisible(true);
+    }//GEN-LAST:event_mimShorRoom1ActionPerformed
+
+    private void mimShorRoom2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mimShorRoom2ActionPerformed
+        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        this.setVisible(false);
+        principalMenu.setVisible(true);
+    }//GEN-LAST:event_mimShorRoom2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -184,10 +219,13 @@ public class FrmAdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mbrRooms;
+    private javax.swing.JMenu mbrRooms1;
     private javax.swing.JMenu mbrShop;
     private javax.swing.JMenuItem mimAdd;
     private javax.swing.JMenuItem mimCreateRoom;
     private javax.swing.JMenuItem mimShorRoom;
+    private javax.swing.JMenuItem mimShorRoom1;
+    private javax.swing.JMenuItem mimShorRoom2;
     private javax.swing.JMenuItem mimShow;
     private javax.swing.JLabel room1;
     private javax.swing.JLabel room2;

@@ -211,9 +211,9 @@ public class FrmRegisterRoom extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPriceRoomActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmAdminMenu adminMenu = new FrmAdminMenu();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        adminMenu.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnCancelRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelRegisterActionPerformed

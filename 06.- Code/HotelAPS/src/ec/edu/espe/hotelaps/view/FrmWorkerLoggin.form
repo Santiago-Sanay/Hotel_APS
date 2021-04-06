@@ -105,6 +105,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEnterWorkerLoggin">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/ec/edu/espe/hotelaps/files/task-checklist-check.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Iniciar Sesion"/>
       </Properties>
       <Events>

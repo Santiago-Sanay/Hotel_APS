@@ -73,6 +73,7 @@ public class FrmBuyProduct extends javax.swing.JFrame {
             }
         });
 
+        btnBuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/pencil-write-1-alternate.png"))); // NOI18N
         btnBuy.setText("Comprar");
         btnBuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,9 +110,9 @@ public class FrmBuyProduct extends javax.swing.JFrame {
                                 .addGap(34, 34, 34)
                                 .addComponent(txtNameProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(173, 173, 173)
+                                .addGap(212, 212, 212)
                                 .addComponent(btnBuy)
-                                .addGap(91, 91, 91)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnExit5)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -127,11 +128,11 @@ public class FrmBuyProduct extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNameProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuy)
                     .addComponent(btnExit5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -142,9 +143,9 @@ public class FrmBuyProduct extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameProductActionPerformed
 
     private void btnExit5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit5ActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmCustomerService customerService = new FrmCustomerService();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        customerService.setVisible(true);
     }//GEN-LAST:event_btnExit5ActionPerformed
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed

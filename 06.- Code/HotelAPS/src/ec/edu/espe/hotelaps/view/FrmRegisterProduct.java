@@ -77,7 +77,7 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
         });
 
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/house-chimney.png"))); // NOI18N
-        btnExit.setText("Salir");
+        btnExit.setText("Atras");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -150,9 +150,9 @@ public class FrmRegisterProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmAdminMenu adminMenu = new FrmAdminMenu();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        adminMenu.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed

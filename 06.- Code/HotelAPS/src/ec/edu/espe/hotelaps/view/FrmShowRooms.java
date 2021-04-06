@@ -100,6 +100,7 @@ public class FrmShowRooms extends javax.swing.JFrame {
 
         lblTotalRegisterRooms.setText("Registros totales");
 
+        btnStatusRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/pencil-write-1-alternate.png"))); // NOI18N
         btnStatusRoom.setText("Habilitar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -172,9 +173,9 @@ public class FrmShowRooms extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        FrmPrincipalMenu principalMenu = new FrmPrincipalMenu();
+        FrmAdminMenu adminMenu = new FrmAdminMenu();
         this.setVisible(false);
-        principalMenu.setVisible(true);
+        adminMenu.setVisible(true);
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
