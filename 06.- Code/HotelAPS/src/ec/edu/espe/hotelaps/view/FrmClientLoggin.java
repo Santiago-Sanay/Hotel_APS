@@ -36,22 +36,17 @@ public class FrmClientLoggin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        room = new javax.swing.JLabel();
-        room1 = new javax.swing.JLabel();
+        room2 = new javax.swing.JLabel();
         txtNameCustomerLoggin = new javax.swing.JTextField();
         btnEnter = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        room2 = new javax.swing.JLabel();
+        room3 = new javax.swing.JLabel();
+
+        room2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        room2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        room2.setText("Ingrese su ID");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        room.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
-        room.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        room.setText("la palabra \"Custom\"");
-
-        room1.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
-        room1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        room1.setText("Ingrese la cedula con la que");
 
         txtNameCustomerLoggin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,9 +70,9 @@ public class FrmClientLoggin extends javax.swing.JFrame {
             }
         });
 
-        room2.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
-        room2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        room2.setText("se regsitro seguida de");
+        room3.setFont(new java.awt.Font("Agency FB", 0, 36)); // NOI18N
+        room3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        room3.setText("Ingrese su ID , como lo registro");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,37 +80,29 @@ public class FrmClientLoggin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(room1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(112, 112, 112)
-                                .addComponent(txtNameCustomerLoggin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(53, 53, 53)
-                                    .addComponent(btnEnter)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnExit))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(29, 29, 29)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(room2, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 42, Short.MAX_VALUE)))
+                        .addGap(53, 53, 53)
+                        .addComponent(btnEnter)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnExit)
+                        .addGap(0, 42, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(room3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(txtNameCustomerLoggin, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(room1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(room2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(room, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(68, 68, 68)
+                .addComponent(room3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(txtNameCustomerLoggin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnter)
                     .addComponent(btnExit))
@@ -181,9 +168,8 @@ public class FrmClientLoggin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnter;
     private javax.swing.JButton btnExit;
-    private javax.swing.JLabel room;
-    private javax.swing.JLabel room1;
     private javax.swing.JLabel room2;
+    private javax.swing.JLabel room3;
     private javax.swing.JTextField txtNameCustomerLoggin;
     // End of variables declaration//GEN-END:variables
 }

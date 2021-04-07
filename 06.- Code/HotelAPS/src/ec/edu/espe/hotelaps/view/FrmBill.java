@@ -3,11 +3,22 @@
         
 package ec.edu.espe.hotelaps.view;
 
+import ec.edu.espe.hotelaps.model.Conection;
+import ec.edu.espe.hotelaps.model.Customer;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class FrmBill extends javax.swing.JFrame {
-DefaultTableModel model=new DefaultTableModel();
+public class FrmBill extends javax.swing.JFrame implements Printable {
+
+    DefaultTableModel model=new DefaultTableModel();
+    
     public FrmBill() {
         initComponents();
         cargaCli();
@@ -17,14 +28,20 @@ DefaultTableModel model=new DefaultTableModel();
         tblPro.getColumnModel().getColumn(0).setPreferredWidth(200);
     }
 private void cargaCli(){
-    cmbCli.addItem("[Seleccionar]");
+    Conection conection=new Conection("Customer");
+    ArrayList<Customer> customers = new ArrayList<>();
+    customers=conection.retrieveCustomers();
+    for (Customer customer:customers){
+        cmbCli.addItem(customer.getName());
+    }
+    /*cmbCli.addItem("[Seleccionar]");
     cmbCli.addItem("Daniel Vizcarra");
     cmbCli.addItem("Jimmy Simbaña");
     cmbCli.addItem("Alvaro Vera");
     cmbCli.addItem("Gabriel Rosero");
     cmbCli.addItem("Santiago Sañay");
     //cmbCli.addItem("Liliana Vergaray Returto");
-    //cmbCli.addItem("Teofilo Cubillas Nieto");
+    //cmbCli.addItem("Teofilo Cubillas Nieto");*/
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,14 +58,14 @@ private void cargaCli(){
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtRuc = new javax.swing.JTextField();
-        txtPre = new javax.swing.JTextField();
+        txtIdNumber = new javax.swing.JTextField();
+        txtPrecie = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtCan = new javax.swing.JTextField();
+        txtCuantity = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
         btnEli = new javax.swing.JButton();
         cmbCli = new javax.swing.JComboBox();
-        cmbPro = new javax.swing.JComboBox();
+        cmbProduct = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPro = new javax.swing.JTable();
         lblSub = new javax.swing.JLabel();
@@ -59,7 +76,8 @@ private void cargaCli(){
         jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        btnPrint = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,7 +86,7 @@ private void cargaCli(){
 
         jLabel1.setText("Factura");
 
-        jLabel2.setText("Cliente");
+        jLabel2.setText("Usuario");
 
         jLabel3.setText("C.I.");
 
@@ -97,11 +115,16 @@ private void cargaCli(){
                 cmbCliItemStateChanged(evt);
             }
         });
+        cmbCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCliActionPerformed(evt);
+            }
+        });
 
-        cmbPro.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[Seleccionar]", "Habitación Matrimonial", "Habitación Individual", "Habitación Familiar" }));
-        cmbPro.addItemListener(new java.awt.event.ItemListener() {
+        cmbProduct.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "[Seleccionar]", "Habitación Matrimonial", "Habitación Individual", "Habitación Familiar" }));
+        cmbProduct.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbProItemStateChanged(evt);
+                cmbProductItemStateChanged(evt);
             }
         });
 
@@ -124,11 +147,11 @@ private void cargaCli(){
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCan, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPre, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPrecie, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbCli, 0, 178, Short.MAX_VALUE)
-                            .addComponent(cmbPro, 0, 1, Short.MAX_VALUE)))
+                            .addComponent(cmbProduct, 0, 1, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnAdd)
@@ -147,18 +170,18 @@ private void cargaCli(){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cmbPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,31 +219,32 @@ private void cargaCli(){
 
         jLabel10.setText("# Factura");
 
-        jLabel11.setText("001-2500-8956");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel11))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel10)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel10)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel10)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
+
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
+        btnPrint.setText("Imprimir");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ec/edu/espe/hotelaps/files/delete.png"))); // NOI18N
         btnBack.setText("Atras");
@@ -235,19 +259,17 @@ private void cargaCli(){
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnBack)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrint)
+                        .addGap(108, 108, 108)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel9)
@@ -261,7 +283,17 @@ private void cargaCli(){
                                 .addComponent(jLabel7)
                                 .addGap(27, 27, 27)
                                 .addComponent(lblSub)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(32, 32, 32)
+                    .addComponent(btnBack)
+                    .addContainerGap(388, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,16 +311,31 @@ private void cargaCli(){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSub)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblIGV)
-                    .addComponent(jLabel8)
-                    .addComponent(btnBack))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTotal)
-                    .addComponent(jLabel9))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblIGV)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTotal)
+                            .addComponent(jLabel9))
+                        .addContainerGap(30, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrint)
+                        .addGap(21, 21, 21))))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(536, Short.MAX_VALUE)
+                    .addComponent(btnBack)
+                    .addGap(21, 21, 21)))
         );
 
         pack();
@@ -305,14 +352,14 @@ private void cargaCli(){
                  case 4:Ruc="1727549540";break;
                  default : Ruc="1703658395";
              }
-             txtRuc.setText(Ruc);
+             txtIdNumber.setText(Ruc);
          }
     }//GEN-LAST:event_cmbCliItemStateChanged
 
-    private void cmbProItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbProItemStateChanged
+    private void cmbProductItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbProductItemStateChanged
         String pre="";
-        if (cmbPro.getSelectedIndex()>0){
-            switch (cmbPro.getSelectedIndex()) {
+        if (cmbProduct.getSelectedIndex()>0){
+            switch (cmbProduct.getSelectedIndex()) {
                 case 1:pre="20";break;
                 case 2:pre="15";break;
                 case 3:pre="30";break;
@@ -322,10 +369,10 @@ private void cargaCli(){
                 //case 7:pre="68";break;
                 //default : pre="20";
             }
-            txtPre.setText(pre);
-            txtCan.setText("1");
+            txtPrecie.setText(pre);
+            txtCuantity.setText("1");
         }
-    }//GEN-LAST:event_cmbProItemStateChanged
+    }//GEN-LAST:event_cmbProductItemStateChanged
     private double redondear(double num){
         return Math.rint(num*100)/100;
     }
@@ -345,9 +392,9 @@ private void cargaCli(){
     }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         String rowData[]=new String[4];
-        rowData[0]=cmbPro.getSelectedItem().toString();
-        rowData[1]=txtPre.getText();
-        rowData[2]=txtCan.getText();
+        rowData[0]=cmbProduct.getSelectedItem().toString();
+        rowData[1]=txtPrecie.getText();
+        rowData[2]=txtCuantity.getText();
         Double imp=Double.parseDouble(rowData[1])*Double.parseDouble(rowData[2]);
         imp=redondear(imp);
         rowData[3]=imp.toString();
@@ -370,11 +417,31 @@ private void cargaCli(){
         eliminar();
     }//GEN-LAST:event_btnEliActionPerformed
 
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+       
+        PrinterJob job = PrinterJob.getPrinterJob();
+
+        job.setPrintable(this);
+
+        if (job.printDialog()) {
+            try {
+                job.print();
+
+            } catch (PrinterException ex) {
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "La impresion se canceló");
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
+
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        FrmAdminMenu adminMenu = new FrmAdminMenu();
-        this.setVisible(false);
-        adminMenu.setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void cmbCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,11 +489,12 @@ private void cargaCli(){
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEli;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JComboBox cmbCli;
-    private javax.swing.JComboBox cmbPro;
+    private javax.swing.JComboBox cmbProduct;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -442,8 +510,20 @@ private void cargaCli(){
     private javax.swing.JLabel lblSub;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tblPro;
-    private javax.swing.JTextField txtCan;
-    private javax.swing.JTextField txtPre;
-    private javax.swing.JTextField txtRuc;
+    private javax.swing.JTextField txtCuantity;
+    private javax.swing.JTextField txtIdNumber;
+    private javax.swing.JTextField txtPrecie;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+        if (pageIndex == 0) {
+            Graphics2D graphics2d = (Graphics2D) graphics;
+            graphics2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+            printAll(graphics2d);
+            return PAGE_EXISTS;
+        } else {
+            return NO_SUCH_PAGE;
+        }
+    }
 }
